@@ -120,10 +120,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'in-v3.mailjet.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = '12cd293f0928c6106d46c1059ed3f3b1'
-EMAIL_HOST_PASSWORD = '97481bef5339eb1536f9691ff74c8afe'
-DEFAULT_FROM_EMAIL = 'izzidinsamara@gmail.com'
+
