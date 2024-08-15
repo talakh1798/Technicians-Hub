@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
+<<<<<<< HEAD
     path('admin/', admin.site.urls),
+=======
+    path('admin/', admin.site.urls), #url admin
+>>>>>>> 4dfe2c902f53ebca36f9c5c28573a442cf6f6541
     path('', include('Technicians_app.urls')),  # Add this line
 ]
