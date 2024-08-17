@@ -37,11 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-    'Technicians_app',
-=======
     'Technicians_app', #add app
->>>>>>> 4dfe2c902f53ebca36f9c5c28573a442cf6f6541
 ]
 
 MIDDLEWARE = [
@@ -123,3 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+

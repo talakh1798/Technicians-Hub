@@ -1,6 +1,7 @@
 from django.db import models
 
-# 
+
+#update class user
 class User(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
@@ -11,7 +12,8 @@ class User(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
-class Technicians(models.Model):
+
+class Technician(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     bio = models.TextField()
@@ -21,9 +23,12 @@ class Technicians(models.Model):
     image = models.ImageField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+    users = models.ManyToManyField(User, related_name="technicians")
 
-
+#update class review
 class Review(models.Model):
+    technician = models.ForeignKey(Technician, related_name= "technician_reviews",  on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, related_name= "user_reviews", on_delete=models.CASCADE, default=1)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
