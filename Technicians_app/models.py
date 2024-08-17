@@ -22,7 +22,7 @@ class Technicians(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
-
+# update review class
 class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
