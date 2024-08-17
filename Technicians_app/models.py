@@ -1,9 +1,5 @@
 from django.db import models
 
-<<<<<<< Updated upstream
-# Create your models here.
-=======
-# 
 class User(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
@@ -33,7 +29,3 @@ class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-
-
->>>>>>> Stashed changes
