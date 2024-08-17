@@ -25,6 +25,8 @@ class Technician(models.Model):
 
 
 class Review(models.Model):
+    technician = models.ForeignKey(Technician, related_name= "technician_reviews",  on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, related_name= "user_reviews", on_delete=models.CASCADE, default=1)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
