@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Technicians Hub</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/contact.css'%}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-section">
+            <h1>Get in Touch</h1>
+            <p>We'd love to hear from you! Whether you have a question, comment, or just want to say hello, please don't hesitate to reach out.</p>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="social-media">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </section>
+        <section class="map-section">
+            <h2>Our Location</h2>
+            <div id="map"></div>
+            <address>
+                <p>Technicians Hub</p>
+                <p>123 Main St, Anytown, USA 12345</p>
+                <p><a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p><a href="mailto:info@technicianshub.com">info@technicianshub.com</a></p>
+            </address>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Technicians Hub. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
