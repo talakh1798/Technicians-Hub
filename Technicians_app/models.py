@@ -11,7 +11,7 @@ class User(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
-class Technicians(models.Model):
+class Technician(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     bio = models.TextField()
@@ -21,9 +21,13 @@ class Technicians(models.Model):
     image = models.ImageField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+    users = models.ManyToManyField(User, related_name="technicians")
 
-# update review class
+
 class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+
