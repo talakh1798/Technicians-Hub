@@ -1,5 +1,7 @@
 from django.db import models
 
+
+#update class user
 class User(models.Model):
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
@@ -9,6 +11,7 @@ class User(models.Model):
     date_of_birth = models.DateField()
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+
 
 class Technician(models.Model):
     first_name = models.CharField(max_length=45)
