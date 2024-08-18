@@ -130,19 +130,19 @@
 
 .operation-container h3 {
     color: #2C3E50;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 15px;
 }
 
 .operation-hours {
     color: #7F8C8D;
-    font-size: 18px;
+    font-size: 26px;
     line-height: 1.6;
 }
 
 .dashboard-title {
     color: #2C3E50;
-    font-size: 18px;
+    font-size: 26px;
     margin-top: 30px;
 }
 
@@ -183,5 +183,4 @@
     transform: scale(1.05);
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
-
 
