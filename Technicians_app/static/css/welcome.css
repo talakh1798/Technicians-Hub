@@ -48,3 +48,73 @@
     color: #3498DB;
     font-weight: bold;
 }
+
+/* External CSS file (style.css) */
+
+.appointment-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-container h3 {
+    color: #2C3E50;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.appointment-container p {
+    color: #7F8C8D;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.appointment-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.appointment-links .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.call-btn {
+    background-color: #3498DB;
+}
+
+.call-btn:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+}
+
+.email-btn {
+    background-color: #27AE60;
+}
+
+.email-btn:hover {
+    background-color: #1E8449;
+    transform: scale(1.05);
+}
+
+.text-btn {
+    background-color: #E67E22;
+}
+
+.text-btn:hover {
+    background-color: #D35400;
+    transform: scale(1.05);
+}
+
