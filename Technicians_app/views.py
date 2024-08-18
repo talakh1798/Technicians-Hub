@@ -38,4 +38,8 @@ def sign_in(request):
                 return redirect('/login')
         
                 
+<<<<<<< HEAD
     
+=======
+    
+>>>>>>> branch-tala
