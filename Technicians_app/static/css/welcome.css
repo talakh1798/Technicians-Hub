@@ -63,7 +63,7 @@
 
 .appointment-container h3 {
     color: #2C3E50;
-    font-size: 28px;
+    font-size: 26px;
     margin-bottom: 15px;
 }
 
@@ -78,6 +78,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-left: 15px;
 }
 
 .appointment-links .btn {
@@ -117,4 +118,70 @@
     background-color: #D35400;
     transform: scale(1.05);
 }
+/* External CSS file (style.css) */
+
+.operation-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.operation-container h3 {
+    color: #2C3E50;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.operation-hours {
+    color: #7F8C8D;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.dashboard-title {
+    color: #2C3E50;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: left;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 12px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+    margin-right: 10px;
+}
+
+.login-btn {
+    background-color: #3498DB;
+}
+
+.login-btn:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.signup-btn {
+    background-color: #2ECC71;
+}
+
+.signup-btn:hover {
+    background-color: #27AE60;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
 
