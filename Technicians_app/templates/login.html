@@ -22,7 +22,7 @@
             {% for error in messages %}
             <p class="error-message">{{ error }}</p>
             {% endfor %}
-            <form action="/login" method="post">
+            <form action="{% url 'login' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="email">Email</label>

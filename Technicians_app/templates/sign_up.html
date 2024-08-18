@@ -19,48 +19,81 @@
             <div class="col-md-8 offset-md-2">
                 <div class="form-section">
                     <h1>Registration</h1>
-                    {% for error in messages %}
-                        <p style="color: red;">{{error}}</p>
-                    {% endfor %}
+                    
                     <form action="{% url 'sign_up' %}" method="post">
                         {% csrf_token %}
+                        
+                        <!-- First Name Field -->
                         <div class="form-group">
                             <label for="first_name">First Name:</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{ request.POST.first_name }}" required>
+                            {% if messages.first_name %}
+                                <small class="text-danger">{{ messages.first_name }}</small>
+                            {% endif %}
                         </div>
+                        
+                        <!-- Last Name Field -->
                         <div class="form-group">
                             <label for="last_name">Last Name:</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" required>
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{ request.POST.last_name }}" required>
+                            {% if messages.last_name %}
+                                <small class="text-danger">{{ messages.last_name }}</small>
+                            {% endif %}
                         </div>
-
+                        
+                        <!-- Email Field -->
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ request.POST.email }}" required>
+                            {% if messages.email %}
+                                <small class="text-danger">{{ messages.email }}</small>
+                            {% endif %}
                         </div>
+                        
+                        <!-- Phone Number Field -->
                         <div class="form-group">
                             <label for="phone_number">Phone Number:</label>
-                            <input type="text" class="form-control" id="phone_number" name="phone_number">
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ request.POST.phone_number }}">
+                            {% if messages.phone_number %}
+                                <small class="text-danger">{{ messages.phone_number }}</small>
+                            {% endif %}
                         </div>
-                       
+                        
+                        <!-- Date of Birth Field -->
                         <div class="form-group">
-                            <label for="date_of_birth">Date OF Birth</label>
-                            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
+                            <label for="date_of_birth">Date of Birth:</label>
+                            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ request.POST.date_of_birth }}">
+                            {% if messages.date_of_birth %}
+                                <small class="text-danger">{{ messages.date_of_birth }}</small>
+                            {% endif %}
                         </div>
+                        
+                        <!-- Password Field -->
                         <div class="form-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" name="password" required>
+                            {% if messages.password %}
+                                <small class="text-danger">{{ messages.password }}</small>
+                            {% endif %}
                         </div>
+                        
+                        <!-- Confirm Password Field -->
                         <div class="form-group">
                             <label for="confirm_password">Confirm Password:</label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                            {% if messages.confirm_password %}
+                                <small class="text-danger">{{ messages.confirm_password }}</small>
+                            {% endif %}
                         </div>
+    
+                        <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
