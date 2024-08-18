@@ -1,0 +1,50 @@
+/* External CSS file (style.css) */
+
+.sqs-html-content .content-wrapper {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.sqs-html-content h2 {
+    color: #2C3E50;
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.sqs-html-content p {
+    color: #7F8C8D;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.sqs-html-content .call-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #3498DB;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.sqs-html-content .call-btn:hover {
+    background-color: #2980B9;
+}
+
+.sqs-html-content h3 {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #2C3E50;
+}
+
+.sqs-html-content .contact-info {
+    font-size: 20px;
+    color: #3498DB;
+    font-weight: bold;
+}
