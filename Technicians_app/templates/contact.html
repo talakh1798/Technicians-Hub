@@ -120,7 +120,7 @@
           </a>
         
           <a href="#" class="Mobile-overlay-nav-item">
-            Services
+            Login
           </a>
         </nav>
         <nav class="Mobile-overlay-nav Mobile-overlay-nav--secondary" data-content-field="navigation">
@@ -205,8 +205,8 @@
                 
   <div class="Header-nav-inner">
     <a href="/" class="Header-nav-item" data-test="template-nav">Home</a>
-    <a href="#" class="Header-nav-item" data-test="template-nav">About Us</a>
-    <a href="#" class="Header-nav-item" data-test="template-nav">Services</a>
+    <a href="{% url 'about_us' %}" class="Header-nav-item" data-test="template-nav">About Us</a>
+    <a href="{% url 'login' %}" class="Header-nav-item" data-test="template-nav">Login</a>
   </div>
 
               </nav>
