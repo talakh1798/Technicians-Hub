@@ -1,0 +1,23 @@
+header {
+    background-color: #ffc107; /* Gold background */
+  }
+  .navigation-link {
+    color: white; /* White text color for links */
+  }
+  .logo-img {
+    max-width: 150px; /* Smaller logo size */
+    height: auto;
+  }
+
+  a {
+    color: white;        /* Set the text color to blue */
+    text-decoration: none; /* Remove underline from the link */
+    font-size: x-large;
+    font-style: initial ;
+}
+
+/* Style for hover state of the link */
+a:hover {
+    color: whitesmoke;         /* Change text color to red when hovered */
+    text-decoration: underline; /* Underline the link when hovered */
+}
