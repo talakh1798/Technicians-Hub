@@ -5,6 +5,9 @@ from django.contrib import messages
 def welcome(request):
     return render(request, 'welcome.html')
 
+def contact(request):
+    return render(request, 'contact.html')
+
 def signup(request):
     return render(request,'sign_up.html')
 
