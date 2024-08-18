@@ -1,0 +1,186 @@
+/* External CSS file (style.css) */
+
+.sqs-html-content .content-wrapper {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.sqs-html-content h2 {
+    color: #2C3E50;
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.sqs-html-content p {
+    color: #7F8C8D;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.sqs-html-content .call-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #3498DB;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.sqs-html-content .call-btn:hover {
+    background-color: #2980B9;
+}
+
+.sqs-html-content h3 {
+    margin-top: 30px;
+    font-size: 24px;
+    color: #2C3E50;
+}
+
+.sqs-html-content .contact-info {
+    font-size: 20px;
+    color: #3498DB;
+    font-weight: bold;
+}
+
+/* External CSS file (style.css) */
+
+.appointment-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-container h3 {
+    color: #2C3E50;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.appointment-container p {
+    color: #7F8C8D;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.appointment-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-left: 15px;
+}
+
+.appointment-links .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.call-btn {
+    background-color: #3498DB;
+}
+
+.call-btn:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+}
+
+.email-btn {
+    background-color: #27AE60;
+}
+
+.email-btn:hover {
+    background-color: #1E8449;
+    transform: scale(1.05);
+}
+
+.text-btn {
+    background-color: #E67E22;
+}
+
+.text-btn:hover {
+    background-color: #D35400;
+    transform: scale(1.05);
+}
+/* External CSS file (style.css) */
+
+.operation-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.operation-container h3 {
+    color: #2C3E50;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.operation-hours {
+    color: #7F8C8D;
+    font-size: 26px;
+    line-height: 1.6;
+}
+
+.dashboard-title {
+    color: #2C3E50;
+    font-size: 26px;
+    margin-top: 30px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: left;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 12px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+    margin-right: 10px;
+}
+
+.login-btn {
+    background-color: #3498DB;
+}
+
+.login-btn:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.signup-btn {
+    background-color: #2ECC71;
+}
+
+.signup-btn:hover {
+    background-color: #27AE60;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
