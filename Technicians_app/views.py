@@ -40,9 +40,6 @@ def sign_in(request):
                 messages.error(request, 'invalid  password or email')
                 return redirect('/login')
         
-                
-<<<<<<< HEAD
-    
-=======
-    
->>>>>>> branch-tala
+def about_us(request):
+    return render(request, 'about_us.html')
+
