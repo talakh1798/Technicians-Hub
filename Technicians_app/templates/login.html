@@ -93,7 +93,7 @@
             {% for error in messages %}
             <p class="error-message">{{ error }}</p>
             {% endfor %}
-            <form action="{% url 'signin' %}" method="post">
+            <form action="/login" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -105,11 +105,11 @@
                     <input type="password" class="form-control" name="password" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
-                <p class="text-center mt-3">Don't have an account? <a href="/signup">Sign Up</a></p>
+                <p class="text-center mt-3">Don't have an account? <a href="{% url 'sign_up' %}">Sign Up</a></p>
             </form>
         </div>
     </div>
-
+    
     <!-- jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

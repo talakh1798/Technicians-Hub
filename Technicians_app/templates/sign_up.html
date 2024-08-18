@@ -74,7 +74,7 @@
                     {% for error in messages %}
                         <p style="color: red;">{{error}}</p>
                     {% endfor %}
-                    <form action="/register/" method="post">
+                    <form action="{% url 'sign_up' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="first_name">First Name:</label>
