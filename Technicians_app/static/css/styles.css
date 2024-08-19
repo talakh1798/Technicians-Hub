@@ -1,23 +1,49 @@
+/* Header styling */
 header {
-    background-color: #ffc107; /* Gold background */
-  }
-  .navigation-link {
-    color: white; /* White text color for links */
-  }
-  .logo-img {
-    max-width: 150px; /* Smaller logo size */
-    height: auto;
-  }
-
-  a {
-    color: white;        /* Set the text color to blue */
-    text-decoration: none; /* Remove underline from the link */
-    font-size: x-large;
-    font-style: initial ;
+  background-color: #ffc107; /* Gold background */
+  padding: 10px 20px; /* Add padding for better spacing */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  justify-content: space-between; /* Align items to the sides */
+  align-items: center; /* Vertically center items */
 }
 
-/* Style for hover state of the link */
+/* Logo image styling */
+.logo-img {
+  max-width: 150px; /* Smaller logo size */
+  height: auto;
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.logo-img:hover {
+  transform: scale(1.05); /* Slightly enlarge logo on hover */
+}
+
+/* Navigation link styling */
+.navigation-link {
+  color: white; /* White text color for links */
+  text-decoration: none; /* Remove underline from the link */
+  font-size: 1.2rem; /* Slightly larger font size for better readability */
+  font-weight: bold; /* Bold text for emphasis */
+  margin: 0 15px; /* Space out navigation links */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and transform */
+}
+
+.navigation-link:hover {
+  color: #ffeb3b; /* Change text color to a lighter gold on hover */
+  text-decoration: underline; /* Underline the link when hovered */
+  transform: translateY(-2px); /* Slightly raise the link on hover */
+}
+
+/* Styling for all anchor tags */
+a {
+  color: inherit; /* Inherit color from parent element */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+/* Hover state for all anchor tags */
 a:hover {
-    color: whitesmoke;         /* Change text color to red when hovered */
-    text-decoration: underline; /* Underline the link when hovered */
+  color: #ffeb3b; /* Change text color to a lighter gold when hovered */
+  text-decoration: underline; /* Underline the link when hovered */
+  transform: translateY(-2px); /* Slightly raise the link on hover */
 }
