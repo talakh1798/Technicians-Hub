@@ -10,13 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
-        body {
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-            url('{% static "image/background.jpg" %}') no-repeat center center fixed;
-            background-size: cover;
-            background-color: black;
-            font-family: 'Roboto', sans-serif;
-        }
+        
+      body{
+        background-color: grey;
+      }
 
         header {
             padding: 20px 0;
@@ -131,6 +128,39 @@
                 opacity: 1;
             }
         }
+        .hero-about__image {
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        .windmill {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease, fill 0.3s ease; /* Smooth transition for transform and color changes */
+        }
+        
+        .windmill__stem {
+            fill: #000; /* Black color for the stem */
+        }
+        
+        .windmill__leaf {
+            fill: #ffc200; /* Orange color for primary leaves */
+        }
+        
+        .windmill__leaf--primary {
+            fill: #ffc200; /* Primary orange color for primary leaves */
+        }
+        
+        .windmill__leaf--alt {
+            fill: #000; /* Black color for alternate leaves */
+        }
+        
+        /* Animation on hover */
+        .hero-about__image:hover .windmill {
+            transform: rotate(360deg); /* Rotate the windmill */
+        }
+        
         
     </style>
 </head>
@@ -144,7 +174,7 @@
             <a href="{% url 'login' %}" class="text-decoration-none navigation-link">Login</a>
         </nav>
     </header>
-    
+    <!--  -->
 
     
     <div class="our-mission">
@@ -215,6 +245,20 @@
                     trusted technicians with ease. Whether it's a last-minute emergency repair, routine maintenance, or
                     specialized installations, we've built a community of professionals who are ready to step in and get the job
                     done.</p>
+                    <figure class="hero-about__image">
+                        <svg class="windmill" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="windmill" x="0" y="0" style="enable-background:new 0 0 726.7 1384.7" version="1.1" viewBox="0 0 726.7 1384.7">
+                            <path class="windmill__stem" d="M365.2 1384.7c5.8 0 10.4-4.7 10.4-10.4V540.5c0-5.8-4.7-10.4-10.5-10.4s-10.5 4.7-10.5 10.4v833.7c.1 5.8 4.8 10.4 10.6 10.5"></path>
+                            <path class="windmill__leaf windmill__leaf--primary" d="M363.4 363.4v181.7c0 100.3 81.3 181.7 181.7 181.7V545.1c0-100.4-81.4-181.7-181.7-181.7z"></path>
+                            <path class="windmill__leaf windmill__leaf--primary" d="M363.4 363.4h181.7c100.3 0 181.7-81.3 181.7-181.7H545.1c-100.4 0-181.7 81.3-181.7 181.7z"></path>
+                            <path class="windmill__leaf windmill__leaf--primary" d="M363.4 363.4V181.7C363.4 81.3 282 0 181.7 0v181.7c0 100.3 81.3 181.7 181.7 181.7z"></path>
+                            <path class="windmill__leaf windmill__leaf--primary" d="M363.4 363.4H181.7C81.3 363.4 0 444.7 0 545.1h181.7c100.3 0 181.7-81.4 181.7-181.7z"></path>
+                            <path class="windmill__leaf windmill__leaf--alt" d="M363.4 363.4V181.7C363.4 81.3 444.7 0 545.1 0v181.7c0 100.3-81.4 181.7-181.7 181.7z"></path>
+                            <path class="windmill__leaf windmill__leaf--alt" d="M363.4 361.6h181.7c100.3 0 181.7 81.3 181.7 181.7H545.1c-100.4 0-181.7-81.4-181.7-181.7z"></path>
+                            <path class="windmill__leaf windmill__leaf--alt" d="M365.2 361.6v181.7c0 100.3-81.3 181.7-181.7 181.7V543.3c0-100.4 81.3-181.7 181.7-181.7z"></path>
+                            <path class="windmill__leaf windmill__leaf--alt" d="M365.2 363.4H183.5C83.1 363.4 1.8 282 1.8 181.7h181.7c100.3 0 181.7 81.3 181.7 181.7z"></path>
+                        </svg>
+                    </figure>
+                    
             </div>
         </div>
 
@@ -263,7 +307,19 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js">
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const windmill = document.querySelector('.windmill');
+        
+            windmill.addEventListener('mouseenter', () => {
+                windmill.style.transform = 'rotate(360deg)';
+            });
+        
+            windmill.addEventListener('mouseleave', () => {
+                windmill.style.transform = 'rotate(0deg)';
+            });
+        });
+    </script>
 </body>
 
 </html>
