@@ -30,9 +30,9 @@ def sign_up(request):
     if request.method == "POST" : 
         errors = User.objects.validate_registration(request.POST)
         if len(errors) > 0:
-            for key, value in errors.items():
-                messages.error(request, value)
-            return redirect('sign_up')
+            # for key, value in errors.items():
+            #     messages.error(request, value)
+            return render(request, 'sign_up.html', {'errors': errors, 'data': request.POST})
         else:
             pw_hash = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()  # create the hash    
             print(pw_hash)
@@ -41,7 +41,7 @@ def sign_up(request):
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
             return redirect('login')
-    return render(request, 'sign_up.html')
+    return render(request, 'sign_up.html',)
 
 def about_us(request):
     return render(request, 'about_us.html')
