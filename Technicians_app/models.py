@@ -28,15 +28,17 @@ class UserManager(models.Manager):
             age = today.year - birthday.year
             if age < 18:
                 errors["date_of_birth"] = "Age must be at least 18 years old"
-
-        #validate the password
-
+        # Add a password and validate that password at least 8 characters
         if len(postData['password']) < 6:
             errors['password'] = 'Password must be at least 6 characters'
         # if len(postData['password']) != len(postData['confirm_password']):
         #     errors['password'] = 'Password do not match'
         if postData['password'] != postData['confirm_password']:
             errors['password'] = 'Passwords do not match'
+
+        # Add a phone number and validate that the user's number should be at least 10 digits
+        if len(postData['phone_number']) < 10:
+            errors['phone_number'] = "Phone number should be at least 10 digits long."
 
         return errors
 
@@ -75,16 +77,15 @@ class Review(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-def create_user(POST):
-    password = POST['password']
-    pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
-    return User.objects.create(first_name = POST['first_name'],
-                               last_name=POST['last_name'],
-                               phone_number=POST['phone_number'],
-                               date_of_birth = POST['date_of_birth'],
-                               email = POST['email'],
-                               password= pw_hash
-                               )
+def create_account(request,pw_hash):
+    first_name=request['first_name']
+    last_name=request['last_name']
+    email=request['email']
+    password=pw_hash
+    date_of_birth=request['date_of_birth']
+    phone_number=request['phone_number']
+    return User.objects.create(first_name=first_name, last_name=last_name, email=email, password=password, date_of_birth=date_of_birth, phone_number=phone_number)
+
 
 def filter_email(POST):
     return User.objects.filter(email = POST['email'])

@@ -5,60 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Registration and Login</title>
-    <style>
-        /* Fullscreen video */
-        .fullwidth-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1; /* Place the video behind other content */
-        }
-        .fullwidth-video video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Content overlay */
-        .container {
-            position: relative;
-            z-index: 1; /* Ensure content is above the video */
-            max-width: 700px;
-            margin-top: 20px;
-        }
-
-        .form-section {
-            background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .form-group label {
-            font-weight: 500;
-        }
-
-        .form-group input {
-            border-radius: 4px;
-        }
-
-        .btn {
-            width: 100%;
-        }
-    </style>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
 </head>
 <body>
     <!-- Background Video Container -->
@@ -70,11 +18,11 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="form-section">
-                    <h1>Registration</h1>
+                    <h1>Sign Up</h1>
                     {% for error in messages %}
                         <p style="color: red;">{{error}}</p>
                     {% endfor %}
-                    <form action="/register/" method="post">
+                    <form action="{% url 'sign_up' %}" method="post">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="first_name">First Name:</label>

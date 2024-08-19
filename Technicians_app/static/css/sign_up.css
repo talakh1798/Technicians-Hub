@@ -1,0 +1,52 @@
+ /* Fullscreen video */
+ .fullwidth-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Place the video behind other content */
+}
+.fullwidth-video video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
+
+/* Content overlay */
+.container {
+    position: relative;
+    z-index: 1; /* Ensure content is above the video */
+    max-width: 700px;
+    margin-top: 20px;
+}
+
+.form-section {
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.form-group label {
+    font-weight: 500;
+}
+
+.form-group input {
+    border-radius: 4px;
+}
+
+.btn {
+    width: 100%;
+}
