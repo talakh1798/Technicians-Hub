@@ -4,128 +4,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About Us - Technicians Hub</title>
     {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+            url('{% static "image/background.jpg" %}') no-repeat center center fixed;
+            background-size: cover;
+            background-color: black;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-img {
+            max-width: 150px;
+        }
+
+        .navigation-link {
+            font-size: 1.2rem;
+            color: #f0a500;
+            transition: color 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navigation-link:hover {
+            color: #d98c00;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 50px;
+            border-radius: 15px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            color: #f0a500;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+
+        .about-section {
+            margin-bottom: 50px;
+        }
+
+        .about-section img {
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .about-section img:hover {
+            transform: scale(1.05);
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            margin-bottom: 30px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 2rem;
+            text-align: center;
+            color: #f0a500;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-text {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        ul li {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        .st0 {
+            fill: #fcc201
+        }
+
+        .st2 {
+            fill: #ffc200
+        }
+
+        .st3 {
+            fill: #141414
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+    </style>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-auto">
-                    <img src="{% static 'image/logo2.PNG' %}" alt="Logo" class="img-fluid logo-img">
-                </div>
-                <div class="col-auto" id="links">
-                    <nav>
-                        <a href="/" class="text-decoration-none me-3 navigation-link">Home</a>
-                        <a href="{% url 'contact' %}" class="text-decoration-none me-3 navigation-link">Contact</a>
-                        <a href="{% url 'login' %}" class="text-decoration-none navigation-link">Login</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
+    <header class="d-flex justify-content-between align-items-center container">
+        <img src="{% static 'image/logo2.PNG' %}" alt="Logo" class="img-fluid logo-img">
+        <nav>
+            <a href="/" class="text-decoration-none me-3 navigation-link">Home</a>
+            <a href="{% url 'contact' %}" class="text-decoration-none me-3 navigation-link">Contact</a>
+            <a href="{% url 'login' %}" class="text-decoration-none navigation-link">Login</a>
+        </nav>
     </header>
-
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="card-title mb-4">About Us</h1>
-                <p class="card-text">At Technicians Hub, we are committed to revolutionizing the way people connect with skilled
-                    technicians. Our platform is designed to bring together expertise, convenience, and trust to create a
-                    seamless experience for both service providers and customers.</p>
-            </div>
-        </div>
-    </div>
     
-    <div class="container mt-3">
-        <div class="card">
-            <div class="card-body">
+
+    
+    <div class="our-mission">
+        <figure class="our-mission-group__illustration">
+            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0"
+                style="enable-background:new 0 0 595.3 177" version="1.1" viewBox="0 0 595.3 177">
+                
+                <path
+                    d="M188.3 130.9c-13.1-12.6-30.8-20.3-50.4-20.3-28.4 0-52.9 16.2-64.9 39.9 27.4.4 64.6-4.6 115.3-19.6z"
+                    class="st0" />
+                <path
+                    d="M595.2 173S406.6 57.8 216.3 122c-9.8 3.3-19.1 6.3-28 8.9-50.6 15-87.9 20-115.2 19.6-61.8-.8-73-28.5-73-28.5v55h595.2l-.1-4z"
+                    style="fill:#f5f3ed" />
+                <path id="Path_2832"
+                    d="M507.8 81.6c-63.3 1.9-126.6-45.8-189.8-12 2.5-19.1 5.2-38.3 7.7-57.5 59.2-31.6 118.2 13.1 177.4 11.3 1.6 19.4 3.1 38.8 4.7 58.2"
+                    class="st2" />
+                <path id="Path_2833"
+                    d="M555.3 80.2c-28 14.9-55.9 14.2-83.9 8.7-.1-2-.1-3.9-.2-5.9 13.8 2.7 27.8 4.3 41.6 3.3-1.5-17.4-3-34.9-4.5-52.3 13.1-1 26.1-4.2 39.2-11.2-3.3 12-6.8 23.7-10.5 35 6 7.9 12 15.4 18.3 22.4"
+                    class="st2" />
+                <path id="Path_2834"
+                    d="M340.2 44c-1.1-.8-1.5-2.1-1.3-4 .4-4 1-8 1.4-12 .2-1.9 1-3.7 2.2-5.1 1.2-1.5 2.9-2.4 4.6-2.9 1.9-.4 3.4-.1 4.3.8 1.1 1 1.5 2.4 1.3 4.2-.4 4-.8 7.9-1.2 11.9-.2 1.8-1 3.6-2.2 4.9-1.3 1.4-3 2.3-4.9 2.6-1.8.7-3.3.5-4.2-.4m6.9-3.7c.6-.7 1-1.6 1.1-2.5.4-4.1.8-8.1 1.3-12.3.1-1-.1-1.7-.5-2.2-.5-.5-1.2-.6-2.1-.4-.8.2-1.7.7-2.2 1.5-.6.7-1 1.7-1.1 2.6-.4 4.1-1 8.2-1.4 12.3-.1 1 .1 1.7.5 2.2.5.4 1.2.6 2.1.4 1-.3 1.8-.8 2.3-1.6"
+                    class="st3" />
+                <path id="Path_2835"
+                    d="M356.5 40.8c-1.1-1.2-1.5-2.6-1.3-4.8.5-5.7 1.1-11.4 1.7-17.1 0-.2.2-.4.4-.4l2.5-.3c.2 0 .3.1.3.3l-1.6 17.4c-.1 1.1.1 1.9.5 2.5.5.6 1.3 1 2 .8.8 0 1.7-.4 2.2-1.2.6-.7 1-1.7 1.1-2.6l1.5-17.4c0-.2.1-.3.3-.3.8 0 1.7-.1 2.5-.1.2 0 .3.1.3.3-.4 5.7-1 11.4-1.4 17.1-.2 2-.8 3.7-2.1 5s-3 2-4.8 2.1c-1.5.2-3-.3-4.1-1.3"
+                    class="st3" />
+                <path id="Path_2836"
+                    d="m380.8 41.9-2.5-10.5c0-.1-.1-.1-.1-.1-.8 0-1.6-.1-2.4-.1-.1 0-.1 0-.1.1-.2 3.4-.5 6.8-.7 10.1 0 .2-.1.3-.3.3h-.1c-.8 0-1.8-.1-2.6-.1-.2 0-.3-.1-.3-.3l1.8-23.2c0-.2.1-.3.3-.3h.1c2 0 4 .1 6.1.3 1.1.1 2.1.4 3 1.1.8.6 1.5 1.6 1.9 2.6.4 1.2.6 2.4.5 3.6 0 1.3-.4 2.5-1.2 3.7-.6 1-1.5 1.7-2.6 2.1-.1 0-.1.1-.1.2 1 3.6 1.9 7.2 2.9 10.9v.1c0 .2-.1.2-.3.2-1-.1-1.8-.2-2.7-.3-.3-.1-.5-.3-.6-.4m-4.4-21.1-.5 7.7c0 .1 0 .1.1.1.8 0 1.7.1 2.5.1.8.1 1.8-.2 2.3-1 .6-.6 1-1.6 1.1-2.7.1-1.3-.1-2.2-.6-3s-1.3-1.2-2.2-1.3c-.8-.1-1.7-.1-2.5-.1-.1.1-.2.1-.2.2"
+                    class="st3" />
+                <path id="Path_2837"
+                    d="M406.5 21.9c.8.2 1.7.4 2.5.5.2 0 .3.2.3.4-.2 7.8-.5 15.6-.7 23.5 0 .2-.1.3-.3.3-.8-.2-1.8-.4-2.6-.5-.2 0-.3-.2-.3-.4.2-5.7.4-11.4.6-17v-.1h-.1c-1.2 1.8-2.3 3.7-3.5 5.5 0 .1-.2.2-.3.2-.1 0-.3-.1-.3-.3-1.1-2.2-2-4.5-3-6.8l-.1-.1s-.1 0-.1.1c-.2 5.7-.5 11.3-.7 17 0 .2-.1.3-.3.3-.8-.1-1.8-.3-2.6-.4-.2 0-.3-.2-.3-.3l1.2-23.3c0-.2.1-.3.3-.3.8.1 1.7.3 2.5.4.2 0 .3.1.4.3 1.1 2.3 2.2 4.8 3.3 7.1 0 0 .1 0 .1.1h.1l3.8-5.7c-.2-.5 0-.6.1-.5"
+                    class="st3" />
+                <path id="Path_2838"
+                    d="m413 47.3.6-23.5c0-.2.1-.3.3-.3l2.5.6c.2 0 .3.2.3.4-.2 7.8-.3 15.6-.5 23.5 0 .2-.1.3-.3.2-.8-.2-1.8-.4-2.6-.6-.2.1-.3-.1-.3-.3"
+                    class="st3" />
+                <path id="Path_2839"
+                    d="M421.5 48.3c-1.1-1.4-1.7-3.2-1.6-4.9v-.8c0-.2.1-.3.3-.2l2.5.6c.2 0 .3.2.3.4v.7c0 1 .2 1.9.7 2.7.4.7 1.2 1.3 2 1.5.7.2 1.5.1 2.1-.4.5-.4.8-1.2.8-2.2 0-.6-.1-1.3-.4-1.9-.3-.6-.6-1.2-1.2-1.7-.4-.5-1.3-1.4-2.3-2.4-1.2-1.2-2.1-2.2-2.7-3s-1.3-1.7-1.7-2.6c-.4-1.1-.6-2.1-.6-3.3 0-1.9.6-3.2 1.7-4 1.2-.8 2.5-1 4.2-.5 1.8.4 3.3 1.5 4.3 3 1.1 1.5 1.7 3.3 1.6 5.1v.8c0 .2-.1.3-.3.2l-2.5-.6c-.2 0-.3-.2-.3-.4v-1c0-1-.2-1.9-.7-2.7-.4-.7-1.2-1.3-2-1.5s-1.5-.1-2 .3-.7 1.2-.7 2.2c0 .8.2 1.8.7 2.5s1.5 1.9 2.9 3.3 2.4 2.5 3.1 3.4c.6.7 1.2 1.6 1.6 2.5.4 1 .5 1.9.5 3 0 1.9-.6 3.4-1.7 4.2-1.2.8-2.6 1.1-4.5.5-1.4-.3-2.9-1.4-4.1-2.8"
+                    class="st3" />
+                <path id="Path_2840"
+                    d="M436.4 52.3c-1.2-1.4-1.7-3.2-1.7-5v-1c0-.2.1-.3.3-.2l2.5.6c.2 0 .3.2.3.4v.7c0 1 .2 1.9.8 2.7.5.7 1.2 1.3 2.1 1.5.8.2 1.5.1 2.1-.4.5-.4.8-1.2.8-2.2 0-.6-.1-1.3-.4-1.9-.3-.6-.7-1.2-1.2-1.7s-1.3-1.4-2.3-2.4c-1.2-1.2-2.1-2.2-2.7-3s-1.3-1.7-1.7-2.7c-.4-1.1-.7-2.1-.6-3.3 0-1.9.5-3.2 1.7-4s2.5-1 4.2-.5c1.8.4 3.3 1.5 4.4 3 1.2 1.5 1.7 3.3 1.7 5.1v.8c0 .2-.1.3-.3.2l-2.5-.6c-.2 0-.3-.2-.3-.4v-1c0-1-.3-1.9-.8-2.7-.4-.7-1.2-1.3-2-1.5s-1.5-.1-1.9.3c-.5.4-.7 1.2-.7 2.2s.2 1.8.7 2.5 1.5 1.9 3 3.4c1.4 1.4 2.4 2.5 3.2 3.4.6.7 1.3 1.6 1.7 2.5.4 1 .6 1.9.6 3 0 1.9-.5 3.4-1.7 4.2s-2.6 1.1-4.4.5c-2.2-.1-3.7-1.2-4.9-2.5"
+                    class="st3" />
+                <path id="Path_2841"
+                    d="M450.5 57c-.1-7.9-.3-15.8-.4-23.7 0-.2.1-.3.3-.2l2.5.6c.2 0 .3.2.3.4.2 7.9.3 15.8.5 23.8 0 .2-.1.3-.3.2-.8-.2-1.8-.4-2.6-.6-.2-.1-.3-.3-.3-.5"
+                    class="st3" />
+                <path id="Path_2842"
+                    d="M459.3 58.1c-1.2-1.4-1.8-3.2-1.9-5.1l-.3-12.1c0-1.9.5-3.4 1.6-4.2 1.1-1 2.5-1.2 4.4-.7 3.7.7 6.4 4 6.5 7.7.2 4.1.3 8.1.5 12.3.1 1.9-.4 3.4-1.6 4.3-1.2 1-2.6 1.2-4.6.7-1.7-.5-3.3-1.4-4.6-2.9m6.9-.5c.5-.5.7-1.3.7-2.2-.1-4.2-.3-8.3-.4-12.6 0-1-.3-1.9-1-2.6-.5-.7-1.4-1.3-2.2-1.4-.8-.2-1.6 0-2.1.4-.5.5-.7 1.3-.7 2.2l.3 12.5c0 1 .3 1.9.8 2.6.5.7 1.4 1.3 2.2 1.4 1 .3 1.8.1 2.4-.3"
+                    class="st3" />
+                <path id="Path_2843"
+                    d="m483.2 39.6 2.5.3c.2 0 .3.2.3.4.4 7.9 1 16 1.4 23.9 0 .2-.1.3-.3.3l-3-.3c-.2 0-.3-.1-.4-.3-2.3-5.6-4.5-11.2-6.8-16.9l-.1-.1s-.1 0-.1.1c.3 5.3.5 10.7.8 16 0 .2-.1.3-.3.3-.8-.1-1.8-.3-2.6-.4-.2 0-.4-.2-.3-.4-.3-7.9-.7-15.8-1.1-23.9 0-.2.1-.3.3-.3 1 .2 1.9.3 2.9.5.2 0 .3.2.4.3 2.2 5.7 4.4 11.3 6.7 16.9 0 .1.1.1.1.1s.1 0 .1-.1c-.3-5.3-.6-10.7-.8-16-.1-.3 0-.4.3-.4"
+                    class="st3" />
+                <path id="Path_2844"
+                    d="M320.1 9.6c-1.1-.1-2.1.6-2.2 1.7l-13.3 95.3c-.1 1.1.6 2.1 1.7 2.2h.3c1 0 1.8-.7 1.9-1.7l13.3-95.3c.2-1-.5-2-1.7-2.2"
+                    class="st3" />
+                <path d="M210.3 177H65.2" class="st0" />
+            </svg>
+        </figure>
+    </div>
+
+    <div class="container">
+        <div class="about-section row mb-4">
+            <div class="col-md-6">
+                <img src="{% static 'image/handyman4.jpeg' %}" alt="Our Values" class="img-fluid">
+
+
+            </div>
+            <div class="col-md-6">
                 <h2 class="card-title">Our Story</h2>
                 <p class="card-text">Technicians Hub was born out of the need for a centralized platform where people could find
-                    trusted technicians with ease. Whether it's a last-minute emergency repair, routine maintenance, or specialized installations,
-                    we’ve built a community of professionals who are ready to step in and get the job done. Our team combines years of
-                    experience in service management and technology to deliver a solution that is both efficient and
-                    customer-focused.</p>
+                    trusted technicians with ease. Whether it's a last-minute emergency repair, routine maintenance, or
+                    specialized installations, we've built a community of professionals who are ready to step in and get the job
+                    done.</p>
             </div>
         </div>
-    </div>
-    
-    <div class="container mt-3">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title">Our Mission</h2>
-                <p class="card-text">Our mission is to simplify and elevate the process of hiring skilled technicians. We aim to
-                    provide customers with access to certified professionals who are available when and where they’re needed, while also
-                    empowering technicians by offering them greater visibility and job opportunities. Our platform bridges the gap between
-                    demand and supply, making expert services accessible to everyone.</p>
+
+        <div class="about-section row mb-4">
+            <div class="col-md-6 order-md-2">
+                <img src="{% static 'image/handyman3.webp' %}" alt="What We Offer" class="img-fluid">
             </div>
-        </div>
-    </div>
-    
-    <div class="container mt-3">
-        <div class="card">
-            <div class="card-body">
+            <div class="col-md-6">
                 <h2 class="card-title">What We Offer</h2>
-                <ul class="card-text">
+                <ul>
                     <li><strong>Curated Technicians:</strong> We carefully select and verify every technician on our platform to
-                        ensure they are highly skilled and experienced in their trade. This vetting process includes background
-                        checks, skill assessments, and customer reviews, so you can trust that you’re in safe hands.</li>
+                        ensure they are highly skilled and experienced in their trade.</li>
                     <li><strong>Diverse Services:</strong> Whether it’s electrical work, plumbing, HVAC maintenance, carpentry,
-                        or IT solutions, our platform hosts a wide range of services across various trades. No matter the task,
-                        we’ve got the right technician for you.</li>
-                    <li><strong>On-Demand and Scheduled Services:</strong> Our platform offers flexibility by allowing you to
-                        book immediate services for urgent needs or schedule future appointments at a time that works best for you.
-                    </li>
-                    <li><strong>Seamless User Experience:</strong> From browsing profiles to booking a service, we’ve designed
-                        every step with the user in mind. Our platform is intuitive and straightforward, enabling you to get the help
-                        you need with minimal hassle.</li>
-                    <li><strong>Transparent Pricing and Secure Payments:</strong> We believe in clear and upfront pricing. When
-                        you book a service, you’ll know exactly what you’re paying for. giving you peace of mind throughout the
-                        process.</li>
+                        or IT solutions, we’ve got the right technician for you.</li>
+                    <li><strong>On-Demand and Scheduled Services:</strong> Book immediate services for urgent needs or schedule
+                        future appointments at a convenient time.</li>
+                    <li><strong>Seamless User Experience:</strong> Our platform is intuitive and straightforward, enabling you
+                        to get the help you need with minimal hassle.</li>
+                    <li><strong>Transparent Pricing and Secure Payments:</strong> Enjoy clear and upfront pricing with secure
+                        payment options.</li>
                 </ul>
             </div>
         </div>
-    </div>
-    
-    <div class="container mt-3">
-        <div class="card">
-            <div class="card-body">
+
+        <div class="about-section row mb-4">
+            <div class="col-md-6">
+                <img src="{% static 'image/handyman2.webp' %}" alt="Our Mission" class="img-fluid">
+            </div>
+            <div class="col-md-6">
                 <h2 class="card-title">Our Values</h2>
-                <ul class="card-text">
-                    <li><strong>Trust and Integrity:</strong> We build trust by ensuring our platform upholds the highest
-                        standards of integrity, from the technicians we partner with to the transparency we provide in our services.</li>
-                    <li><strong>Customer First Approach:</strong> Everything we do revolves around making our customers' lives
-                        easier. We actively listen to feedback and continually refine our platform to enhance the user
-                        experience.</li>
-                    <li><strong>Empowerment:</strong> For technicians, our platform offers more than just job listings—it
-                        provides a space for professionals to grow their businesses, build their reputations, and access more work
-                        opportunities.</li>
-                    <li><strong>Innovation:</strong> We’re constantly evolving, seeking out new ways to improve our platform and
-                        provide better solutions. We leverage technology to make hiring a technician as easy as tapping a few
-                        buttons.</li>
+                <ul>
+                    <li><strong>Trust and Integrity:</strong> We uphold the highest standards of integrity in every service.</li>
+                    <li><strong>Customer First Approach:</strong> We prioritize customer satisfaction and actively listen to
+                        feedback.</li>
+                    <li><strong>Empowerment:</strong> We empower technicians by providing them with opportunities to grow and
+                        succeed.</li>
+                    <li><strong>Innovation:</strong> We continuously evolve our platform to offer better solutions.</li>
                 </ul>
             </div>
         </div>
-    </div>
-    
-    <div class="container mt-3 mb-5">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title">Our Commitment</h2>
-                <p class="card-text">At Technicians Hub, we are committed to quality service at every level. From the moment you sign up, you’re
-                    not just another customer—you’re part of our community. We believe that every repair, installation, or service
-                    should be a smooth and positive experience. We are always here for you, with dedicated support that’s just a
-                    call or click away.</p>
-            </div>
+
+        <div class="about-section">
+            <h2 class="card-title">Our Commitment</h2>
+            <p class="card-text">At Technicians Hub, we are committed to quality service at every level. From the moment
+                you sign up, you're not just another customer—you're part of our community.</p>
         </div>
     </div>
-    
 
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
