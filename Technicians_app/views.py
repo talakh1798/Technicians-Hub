@@ -46,3 +46,4 @@ def sign_up(request):
 def about_us(request):
     return render(request, 'about_us.html')
 
+
