@@ -45,3 +45,20 @@ def sign_up(request):
 
 def about_us(request):
     return render(request, 'about_us.html')
+
+def create_review(request, technician_id):
+    if request.method == 'POST':
+        request.session['technicianid'] = technician_id
+        
+        
+        existing_review_instance = models.existing_review(request)
+        if existing_review_instance:
+            messages.error(request, "You have already reviewed this technician.", extra_tags='danger')
+            return redirect(f'/review_form/{technician_id}')
+        
+        
+        models.add_review(request)
+        technician = models.get_technician(technician_id)
+        messages.success(request, f"Review submitted successfully for technician {technician.first_name} {technician.last_name}", extra_tags='success')
+        return redirect('/recent_reviews')
+    return redirect('/')
