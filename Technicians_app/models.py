@@ -113,3 +113,8 @@ def get_technician(technician_id):
 def get_review(review_id):
     review = get_object_or_404(Review, id=review_id)
     return review
+
+def update_review(request, review_id): 
+    review = get_object_or_404(Review, id=review_id)
+    review.content = request.POST['content']
+    review.save()
