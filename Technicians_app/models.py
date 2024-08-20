@@ -4,6 +4,7 @@ import re
 from datetime import datetime
 
 
+
 class UserManager(models.Manager):
     def validate_registration(self,postData):
         errors = {}
@@ -89,3 +90,4 @@ def create_account(request,pw_hash):
 
 def filter_email(POST):
     return User.objects.filter(email = POST['email'])
+
