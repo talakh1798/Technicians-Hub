@@ -124,3 +124,6 @@ def delete_review(review_id):
     review.delete()
     return review
 
+def show_all_reviews():
+    return Review.objects.all()
+
