@@ -106,3 +106,6 @@ def existing_review(request):
     user = get_object_or_404(User, id=user_id)
     technician = get_object_or_404(Technician, id=technician_id)
     return Review.objects.filter(technician=technician, user=user).first()
+
+def get_technician(technician_id):
+    return get_object_or_404(Technician, id=technician_id)
