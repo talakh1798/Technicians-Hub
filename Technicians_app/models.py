@@ -127,3 +127,10 @@ def delete_review(review_id):
 def show_all_reviews():
     return Review.objects.all()
 
+def get_user(user_id):
+    user = get_object_or_404(User, id=user_id)
+    return user
+
+def get_reviews_by_user(user_id):
+    return Review.objects.filter(user__id=user_id)
+
