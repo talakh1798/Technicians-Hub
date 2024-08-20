@@ -62,3 +62,7 @@ def create_review(request, technician_id):
         messages.success(request, f"Review submitted successfully for technician {technician.first_name} {technician.last_name}", extra_tags='success')
         return redirect('/recent_reviews')
     return redirect('/')
+def review_form(request, technician_id):
+    technician = models.get_technician(technician_id)
+    return render(request, 'review_form.html', {'technician_id': technician_id, 'technician' : technician})
+
