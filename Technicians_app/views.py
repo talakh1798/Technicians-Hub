@@ -66,3 +66,10 @@ def review_form(request, technician_id):
     technician = models.get_technician(technician_id)
     return render(request, 'review_form.html', {'technician_id': technician_id, 'technician' : technician})
 
+def recent_reviews(request):
+    if 'userid' in request.session:
+        user_id = request.session['userid']
+        user = models.get_user(user_id)
+        user_reviews = models.get_reviews_by_user()
+        return render(request, 'recent_reviews.html', {'user': user, 'user_reviews': user_reviews})
+
