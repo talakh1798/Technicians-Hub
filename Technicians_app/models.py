@@ -34,7 +34,7 @@ class UserManager(models.Manager):
         # if len(postData['password']) != len(postData['confirm_password']):
         #     errors['password'] = 'Password do not match'
         if postData['password'] != postData['confirm_password']:
-            errors['password'] = 'Passwords do not match'
+            errors['password_match'] = 'Passwords do not match'
 
         # Add a phone number and validate that the user's number should be at least 10 digits
         if len(postData['phone_number']) < 10:
