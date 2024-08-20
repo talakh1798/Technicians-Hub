@@ -73,3 +73,13 @@ def recent_reviews(request):
         user_reviews = models.get_reviews_by_user()
         return render(request, 'recent_reviews.html', {'user': user, 'user_reviews': user_reviews})
 
+def update_review(request, review_id):
+    review = models.get_review(review_id)
+    technician = review.technician  
+
+    if request.method == 'POST':
+        models.update_review(request, review_id)
+        messages.success(request, f" Review for technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
+        return redirect('/recent_reviews')
+    else:
+        return render(request, 'update_review.html', {'review': review, 'technician': technician})
