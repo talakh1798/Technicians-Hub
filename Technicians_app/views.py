@@ -44,5 +44,5 @@ def sign_up(request):
     return render(request, 'sign_up.html',)
 
 def about_us(request):
-    return render(request, 'about.html')
+    return render(request, 'about_us.html')
 
