@@ -56,6 +56,11 @@ class User(models.Model):
     objects = UserManager()
 
 
+class Role(models.Model):
+    first_name = models.CharField(max_length=45)
+    last_name = models.CharField(max_length=45)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
 
 class Technician(models.Model):
     first_name = models.CharField(max_length=45)
@@ -68,6 +73,7 @@ class Technician(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     users = models.ManyToManyField(User, related_name="technicians")
+    role=models.ForeignKey(Role,related_name="technicians",on_delete=models.CASCADE , default=1)
 
 #update class review
 class Review(models.Model):
@@ -76,6 +82,8 @@ class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
 
 
 def create_account(request,pw_hash):
