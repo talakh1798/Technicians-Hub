@@ -121,7 +121,7 @@ def update_review(request, review_id):
     review.save()
 
 def delete_review(review_id):
-    review = get_object_or_404(Review, id=review_id)
+    review = Review.objects.get(id=review_id)
     review.delete()
     return review
 
