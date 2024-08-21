@@ -56,10 +56,14 @@ class User(models.Model):
     objects = UserManager()
 
 
+
 class Role(models.Model):
     name = models.CharField(max_length=60)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 class Technician(models.Model):
     first_name = models.CharField(max_length=45)
@@ -73,6 +77,9 @@ class Technician(models.Model):
     updated_at = models.DateField(auto_now=True)
     users = models.ManyToManyField(User, related_name="technicians")
     role=models.ForeignKey(Role,related_name="technicians",on_delete=models.CASCADE , default=1)
+
+    def __str__(self) -> str:
+        return f" {self.first_name} {self.last_name}"
 
 #update class review
 class Review(models.Model):
