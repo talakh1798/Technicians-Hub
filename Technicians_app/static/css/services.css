@@ -130,14 +130,14 @@
 
 .service-item,
 .contact-item {
-    background: url(../img/service.jpg) top center no-repeat;
+    background: url(../image/service.jpg) top center no-repeat;
     background-size: cover;
     transition: .5s;
 }
 
 .service-item:hover,
 .contact-item:hover {
-    background: url(../img/service.jpg) bottom center no-repeat;
+    background: url(../image/service.jpg) bottom center no-repeat;
     background-size: cover;
 }
 
