@@ -95,8 +95,8 @@ def add_review(request):
     user_id = request.session['userid']
     technician_id = request.session['technicianid']
     content = request.POST['content']
-    user = get_object_or_404(User, id=user_id)
-    technician = get_object_or_404(Technician, id=technician_id)
+    user = User.objects.get(id=user_id)
+    technician = Technician.objects.get(id=technician_id)
     review = Review.objects.create(content=content, user=user, technician=technician)
     return review
 
