@@ -129,7 +129,7 @@ def show_all_reviews():
     return Review.objects.all()
 
 def get_user(user_id):
-    user = get_object_or_404(User, id=user_id)
+    user = User.objects.get(id=user_id)
     return user
 
 def get_reviews_by_user(user_id):
