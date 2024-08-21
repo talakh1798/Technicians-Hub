@@ -2,6 +2,7 @@ from django.db import models
 import bcrypt
 import re
 from datetime import datetime
+from django.shortcuts import get_object_or_404
 
 
 class UserManager(models.Manager):
@@ -89,3 +90,47 @@ def create_account(request,pw_hash):
 
 def filter_email(POST):
     return User.objects.filter(email = POST['email'])
+
+def add_review(request):
+    user_id = request.session['userid']
+    technician_id = request.session['technicianid']
+    content = request.POST['content']
+    user = get_object_or_404(User, id=user_id)
+    technician = get_object_or_404(Technician, id=technician_id)
+    review = Review.objects.create(content=content, user=user, technician=technician)
+    return review
+
+def existing_review(request):
+    user_id = request.session['userid']
+    technician_id = request.session['technicianid']
+    user = get_object_or_404(User, id=user_id)
+    technician = get_object_or_404(Technician, id=technician_id)
+    return Review.objects.filter(technician=technician, user=user).first()
+
+def get_technician(technician_id):
+    return get_object_or_404(Technician, id=technician_id)
+
+def get_review(review_id):
+    review = get_object_or_404(Review, id=review_id)
+    return review
+
+def update_review(request, review_id): 
+    review = get_object_or_404(Review, id=review_id)
+    review.content = request.POST['content']
+    review.save()
+
+def delete_review(review_id):
+    review = get_object_or_404(Review, id=review_id)
+    review.delete()
+    return review
+
+def show_all_reviews():
+    return Review.objects.all()
+
+def get_user(user_id):
+    user = get_object_or_404(User, id=user_id)
+    return user
+
+def get_reviews_by_user(user_id):
+    return Review.objects.filter(user__id=user_id)
+

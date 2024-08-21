@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recent Reviews</title>
+    <!-- Include Bootstrap CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <header class="bg-dark text-white p-3 mb-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="#" class="header-link">
+                <img src="{% static 'image/logo2.PNG' %}" alt="logo">
+            </a>
+
+            <div class="user-info">
+                <form method="post" action="{% url 'logout_user' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger" id="log">
+                        Logout <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="container">
+        <h1>Your recent Reviews</h1>
+        <ul class="list-group">
+            {% for review in user.user_reviews.all %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-8">
+                        <strong>Review for Technician {{ review.technician.first_name }} {{ review.technician.last_name }}</strong><br>
+                        <p> {{ review.content }} ({{ review.updated_at }})</p>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <a href="{% url 'update_review' review.id %}" class="btn btn-success btn-sm">Update</a>
+                        <a href="{% url 'delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</html>
