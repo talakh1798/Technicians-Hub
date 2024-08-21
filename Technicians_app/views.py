@@ -74,8 +74,7 @@ def recent_reviews(request):
         user = models.get_user(user_id)
         user_reviews = models.get_reviews_by_user(user_id)  
         return render(request, 'recent_reviews.html', {'user': user, 'user_reviews': user_reviews})
-    else:
-        
+    else:      
         return redirect('login')  
 
 def update_review(request, review_id):
