@@ -108,7 +108,7 @@ def existing_review(request):
     return Review.objects.filter(technician=technician, user=user).first()
 
 def get_technician(technician_id):
-    return get_object_or_404(Technician, id=technician_id)
+    return Technician.objects.get(id=technician_id)
 
 def get_review(review_id):
     review = Review.objects.get(id=review_id)
