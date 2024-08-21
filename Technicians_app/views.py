@@ -24,7 +24,7 @@ def login(request):
             request.session['id'] = user.id
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
-            return redirect('/')   
+            return redirect('services')   
     return render(request, 'login.html', {'error': 'Invalid email or password'})
       
 # this function renders the sign up page with a form for the user to input their information
@@ -98,3 +98,6 @@ def delete_review(request, review_id):
 def logout_user(request):
     logout(request)
     return redirect('/')
+
+def services(request):
+    return render(request, 'services.html')
