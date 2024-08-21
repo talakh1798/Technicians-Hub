@@ -116,7 +116,7 @@ def get_review(review_id):
 
 
 def update_review(request, review_id): 
-    review = get_object_or_404(Review, id=review_id)
+    review = Review.objects.get(id=review_id)
     review.content = request.POST['content']
     review.save()
 
