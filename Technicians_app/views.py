@@ -102,3 +102,13 @@ def logout_user(request):
 
 def services(request):
     return render(request, 'services.html')
+
+def technicians(request):
+    technicians = Technician.objects.all()
+    context = {
+        'technicians': technicians,
+        'current_year': datetime.now().year
+    }
+
+    return render(request, 'technicians.html', context)
+
