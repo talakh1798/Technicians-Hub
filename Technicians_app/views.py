@@ -3,6 +3,8 @@ from .models import *
 import bcrypt
 from . import models
 from django.contrib import messages
+from django.contrib.auth import logout
+
 
 def welcome(request):
     return render(request, 'welcome.html')
@@ -90,3 +92,7 @@ def delete_review(request, review_id):
     models.delete_review(review_id)   
     messages.success(request, f" Review for technician {technician.first_name} {technician.last_name} deleted successfully.", extra_tags='success')
     return redirect('/recent_reviews', {'review' : review, 'technician' : technician})
+
+def logout_user(request):
+    logout(request)
+    return redirect('/')
