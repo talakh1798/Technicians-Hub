@@ -1,16 +1,25 @@
 /********** Template CSS **********/
+
 :root {
     --primary: #FFE468;
     --secondary: #8CC641;
     --light: #F2F2F2;
     --dark: #272630;
 }
-
+body{
+    background-color: #272630;
+}
 .btn {
     font-weight: 700;
     transition: .5s;
 }
-
+.mb-1{
+    --primary: #FFE468;
+    color: gold;
+}
+.mb100{
+    font-weight: bold;
+}
 .btn:hover {
     -webkit-box-shadow: 0 8px 6px -6px #555555;
     -moz-box-shadow: 0 8px 6px -6px #555555;
