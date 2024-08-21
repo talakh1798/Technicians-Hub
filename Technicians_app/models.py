@@ -103,8 +103,8 @@ def add_review(request):
 def existing_review(request):
     user_id = request.session['userid']
     technician_id = request.session['technicianid']
-    user = get_object_or_404(User, id=user_id)
-    technician = get_object_or_404(Technician, id=technician_id)
+    user = User.objects.get(id=user_id)
+    technician = Technician.objects.get(id=technician_id)
     return Review.objects.filter(technician=technician, user=user).first()
 
 def get_technician(technician_id):
