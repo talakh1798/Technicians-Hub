@@ -90,6 +90,11 @@ def create_account(request,pw_hash):
     phone_number=request['phone_number']
     return User.objects.create(first_name=first_name, last_name=last_name, email=email, password=password, date_of_birth=date_of_birth, phone_number=phone_number)
 
+def create_contact(POST):
+    return ContactForm.objects.create(
+        name = POST['name'],email = POST['email'],message=['message']
+
+    )
 
 def filter_email(POST):
     return User.objects.filter(email = POST['email'])
