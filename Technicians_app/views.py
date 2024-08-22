@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from .models import *
 import bcrypt
@@ -5,12 +6,17 @@ from . import models
 from django.contrib import messages
 from django.contrib.auth import logout
 
-
 def welcome(request):
     return render(request, 'welcome.html')
 
 def contact(request):
     return render(request, 'contact.html')
+
+def add_contact(request):
+    if request.method == 'POST':
+        create_contact(request.POST)
+        return redirect('/contact')
+    return render(request,'contact.html')
 
 # this function attempts to authenticate the user by checking the provided email and password against the database. 
 # If authentication is successful, it stores the user's ID and name in the session and redirects to the home page 
@@ -101,6 +107,7 @@ def logout_user(request):
     return redirect('/')
 
 def services(request):
+
     roles = Role.objects.all()
     context = {
         'roles': roles,

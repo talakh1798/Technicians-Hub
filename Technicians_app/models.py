@@ -55,6 +55,10 @@ class User(models.Model):
     updated_at = models.DateField(auto_now=True)
     objects = UserManager()
 
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    message = models.CharField(max_length=255)
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
@@ -103,6 +107,11 @@ def create_account(request,pw_hash):
     phone_number=request['phone_number']
     return User.objects.create(first_name=first_name, last_name=last_name, email=email, password=password, date_of_birth=date_of_birth, phone_number=phone_number)
 
+def create_contact(POST):
+    return Contact.objects.create(
+        name = POST['name'],email = POST['email'],message=['message']
+
+    )
 
 def filter_email(POST):
     return User.objects.filter(email = POST['email'])
