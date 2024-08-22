@@ -55,7 +55,22 @@ class User(models.Model):
     updated_at = models.DateField(auto_now=True)
     objects = UserManager()
 
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    message = models.CharField(max_length=255)
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
+
+
+class Role(models.Model):
+    name = models.CharField(max_length=60)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 class Technician(models.Model):
     first_name = models.CharField(max_length=45)
@@ -64,10 +79,14 @@ class Technician(models.Model):
     phone_number = models.CharField(max_length=25)
     city = models.CharField(max_length=45)
     age = models.IntegerField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='image/')
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    users = models.ManyToManyField(User, related_name="technicians")
+    users = models.ManyToManyField(User, related_name="technicians",blank=True)
+    role=models.ForeignKey(Role,related_name="technicians",on_delete=models.CASCADE , default=1)
+
+    def __str__(self) -> str:
+        return f" {self.first_name} {self.last_name}"
 
 #update class review
 class Review(models.Model):
@@ -76,6 +95,7 @@ class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
 
 def create_account(request,pw_hash):
@@ -87,6 +107,11 @@ def create_account(request,pw_hash):
     phone_number=request['phone_number']
     return User.objects.create(first_name=first_name, last_name=last_name, email=email, password=password, date_of_birth=date_of_birth, phone_number=phone_number)
 
+def create_contact(POST):
+    return Contact.objects.create(
+        name = POST['name'],email = POST['email'],message=['message']
+
+    )
 
 def filter_email(POST):
     return User.objects.filter(email = POST['email'])
