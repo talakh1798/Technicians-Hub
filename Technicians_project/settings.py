@@ -131,6 +131,9 @@ EMAIL_HOST_USER = '12cd293f0928c6106d46c1059ed3f3b1'
 EMAIL_HOST_PASSWORD = '97481bef5339eb1536f9691ff74c8afe'
 DEFAULT_FROM_EMAIL = 'izzidinsamara@gmail.com'
 
+import os
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 

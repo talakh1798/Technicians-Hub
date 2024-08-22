@@ -101,4 +101,24 @@ def logout_user(request):
     return redirect('/')
 
 def services(request):
-    return render(request, 'services.html')
+    roles = Role.objects.all()
+    context = {
+        'roles': roles,
+        'current_year': datetime.now().year
+    }
+    return render(request, 'services.html',context)
+
+def role_detail(request, id):
+    try:
+        role = Role.objects.get(id=id)
+        technicians = Technician.objects.filter(role=role)
+    except Role.DoesNotExist:
+        role = None
+        technicians = []
+
+    context = {
+        'role': role,
+        'technicians': technicians,
+        'current_year': datetime.now().year
+    }
+    return render(request, 'technicians.html', context)
