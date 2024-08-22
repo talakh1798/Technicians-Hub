@@ -55,6 +55,9 @@ class User(models.Model):
     updated_at = models.DateField(auto_now=True)
     objects = UserManager()
 
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
 
 
 class Role(models.Model):
@@ -72,10 +75,10 @@ class Technician(models.Model):
     phone_number = models.CharField(max_length=25)
     city = models.CharField(max_length=45)
     age = models.IntegerField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='image/')
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    users = models.ManyToManyField(User, related_name="technicians")
+    users = models.ManyToManyField(User, related_name="technicians",blank=True)
     role=models.ForeignKey(Role,related_name="technicians",on_delete=models.CASCADE , default=1)
 
     def __str__(self) -> str:
