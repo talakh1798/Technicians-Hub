@@ -93,60 +93,33 @@
                 <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
             </div>
             <div class="row gy-4 gx-3">
+                {% for role in roles %}
                 <div class="col-lg-4 col-md-6 pt-5">
                     <div class="service-item d-flex flex-column align-items-center justify-content-center text-center p-5 pt-0">
                         <div class="service-icon p-3">
-                            <div><i class="fa fa-2x fa-plug"></i></div>
+                            <div>
+                                {% if role.name == "Electrician" %}
+                                    <i class="fa fa-2x fa-plug"></i>
+                                {% elif role.name == "Carpenter" %}
+                                    <i class="fa fa-2x fa-hammer"></i>
+                                {% elif role.name == "Plumber" %}
+                                    <i class="fas fa-faucet" style="font-size:xx-large;"></i>
+                                {% elif role.name == "Smith" %}
+                                    <i class="fas fa-tools" style="font-size:xx-large;"></i>
+                                {% elif role.name == "Bricklayer" %}
+                                    <i class="fa fa-2x fa-hard-hat"></i>
+                                {% elif role.name == "Maid" %}
+                                    <i class="fas fa-broom" style="font-size: xx-large;"></i>
+                                {% endif %}
+                            </div>
                         </div>
-                        <h3 class="mt-5">Electrician</h3>
-                        <a class="btn shadow-none text-secondary" href="">View Detail<i class="bi bi-arrow-right ms-1"></i></a>
+                        <h3 class="mt-5">{{ role.name }}</h3>
+                        <a class="btn shadow-none text-secondary" href="{% url 'role_detail' role.id %}">View Detail<i class="bi bi-arrow-right ms-1"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 pt-5">
-                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center p-5 pt-0">
-                        <div class="service-icon p-3">
-                            <div><i class="fa fa-2x fa-hammer"></i></div>
-                        </div>
-                        <h3 class="mt-5">Carpenter</h3>
-                        <a class="btn shadow-none text-secondary" href="">View Detail<i class="bi bi-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pt-5">
-                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center p-5 pt-0">
-                        <div class="service-icon p-3">
-                            <div><i class="fas fa-faucet" style="font-size:xx-large;"></i></div>
-                        </div>
-                        <h3 class="mt-5">Plumer</h3>
-                        <a class="btn shadow-none text-secondary" href="">View Detail<i class="bi bi-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pt-5">
-                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center p-5 pt-0">
-                        <div class="service-icon p-3">
-                            <div><i class="fas fa-tools" style="font-size:xx-large;"></i></div>
-                        </div>
-                        <h3 class="mt-5">Smith</h3>
-                        <a class="btn shadow-none text-secondary" href="">View Detail<i class="bi bi-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pt-5">
-                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center p-5 pt-0">
-                        <div class="service-icon p-3">
-                            <div><i class="fa fa-2x fa-hard-hat"></i></div>
-                        </div>
-                        <h3 class="mt-5">Bricklayer</h3>
-                        <a class="btn shadow-none text-secondary" href="">View Detail<i class="bi bi-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pt-5">
-                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center p-5 pt-0">
-                        <div class="service-icon p-3">
-                            <div><i class="fas fa-broom" style="font-size: xx-large;"></i></div>
-                        </div>
-                        <h3 class="mt-5">Maid</h3>
-                        <a class="btn shadow-none text-secondary" href="">View Detail<i class="bi bi-arrow-right ms-1"></i></a>
-                    </div>
-                </div>
+                {% empty %}
+                <p>No roles available.</p>
+                {% endfor %}
             </div>
         </div>
     </div>

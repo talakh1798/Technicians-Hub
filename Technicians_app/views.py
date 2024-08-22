@@ -101,7 +101,12 @@ def logout_user(request):
     return redirect('/')
 
 def services(request):
-    return render(request, 'services.html')
+    roles = Role.objects.all()
+    context = {
+        'roles': roles,
+        'current_year': datetime.now().year
+    }
+    return render(request, 'services.html',context)
 
 def technicians(request):
     technicians = Technician.objects.all()
