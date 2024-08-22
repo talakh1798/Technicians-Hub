@@ -8,3 +8,5 @@ admin.site.register(Role)
 
 
 # Register your models here.
+
+admin.site.register(User)  
