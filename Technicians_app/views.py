@@ -1,10 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from .models import *
 import bcrypt
 from . import models
 from django.contrib import messages
 from django.contrib.auth import logout
-
 
 def welcome(request):
     return render(request, 'welcome.html')
@@ -102,3 +102,4 @@ def logout_user(request):
 
 def services(request):
     return render(request, 'services.html')
+

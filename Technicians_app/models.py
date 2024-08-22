@@ -55,7 +55,10 @@ class User(models.Model):
     updated_at = models.DateField(auto_now=True)
     objects = UserManager()
 
-
+class ContactForm(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    details = models.CharField(max_length=255)
 
 class Technician(models.Model):
     first_name = models.CharField(max_length=45)
