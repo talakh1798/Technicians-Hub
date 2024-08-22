@@ -59,6 +59,18 @@ class Contact(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     message = models.CharField(max_length=255)
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
+
+
+class Role(models.Model):
+    name = models.CharField(max_length=60)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 class Technician(models.Model):
     first_name = models.CharField(max_length=45)
@@ -67,10 +79,14 @@ class Technician(models.Model):
     phone_number = models.CharField(max_length=25)
     city = models.CharField(max_length=45)
     age = models.IntegerField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='image/')
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
-    users = models.ManyToManyField(User, related_name="technicians")
+    users = models.ManyToManyField(User, related_name="technicians",blank=True)
+    role=models.ForeignKey(Role,related_name="technicians",on_delete=models.CASCADE , default=1)
+
+    def __str__(self) -> str:
+        return f" {self.first_name} {self.last_name}"
 
 #update class review
 class Review(models.Model):
@@ -79,6 +95,7 @@ class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
 
 
 def create_account(request,pw_hash):
@@ -103,32 +120,33 @@ def add_review(request):
     user_id = request.session['userid']
     technician_id = request.session['technicianid']
     content = request.POST['content']
-    user = get_object_or_404(User, id=user_id)
-    technician = get_object_or_404(Technician, id=technician_id)
+    user = User.objects.get(id=user_id)
+    technician = Technician.objects.get(id=technician_id)
     review = Review.objects.create(content=content, user=user, technician=technician)
     return review
 
 def existing_review(request):
     user_id = request.session['userid']
     technician_id = request.session['technicianid']
-    user = get_object_or_404(User, id=user_id)
-    technician = get_object_or_404(Technician, id=technician_id)
+    user = User.objects.get(id=user_id)
+    technician = Technician.objects.get(id=technician_id)
     return Review.objects.filter(technician=technician, user=user).first()
 
 def get_technician(technician_id):
-    return get_object_or_404(Technician, id=technician_id)
+    return Technician.objects.get(id=technician_id)
 
 def get_review(review_id):
-    review = get_object_or_404(Review, id=review_id)
+    review = Review.objects.get(id=review_id)
     return review
 
+
 def update_review(request, review_id): 
-    review = get_object_or_404(Review, id=review_id)
+    review = Review.objects.get(id=review_id)
     review.content = request.POST['content']
     review.save()
 
 def delete_review(review_id):
-    review = get_object_or_404(Review, id=review_id)
+    review = Review.objects.get(id=review_id)
     review.delete()
     return review
 
@@ -136,7 +154,7 @@ def show_all_reviews():
     return Review.objects.all()
 
 def get_user(user_id):
-    user = get_object_or_404(User, id=user_id)
+    user = User.objects.get(id=user_id)
     return user
 
 def get_reviews_by_user(user_id):

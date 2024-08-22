@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Technicians_app', #add app
+    'Technicians_app', 
 ]
 
 MIDDLEWARE = [
@@ -131,6 +131,9 @@ EMAIL_HOST_USER = 'iyadaraj@gmail.com'
 EMAIL_HOST_PASSWORD = 'jheg upry gkhg powr'
 DEFAULT_FROM_EMAIL = 'iyadaraj@gmail.com'
 
+import os
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
