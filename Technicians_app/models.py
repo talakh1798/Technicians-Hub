@@ -58,7 +58,7 @@ class User(models.Model):
 class ContactForm(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
-    details = models.CharField(max_length=255)
+    message = models.CharField(max_length=255)
 
 class Technician(models.Model):
     first_name = models.CharField(max_length=45)
