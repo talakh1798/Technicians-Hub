@@ -12,6 +12,12 @@ def welcome(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def add_contact(request):
+    if request.method == 'POST':
+        create_contact(request.POST)
+        return redirect('/')
+    return render(request,'welcome.html')
+
 # this function attempts to authenticate the user by checking the provided email and password against the database. 
 # If authentication is successful, it stores the user's ID and name in the session and redirects to the home page 
 def login(request):
