@@ -28,6 +28,25 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/services.css' %}" rel="stylesheet">
+    <style>
+    .service-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .service-item img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .service-item .btn {
+        margin: 5px;
+    }
+    </style>
 </head>
 
 <body>
@@ -75,8 +94,8 @@
                 <div class="col-lg-8 text-center text-lg-start">
                     <h1 class="display-1 text-dark">Our Technicians</h1>
                     <div class="pt-2">
-                        <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Home</a>
-                        <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Our Technicians</a>
+                        <a href="/" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Home</a>
+                        <a href="{% url 'services' %}" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Our Services</a>
                     </div>
                 </div>
             </div>
@@ -100,14 +119,18 @@
                             <img src="{{ technician.image.url }}" alt="{{ technician.first_name }} {{ technician.last_name }}" class="img-fluid rounded-circle" style="width: 100px; height: 100px; transform: rotate(45deg);">
                         </div>
                         <h3 class="mt-3 mb-2" style="color: #040503">{{ technician.first_name }} {{ technician.last_name }}</h3>
-                        <p class="text-muted">Age: {{ technician.age }}</p>
-                        <p class="text-muted">Phone number: {{ technician.phone_number }}</p>
-                        <p class="text-muted">City: {{ technician.city }}</p>
-                        <p class="text-muted">Bio: {{ technician.bio }}</p>
-                        <a class="btn btn-outline-primary mt-3" href="{% url 'book_technician' technician.id %}">Book<i class="bi bi-arrow-right ms-1"></i></a>
-                        <a href="{% url 'review_form' technician.id %}" class="btn btn-secondary btn-sm">
-                            Leave Review <i class="fas fa-comment-alt"></i>
-                        </a>
+                        <p class="text-muted font-weight-bold">Age: {{ technician.age }}</p>
+                        <p class="text-muted font-weight-bold">Phone number: {{ technician.phone_number }}</p>
+                        <p class="text-muted font-weight-bold">City: {{ technician.city }}</p>
+                        <p class="text-muted font-weight-bold">Bio: {{ technician.bio }}</p>
+                        <div class="d-flex gap-2">
+                            <a class="btn btn-secondary btn-sm" href="{% url 'book_technician' technician.id %}">
+                                Book<i class="bi bi-arrow-right ms-1"></i>
+                            </a>
+                            <a href="{% url 'review_form' technician.id %}" class="btn btn-secondary btn-sm">
+                                Leave Review <i class="fas fa-comment-alt"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
