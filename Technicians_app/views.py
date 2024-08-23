@@ -160,10 +160,7 @@ def role_detail(request, id):
     }
     return render(request, 'technicians.html', context)
 
-def book_technician(request):
-    from django.shortcuts import render, redirect
-from .models import Technician
-
+   
 def book_technician(request, technician_id):
     try:
         technician = Technician.objects.get(id=technician_id)
@@ -177,9 +174,28 @@ def book_technician(request, technician_id):
         # You can add additional logic to save the booking or perform other actions
 
         # After successful booking, redirect to a confirmation page
-        return redirect('booking_confirmation', technician_id=technician.id)
+        return redirect('confirm_booking', technician_id=technician.id)
 
     # Render the booking page with the technician's details
     return render(request, 'book.html', {'technician': technician})
+
+def confirm_booking(request, technician_id):
+    # Get the technician by ID
+    try:
+        technician = Technician.objects.get(id=technician_id)
+    except Technician.DoesNotExist:
+        return redirect('technicians')  # Redirect if technician is not found
+
+    if request.method == 'POST':
+        # Booking logic here if needed, or proceed to render confirmation page
+        # You can add additional logic here, like saving booking details to the database
+
+        # Render the confirmation page with the technician's details
+        context = {
+            'technician': technician
+        }
+        return render(request, 'confirm_booking.html', context)
+    else:
+        return redirect('technicians')
 
 

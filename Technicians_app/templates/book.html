@@ -99,7 +99,7 @@
                         <p class="text-muted"><strong>City:</strong> {{ technician.city }}</p>
                         <p class="text-muted"><strong>Phone number:</strong> {{ technician.phone_number }}</p>
 
-                        <form method="POST">
+                        <form action="{% url 'confirm_booking' technician.id %}" method="POST">
                             {% csrf_token %}
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary btn-lg">Confirm Booking</button>
