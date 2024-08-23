@@ -7,7 +7,7 @@
     <!-- This is Squarespace. --><!-- bullfrog-buffalo-mchz -->
 <base href="">
 <meta charset="utf-8" />
-<title>One &amp; Done Remodeling</title>
+<title>Technicians Hub</title>
 <meta http-equiv="Accept-CH" content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model" /><link rel="icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5dbb1f41275b621d2583f7de/1572544771406-8W2GJ3521150SB5CQY0Z/favicon.ico"/>
 <link rel="canonical" href="https://www.oneanddonehandyman.com"/>
 <meta property="og:site_name" content="One &amp; Done Remodeling"/>
@@ -464,7 +464,17 @@ much more." />
       
         </div>
       </footer>
-      
+
+      <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function (event) {
+                  event.preventDefault(); // Prevent the default AJAX behavior
+                  window.location.href = this.href; // Force a full page reload
+                });
+              });
+            });
+          </script>
 
     <script defer="defer" src="https://static1.squarespace.com/static/ta/55f0a9b0e4b0f3eb70352f6d/354/scripts/site-bundle.js" type="text/javascript"></script>
 

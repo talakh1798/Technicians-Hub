@@ -84,18 +84,21 @@ def about_us(request):
 def create_review(request, technician_id):
     if request.method == 'POST':
         request.session['technicianid'] = technician_id
-        
-        
-        existing_review_instance = models.existing_review(request)
+
+        # Check if the user has already reviewed this technician
+        existing_review_instance = existing_review(request)
         if existing_review_instance:
             messages.error(request, "You have already reviewed this technician.", extra_tags='danger')
-            return redirect(f'/review_form/{technician_id}')
-        
-        
-        models.add_review(request)
-        technician = models.get_technician(technician_id)
+            return redirect('review_form', technician_id=technician_id)
+
+        # If no existing review, add the new review
+        add_review(request)
+        technician = get_technician(technician_id)
         messages.success(request, f"Review submitted successfully for technician {technician.first_name} {technician.last_name}", extra_tags='success')
-        return redirect('/recent_reviews')
+
+        # Render the review form again after submission
+        return render(request, 'review_form.html', {'technician': technician, 'technician_id': technician_id})
+    
     return redirect('/')
 
 def review_form(request, technician_id):
@@ -103,8 +106,8 @@ def review_form(request, technician_id):
     return render(request, 'review_form.html', {'technician_id': technician_id, 'technician' : technician})
 
 def recent_reviews(request):
-    if 'userid' in request.session:
-        user_id = request.session['userid']
+    if 'id' in request.session:
+        user_id = request.session['id']
         user = models.get_user(user_id)
         user_reviews = models.get_reviews_by_user(user_id)  
         return render(request, 'recent_reviews.html', {'user': user, 'user_reviews': user_reviews})

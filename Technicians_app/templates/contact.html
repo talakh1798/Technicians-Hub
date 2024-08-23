@@ -49,17 +49,14 @@
             <div class="navbar-nav ms-auto py-0 pe-4 border-end border-5 border-primary">
                 <a href="/" class="nav-item nav-link">Home</a>
                 <a href="{% url 'about_us' %}" class="nav-item nav-link">About</a>
-                <a href="{% url 'services' %}" class="nav-item nav-link">Service</a>
+                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Login/Sign Up</a>
                     <div class="dropdown-menu m-0">
-                        <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                        <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                        <a href="team.html" class="dropdown-item">The Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="{% url 'login' %}" class="dropdown-item">Login</a>
+                        <a href="{% url 'sign_up' %}" class="dropdown-item">Sign Up</a>
                     </div>
                 </div>
-                <a href="" class="nav-item nav-link active">Contact</a>
             </div>
             <div class="d-none d-lg-flex align-items-center ps-4">
                 <i class="fa fa-2x fa-mobile-alt text-secondary me-3"></i>
@@ -81,7 +78,7 @@
                     <h1 class="display-1 text-dark">Contact Us</h1>
                     <div class="pt-2">
                         <a href="/" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Home</a>
-                        <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Contact Us</a>
+                        <a href="{% url 'about_us' %}" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Read More</a>
                     </div>
                 </div>
             </div>
@@ -177,7 +174,7 @@
                       is ready to tackle any challenge, big or small. Simply share your project details with us, and
                       we’ll connect you with the right technician to get the job done efficiently and to the highest
                       standard. Your vision is just a few clicks away from becoming a reality with Technicians Hub..</p>
-                    <a href="" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mt-4">Contact Us</a>
+                    <a href="{% url 'contact' %}" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mt-4">Contact Us</a>
                 </div>
             </div>
         </div>
