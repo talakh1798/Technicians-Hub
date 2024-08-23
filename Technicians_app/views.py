@@ -5,6 +5,8 @@ import bcrypt
 from . import models
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 def welcome(request):
     return render(request, 'welcome.html')
@@ -14,9 +16,34 @@ def contact(request):
 
 def add_contact(request):
     if request.method == 'POST':
-        create_contact(request.POST)
+        contact = create_contact(request.POST)
+        send_confirmation_email(contact)
         return redirect('/contact')
-    return render(request,'contact.html')
+    return render(request, 'contact.html')
+
+
+def send_confirmation_email(contact):
+    subject = 'We Have Received Your Contact Request'
+    from_email = settings.DEFAULT_FROM_EMAIL
+    recipient_list = [contact.email]
+
+    email_body = (
+        f"Dear {contact.name},\n\n"
+        "Thank you for reaching out to us. We have received your message and our team will "
+        "get in touch with you shortly. We appreciate your patience and look forward to assisting you.\n\n"
+        "Best regards,\n"
+        "The TechHub Team\n"
+    )
+
+    email = EmailMessage(
+        subject=subject,
+        body=email_body,
+        from_email=from_email,
+        to=recipient_list
+    )
+    email.send()
+
+
 
 # this function attempts to authenticate the user by checking the provided email and password against the database. 
 # If authentication is successful, it stores the user's ID and name in the session and redirects to the home page 
