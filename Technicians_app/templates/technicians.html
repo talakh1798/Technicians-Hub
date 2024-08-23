@@ -105,6 +105,9 @@
                         <p class="text-muted">City: {{ technician.city }}</p>
                         <p class="text-muted">Bio: {{ technician.bio }}</p>
                         <a class="btn btn-outline-primary mt-3" href="#">Book<i class="bi bi-arrow-right ms-1"></i></a>
+                        <a href="{% url 'review_form' technician.id %}" class="btn btn-secondary btn-sm">
+                            Leave Review <i class="fas fa-comment-alt"></i>
+                        </a>
                     </div>
                 </div>
                 
