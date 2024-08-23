@@ -117,7 +117,7 @@ def filter_email(POST):
     return User.objects.filter(email = POST['email'])
 
 def add_review(request):
-    user_id = request.session['userid']
+    user_id = request.session['id']
     technician_id = request.session['technicianid']
     content = request.POST['content']
     user = User.objects.get(id=user_id)
@@ -126,11 +126,15 @@ def add_review(request):
     return review
 
 def existing_review(request):
-    user_id = request.session['userid']
-    technician_id = request.session['technicianid']
-    user = User.objects.get(id=user_id)
-    technician = Technician.objects.get(id=technician_id)
-    return Review.objects.filter(technician=technician, user=user).first()
+    user_id = request.session.get('id')  # Consistent with the login function
+    technician_id = request.session.get('technicianid')
+
+    if user_id and technician_id:
+        user = User.objects.get(id=user_id)
+        technician = Technician.objects.get(id=technician_id)
+        return Review.objects.filter(technician=technician, user=user).first()
+    return None
+
 
 def get_technician(technician_id):
     return Technician.objects.get(id=technician_id)
@@ -158,5 +162,5 @@ def get_user(user_id):
     return user
 
 def get_reviews_by_user(user_id):
-    return Review.objects.filter(user__id=user_id)
+    return Review.objects.filter(id=user_id)
 
