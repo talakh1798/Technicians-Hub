@@ -28,59 +28,50 @@
                         <div class="form-group{% if errors.first_name %} has-error{% endif %}">
                             <label for="first_name" class="{% if errors.first_name %}error-label{% endif %}">First Name:</label>
                             <input type="text" class="form-control" id="first_name" name="first_name" value="{{ data.first_name }}">
-                            {% if errors.first_name %}
-                                <p style="color: red;">{{ errors.first_name }}</p>
-                            {% endif %}
+                            <p class="error-message" style="color: red;"></p>
                         </div>
-                
+                    
                         <div class="form-group{% if errors.last_name %} has-error{% endif %}">
                             <label for="last_name" class="{% if errors.last_name %}error-label{% endif %}">Last Name:</label>
                             <input type="text" class="form-control" id="last_name" name="last_name" value="{{ data.last_name }}">
-                            {% if errors.last_name %}
-                                <p style="color: red;">{{ errors.last_name }}</p>
-                            {% endif %}
+                            <p class="error-message" style="color: red;"></p>
                         </div>
-                
+                    
                         <div class="form-group{% if errors.email %} has-error{% endif %}">
                             <label for="email" class="{% if errors.email %}error-label{% endif %}">Email:</label>
                             <input type="email" class="form-control" id="email" name="email" value="{{ data.email }}">
-                            {% if errors.email %}
-                                <p style="color: red;">{{ errors.email }}</p>
-                            {% endif %}
+                            <p class="error-message" style="color: red;"></p>
                         </div>
-                
-                        <div class="form-group">
-                            <label for="phone_number">Phone Number:</label>
+                    
+                        <div class="form-group{% if errors.phone_number %} has-error{% endif %}">
+                            <label for="phone_number" class="{% if errors.phone_number %}error-label{% endif %}">Phone Number:</label>
                             <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ data.phone_number }}">
-                            {% if errors.phone_number %}
-                                <p style="color: red;">{{ errors.phone_number }}</p>
-                            {% endif %}
+                            <p class="error-message" style="color: red;"></p>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="date_of_birth">Date Of Birth:</label>
+                    
+                        <div class="form-group{% if errors.date_of_birth %} has-error{% endif %}">
+                            <label for="date_of_birth" class="{% if errors.date_of_birth %}error-label{% endif %}">Date Of Birth:</label>
                             <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ data.date_of_birth }}">
-                            {% if errors.date_of_birth %}
-                                <p style="color: red;">{{ errors.date_of_birth }}</p>
-                            {% endif %}
+                            <p class="error-message" style="color: red;"></p>
                         </div>
-                
-                        <div class="form-group">
-                            <label for="password">Password:</label>
+                    
+                        <div class="form-group{% if errors.password %} has-error{% endif %}">
+                            <label for="password" class="{% if errors.password %}error-label{% endif %}">Password:</label>
                             <input type="password" class="form-control" id="password" name="password">
-                            {% if errors.password %}
-                                <p style="color: red;">{{ errors.password }}</p>
-                            {% endif %}
+                            <p class="error-message" style="color: red;"></p>
                         </div>
-                        <div class="form-group">
-                            <label for="confirm_password" >Confirm Password:</label>
+                    
+                        <div class="form-group{% if errors.password_match %} has-error{% endif %}">
+                            <label for="confirm_password" class="{% if errors.password_match %}error-label{% endif %}">Confirm Password:</label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password">
-                            {% if errors.password_match %}
-                                <p style="color: red;">{{ errors.password_match }}</p>
-                            {% endif %}
+                            <p class="error-message" style="color: red;"></p>
+                            <p id="passwordMatchMessage" class="text-danger"></p>
+
                         </div>
+                    
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
+                    
                 </div>
                             </div>
         </div>
@@ -90,22 +81,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        // List of video URLs
-        var videoURLs = [
-            "https://cdn-static.findly.com/wp-content/uploads/sites/3285/2024/04/23090604/path-to-pro_intro-video.mp4",
-            "https://cdn-static.findly.com/wp-content/uploads/sites/3285/2024/04/23090628/path-to-pro_intro-video-2.mp4",
-            "https://cdn-static.findly.com/wp-content/uploads/sites/3285/2024/04/23090702/path-to-pro_intro-video-3.mp4"
-        ];
-
-        // Choose a random video URL
-        var randomVideoURL = videoURLs[Math.floor(Math.random() * videoURLs.length)];
-
-        // Generate video element and append it to .fullwidth-video div
-        var videoElement = '<video preload="auto" autoplay playsinline loop muted><source src="' + randomVideoURL + '" type="video/mp4"></video>';
-        $('.fullwidth-video').html(videoElement);
-    });
-    </script>
+    
+    <script src="{% static 'js/script.js' %}"></script>
+        
 </body>
 </html>
