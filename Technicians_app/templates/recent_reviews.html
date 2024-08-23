@@ -78,23 +78,29 @@
     </div>
     {% endif %}
     <div class="container">
-        <h1>Your recent Reviews</h1>
-        <ul class="list-group">
+        <h1>Your Recent Reviews</h1>
+        <div class="row">
             {% for review in user.user_reviews.all %}
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-md-8">
-                        <strong>Review for Technician {{ review.technician.first_name }} {{ review.technician.last_name }}</strong><br>
-                        <p> {{ review.content }} ({{ review.updated_at }})</p>
-                    </div>
-                    <div class="col-md-4 text-right">
-                        <a href="{% url 'update_review' review.id %}" class="btn btn-success btn-sm">Update</a>
-                        <a href="{% url 'delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
+                {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+                    </div><div class="row">
+                {% endif %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Review for {{ review.technician.first_name }} {{ review.technician.last_name }} <small>({{ review.technician.role.name }})</small></h5>
+                            <p class="card-subtitle text-muted"></p> <!-- Displaying the role -->
+                            <p class="card-text">{{ review.content }} ({{ review.updated_at }})</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'update_review' review.id %}" class="btn btn-success btn-sm">Update</a>
+                                <a href="{% url 'delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </li>
             {% endfor %}
-        </ul>
+        </div>
     </div>
+    
+    
 
 </html>
