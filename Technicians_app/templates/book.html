@@ -65,31 +65,54 @@
             </div>
         </div>
     </nav>
+    <!-- Navbar End -->
 
-    <!-- Booking Section Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid bg-primary py-5 bg-hero" style="margin-bottom: 90px;">
         <div class="container py-5">
-            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h1 class="display-5">Book Technician</h1>
-                <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+            <div class="row justify-content-start">
+                <div class="col-lg-8 text-center text-lg-start">
+                    <h1 class="display-1 text-dark">Book Technician</h1>
+                    <div class="pt-2">
+                        <a href="#" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Home</a>
+                        <a href="#" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Our Technicians</a>
+                    </div>
+                </div>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="container">
-                        <h1 class="display-4">Book {{ technician.first_name }} {{ technician.last_name }}</h1>
-                        <p class="text-muted">City: {{ technician.city }}</p>
-                        <p class="text-muted">Phone number: {{ technician.phone_number }}</p>
-                
+        </div>
+    </div>
+<!-- Hero Section End -->
+
+   <!-- Booking Section Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h1 class="display-5">Book Technician</h1>
+            <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>Book {{ technician.first_name }} {{ technician.last_name }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted"><strong>City:</strong> {{ technician.city }}</p>
+                        <p class="text-muted"><strong>Phone number:</strong> {{ technician.phone_number }}</p>
+
                         <form method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Confirm Booking</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Booking Section End -->
+</div>
+<!-- Booking Section End -->
+
 
     <!-- Footer -->
     <!-- (You can copy the same footer code here from Technicians.html) -->
