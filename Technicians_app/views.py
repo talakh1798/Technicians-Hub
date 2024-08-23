@@ -159,3 +159,27 @@ def role_detail(request, id):
         'current_year': datetime.now().year
     }
     return render(request, 'technicians.html', context)
+
+def book_technician(request):
+    from django.shortcuts import render, redirect
+from .models import Technician
+
+def book_technician(request, technician_id):
+    try:
+        technician = Technician.objects.get(id=technician_id)
+    except Technician.DoesNotExist:
+        # Handle the case where the technician does not exist
+        return render(request, 'technician_not_found.html')
+
+    if request.method == 'POST':
+        # Handle the booking logic here
+        user = request.user  # Assuming the user is logged in
+        # You can add additional logic to save the booking or perform other actions
+
+        # After successful booking, redirect to a confirmation page
+        return redirect('booking_confirmation', technician_id=technician.id)
+
+    # Render the booking page with the technician's details
+    return render(request, 'book.html', {'technician': technician})
+
+
