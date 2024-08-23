@@ -2,33 +2,69 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Recent Reviews</title>
-    <!-- Include Bootstrap CSS -->
-    {% load static %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="utf-8">
+    <title>Services</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    {% load static%}
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/services.css'%}" rel="stylesheet">
 </head>
 
-<body>
-    <header class="bg-dark text-white p-3 mb-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="#" class="header-link">
-                <img src="{% static 'image/logo2.PNG' %}" alt="logo">
-            </a>
-
-            <div class="user-info">
-                <form method="post" action="{% url 'logout_user' %}" class="d-inline">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger" id="log">
-                        Logout <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </form>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm px-5 py-3 py-lg-0">
+        <a href="/" class="Header-branding" data-nc-element="branding" data-content-field="site-title">
+            <img src="{% static 'image/logo2.PNG' %}" alt="One &amp; Done Remodeling" sizes="200px"
+                class="Header-branding-logo" style="display:block; width:180px; height:auto;" loading="lazy"
+                decoding="async" data-loader="sqs">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0 pe-4 border-end border-5 border-primary">
+                <a href="/" class="nav-item nav-link">Home</a>
+                <a href="/about_us" class="nav-item nav-link">About</a>
+                <a href="/services" class="nav-item nav-link active">Services</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/recent_reviews" class="dropdown-item">My Recent Reviews</a>
+                    </div>
+                </div>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <div class="d-none d-lg-flex align-items-center ps-4">
+                <i class="fa fa-2x fa-mobile-alt text-secondary me-3"></i>
+                <div>
+                    <h5 class="text-primary mb-1"><small>Call Now</small></h5>
+                    <h6 class="text-light m-0">+012 345 6789</h6>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
+    
     {% if messages %}
     <div class="container mt-3">
         {% for message in messages %}
@@ -42,23 +78,99 @@
     </div>
     {% endif %}
     <div class="container">
-        <h1>Your recent Reviews</h1>
-        <ul class="list-group">
+        <h1>Your Recent Reviews</h1>
+        <div class="row">
             {% for review in user.user_reviews.all %}
-            <li class="list-group-item">
-                <div class="row">
-                    <div class="col-md-8">
-                        <strong>Review for Technician {{ review.technician.first_name }} {{ review.technician.last_name }}</strong><br>
-                        <p> {{ review.content }} ({{ review.updated_at }})</p>
-                    </div>
-                    <div class="col-md-4 text-right">
-                        <a href="{% url 'update_review' review.id %}" class="btn btn-success btn-sm">Update</a>
-                        <a href="{% url 'delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
+                {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+                    </div><div class="row">
+                {% endif %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Review for {{ review.technician.first_name }} {{ review.technician.last_name }} <small>({{ review.technician.role.name }})</small></h5>
+                            <p class="card-subtitle text-muted"></p> <!-- Displaying the role -->
+                            <p class="card-text">{{ review.content }} ({{ review.updated_at }})</p>
+                            <div class="d-flex justify-content-between">
+                                <a href="{% url 'update_review' review.id %}" class="btn btn-success btn-sm">Update</a>
+                                <a href="{% url 'delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </li>
             {% endfor %}
-        </ul>
+        </div>
     </div>
+    <div class="container-fluid bg-dark bg-footer text-light py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary">Get In Touch</h4>
+                    <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
+                    <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re
+                        here to help and provide the support you need.</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street,Palestine</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>Tech_hub@gmail.com</p>
+                    <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary">Our Services</h4>
+                    <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Electrician</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Carpenter</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Plumer</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Smith</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Bricklayer</a>
+                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Maid</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary">Quick Links</h4>
+                    <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
+                        <!-- <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a> -->
+                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Review</a>
+                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary">Newsletter</h4>
+                    <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control p-3 border-0" placeholder="Your Email">
+                            <button class="btn btn-primary">Sign Up</button>
+                        </div>
+                    </form>
+                    <h6 class="text-primary mt-4 mb-3">Follow Us</h6>
+                    <div class="d-flex">
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-primary text-dark py-4">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-md-0">Copyright &copy; <a class="text-dark fw-bold" href="#">Technicians Hub</a>. All
+                        Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
 
 </html>
