@@ -102,8 +102,14 @@ def create_review(request, technician_id):
     return redirect('/')
 
 def review_form(request, technician_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
+    user = models.get_user(user_id)
     technician = models.get_technician(technician_id)
-    return render(request, 'review_form.html', {'technician_id': technician_id, 'technician' : technician})
+
+    return render(request, 'review_form.html', {'user': user, 'technician_id': technician_id, 'technician': technician})
 
 def recent_reviews(request):
     if 'id' in request.session:
