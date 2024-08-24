@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.core.mail import EmailMessage
 from django.conf import settings
+from django.contrib.auth import authenticate, login as auth_login
+
 
 def welcome(request):
     return render(request, 'welcome.html')
@@ -43,8 +45,6 @@ def send_confirmation_email(contact):
     )
     email.send()
 
-
-
 # this function attempts to authenticate the user by checking the provided email and password against the database. 
 # If authentication is successful, it stores the user's ID and name in the session and redirects to the home page 
 def login(request):
@@ -57,7 +57,18 @@ def login(request):
             request.session['id'] = user.id
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
-            return redirect('services')   
+            return redirect('services')
+        if user is not None:
+            auth_login(request, user)
+            
+            # Check if the user is a superuser (admin)
+            if user.is_superuser:
+                return redirect('/admin/')  # Redirect to Django's admin dashboard
+            else:
+                return redirect('services')  # Redirect regular users to services page
+        else:
+            return render(request, 'login.html', {'error': 'Invalid email or password'})
+   
     return render(request, 'login.html', {'error': 'Invalid email or password'})
       
 # this function renders the sign up page with a form for the user to input their information
