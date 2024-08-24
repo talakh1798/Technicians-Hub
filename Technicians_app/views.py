@@ -159,3 +159,6 @@ def role_detail(request, id):
         'current_year': datetime.now().year
     }
     return render(request, 'technicians.html', context)
+
+def terms(request):
+    return render(request, 'terms_of_use.html')
