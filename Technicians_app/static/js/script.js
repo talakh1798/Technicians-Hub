@@ -77,12 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     showError(input, 'Password must be at least 6 characters');
                 }
                 break;
-            
-            case 'confirm_password':
-                if (input.value !== document.getElementById('password').value) {
-                    showError(input, 'Passwords do not match');
-                }
-                break;
         }
     });
 });
