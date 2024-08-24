@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // List of video URLs
     var videoURLs = [
         "https://cdn-static.findly.com/wp-content/uploads/sites/3285/2024/04/23090604/path-to-pro_intro-video.mp4",
@@ -14,9 +14,9 @@ $(document).ready(function() {
     $('.fullwidth-video').html(videoElement);
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
-    
+
     function showError(input, message) {
         const parent = input.parentElement;
         let error = parent.querySelector('.error-message');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         error.textContent = message;
     }
-    
+
     function clearError(input) {
         const parent = input.parentElement;
         const error = parent.querySelector('.error-message');
@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
             parent.removeChild(error);
         }
     }
-    
-    form.addEventListener('input', function(event) {
+
+    form.addEventListener('input', function (event) {
         const input = event.target;
 
         clearError(input);
-        
+
         switch (input.id) {
             case 'first_name':
             case 'last_name':
@@ -56,13 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     showError(input, 'Invalid email address!');
                 }
                 break;
-            
+
             case 'phone_number':
                 if (input.value.length < 10) {
                     showError(input, 'Phone number should be at least 10 digits long.');
                 }
                 break;
-            
+
             case 'date_of_birth':
                 const today = new Date();
                 const dob = new Date(input.value);
@@ -75,12 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'password':
                 if (input.value.length < 6) {
                     showError(input, 'Password must be at least 6 characters');
-                }
-                break;
-            
-            case 'confirm_password':
-                if (input.value !== document.getElementById('password').value) {
-                    showError(input, 'Passwords do not match');
                 }
                 break;
         }
@@ -114,3 +108,6 @@ $(document).ready(function () {
     passwordField.on('input', checkPasswords);
     confirmPasswordField.on('input', checkPasswords);
 });
+
+
+

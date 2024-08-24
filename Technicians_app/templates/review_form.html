@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Services</title>
+    <title>Leave Review</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -48,13 +48,8 @@
                 <a href="/" class="nav-item nav-link">Home</a>
                 <a href="/about_us" class="nav-item nav-link">About</a>
                 <a href="/services" class="nav-item nav-link active">Services</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="/recent_reviews" class="dropdown-item">My Recent Reviews</a>
-                    </div>
-                </div>
                 <a href="/contact" class="nav-item nav-link">Contact</a>
+                <a href="{% url 'logout_user' %}" class="nav-item nav-link">Logout</a>
             </div>
             <div class="d-none d-lg-flex align-items-center ps-4">
                 <i class="fa fa-2x fa-mobile-alt text-secondary me-3"></i>

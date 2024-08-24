@@ -299,3 +299,21 @@
     }
 }
 
+/* Additional Styles for Service Item */
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.service-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.service-item .btn {
+    margin: 5px;
+}
