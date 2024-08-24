@@ -141,11 +141,21 @@ def update_review(request, review_id):
         return render(request, 'update_review.html', {'review': review, 'technician': technician})
     
 def delete_review(request, review_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
     review = models.get_review(review_id)
+
+    
+    if review.user_id != user_id:
+        messages.error(request, "You are not authorized to delete this review.")
+        return redirect('/recent_reviews')
+
     technician = review.technician
-    models.delete_review(review_id)   
-    messages.success(request, f" Review for technician {technician.first_name} {technician.last_name} deleted successfully.", extra_tags='success')
-    return redirect('/recent_reviews', {'review' : review, 'technician' : technician})
+    models.delete_review(review_id)
+    messages.success(request, f"Review for technician {technician.first_name} {technician.last_name} deleted successfully.", extra_tags='success')
+    return redirect('/recent_reviews')
 
 def logout_user(request):
     logout(request)
