@@ -1,0 +1,29 @@
+body {
+    background-color: #f4f4f4;
+}
+
+.highlight {
+    color: black;
+}
+
+.card-header {
+    background-color: #ffe468;
+    font-size: 1.25rem;
+}
+
+.card {
+    margin-top: 20px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    background-color: white;
+    color: black;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.container {
+    padding-top: 40px;
+}

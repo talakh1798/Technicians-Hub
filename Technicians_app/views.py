@@ -102,8 +102,14 @@ def create_review(request, technician_id):
     return redirect('/')
 
 def review_form(request, technician_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
+    user = models.get_user(user_id)
     technician = models.get_technician(technician_id)
-    return render(request, 'review_form.html', {'technician_id': technician_id, 'technician' : technician})
+
+    return render(request, 'review_form.html', {'user': user, 'technician_id': technician_id, 'technician': technician})
 
 def recent_reviews(request):
     if 'id' in request.session:
@@ -115,22 +121,41 @@ def recent_reviews(request):
         return redirect('login')  
 
 def update_review(request, review_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
     review = models.get_review(review_id)
+    
+    if review.user_id != user_id:
+        messages.error(request, "You are not authorized to update this review.")
+        return redirect('/recent_reviews')
+
     technician = review.technician  
 
     if request.method == 'POST':
         models.update_review(request, review_id)
-        messages.success(request, f" Review for technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
+        messages.success(request, f"Review for technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
         return redirect('/recent_reviews')
     else:
         return render(request, 'update_review.html', {'review': review, 'technician': technician})
     
 def delete_review(request, review_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
     review = models.get_review(review_id)
+
+    
+    if review.user_id != user_id:
+        messages.error(request, "You are not authorized to delete this review.")
+        return redirect('/recent_reviews')
+
     technician = review.technician
-    models.delete_review(review_id)   
-    messages.success(request, f" Review for technician {technician.first_name} {technician.last_name} deleted successfully.", extra_tags='success')
-    return redirect('/recent_reviews', {'review' : review, 'technician' : technician})
+    models.delete_review(review_id)
+    messages.success(request, f"Review for technician {technician.first_name} {technician.last_name} deleted successfully.", extra_tags='success')
+    return redirect('/recent_reviews')
 
 def logout_user(request):
     logout(request)
@@ -141,7 +166,7 @@ def services(request):
     roles = Role.objects.all()
     context = {
         'roles': roles,
-        'current_year': datetime.now().year
+        'current_year': datetime.now().year,
     }
     return render(request, 'services.html',context)
 
@@ -159,3 +184,36 @@ def role_detail(request, id):
         'current_year': datetime.now().year
     }
     return render(request, 'technicians.html', context)
+
+def terms(request):
+    return render(request, 'terms_of_use.html')
+
+def privacy_policy(request):
+    return render (request, 'privacy_policy.html')
+   
+def book_technician(request, technician_id):
+    try:
+        technician = Technician.objects.get(id=technician_id)
+    except Technician.DoesNotExist:
+        return render(request, 'technician_not_found.html')
+
+    if request.method == 'POST':
+        user = request.user 
+        return redirect('confirm_booking', technician_id=technician.id)
+    return render(request, 'book.html', {'technician': technician})
+
+
+def confirm_booking(request, technician_id):
+    try:
+        technician = Technician.objects.get(id=technician_id)
+    except Technician.DoesNotExist:
+        return redirect('technicians')  # Redirect if technician is not found
+    if request.method == 'POST':
+        context = {
+            'technician': technician
+        }
+        return render(request, 'confirm_booking.html', context)
+    else:
+        return redirect('technicians')
+
+
