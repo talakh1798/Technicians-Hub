@@ -66,10 +66,9 @@ def login(request):
                 return redirect('/admin/')  # Redirect to Django's admin dashboard
             else:
                 return redirect('services')  # Redirect regular users to services page
-        else:
-            return render(request, 'login.html', {'error': 'Invalid email or password'})
-   
     return render(request, 'login.html', {'error': 'Invalid email or password'})
+
+
       
 # this function renders the sign up page with a form for the user to input their information
 def sign_up(request):
