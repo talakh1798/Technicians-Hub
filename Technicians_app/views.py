@@ -121,12 +121,21 @@ def recent_reviews(request):
         return redirect('login')  
 
 def update_review(request, review_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
     review = models.get_review(review_id)
+    
+    if review.user_id != user_id:
+        messages.error(request, "You are not authorized to update this review.")
+        return redirect('/recent_reviews')
+
     technician = review.technician  
 
     if request.method == 'POST':
         models.update_review(request, review_id)
-        messages.success(request, f" Review for technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
+        messages.success(request, f"Review for technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
         return redirect('/recent_reviews')
     else:
         return render(request, 'update_review.html', {'review': review, 'technician': technician})
