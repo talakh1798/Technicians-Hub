@@ -46,6 +46,7 @@
                 <a href="/" class="nav-item nav-link">Home</a>
                 <a href="{% url 'about_us' %}" class="nav-item nav-link">About</a>
                 <a href="{% url 'services' %}" class="nav-item nav-link active">Service</a>
+                <a href="{% url 'recent_reviews' %}" class="nav-item nav-link active">Reviews</a>
                 <a href="{% url 'logout_user' %}" class="nav-item nav-link">Logout</a>
             </div>
             <div class="d-none d-lg-flex align-items-center ps-4">
@@ -68,8 +69,8 @@
                 <div class="col-lg-8 text-center text-lg-start">
                     <h1 class="display-1 text-dark">Our Services</h1>
                     <div class="pt-2">
-                        <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Home</a>
-                        <a href="" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Our Services</a>
+                        <a href="/" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Home</a>
+                        <a href="{% url 'services' %}" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Our Services</a>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,9 @@ urlpatterns = [
     path('services', views.services,name='services' ),
     path('role/<int:id>/', views.role_detail, name='role_detail'),
     path('terms',views.terms,name='terms'),
-    path('privacy_policy', views.privacy_policy, name='privacy_policy')   
+    path('privacy_policy', views.privacy_policy, name='privacy_policy'),   
+    path('book/<int:technician_id>/', views.book_technician, name='book_technician'),
+    path('confirm_booking/<int:technician_id>/', views.confirm_booking, name='confirm_booking'),  
 ]
 
 

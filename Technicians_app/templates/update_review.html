@@ -41,19 +41,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0 pe-4 border-end border-5 border-primary">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link active">Service</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="welcome.html" class="dropdown-item">Home</a>
-                        <a href="about_us.html" class="dropdown-item">About Us</a>
-                        <a href="Review.html" class="dropdown-item">Review</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
+                <a href="/" class="nav-item nav-link">Home</a>
+                <a href="/about_us" class="nav-item nav-link">About</a>
+                <a href="/services" class="nav-item nav-link active">Services</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
+                <a href="{% url 'logout_user' %}" class="nav-item nav-link">Logout</a>
+            </div>    
             <div class="d-none d-lg-flex align-items-center ps-4">
                 <i class="fa fa-2x fa-mobile-alt text-secondary me-3"></i>
                 <div>
