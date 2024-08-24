@@ -141,7 +141,7 @@ def services(request):
     roles = Role.objects.all()
     context = {
         'roles': roles,
-        'current_year': datetime.now().year
+        'current_year': datetime.now().year,
     }
     return render(request, 'services.html',context)
 
@@ -159,3 +159,31 @@ def role_detail(request, id):
         'current_year': datetime.now().year
     }
     return render(request, 'technicians.html', context)
+
+   
+def book_technician(request, technician_id):
+    try:
+        technician = Technician.objects.get(id=technician_id)
+    except Technician.DoesNotExist:
+        return render(request, 'technician_not_found.html')
+
+    if request.method == 'POST':
+        user = request.user 
+        return redirect('confirm_booking', technician_id=technician.id)
+    return render(request, 'book.html', {'technician': technician})
+
+
+def confirm_booking(request, technician_id):
+    try:
+        technician = Technician.objects.get(id=technician_id)
+    except Technician.DoesNotExist:
+        return redirect('technicians')  # Redirect if technician is not found
+    if request.method == 'POST':
+        context = {
+            'technician': technician
+        }
+        return render(request, 'confirm_booking.html', context)
+    else:
+        return redirect('technicians')
+
+
