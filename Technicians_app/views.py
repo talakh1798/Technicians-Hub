@@ -165,32 +165,20 @@ def book_technician(request, technician_id):
     try:
         technician = Technician.objects.get(id=technician_id)
     except Technician.DoesNotExist:
-        # Handle the case where the technician does not exist
         return render(request, 'technician_not_found.html')
 
     if request.method == 'POST':
-        # Handle the booking logic here
-        user = request.user  # Assuming the user is logged in
-        # You can add additional logic to save the booking or perform other actions
-
-        # After successful booking, redirect to a confirmation page
+        user = request.user 
         return redirect('confirm_booking', technician_id=technician.id)
-
-    # Render the booking page with the technician's details
     return render(request, 'book.html', {'technician': technician})
 
+
 def confirm_booking(request, technician_id):
-    # Get the technician by ID
     try:
         technician = Technician.objects.get(id=technician_id)
     except Technician.DoesNotExist:
         return redirect('technicians')  # Redirect if technician is not found
-
     if request.method == 'POST':
-        # Booking logic here if needed, or proceed to render confirmation page
-        # You can add additional logic here, like saving booking details to the database
-
-        # Render the confirmation page with the technician's details
         context = {
             'technician': technician
         }
