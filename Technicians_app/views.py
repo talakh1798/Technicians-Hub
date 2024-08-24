@@ -162,3 +162,6 @@ def role_detail(request, id):
 
 def terms(request):
     return render(request, 'terms_of_use.html')
+
+def privacy_policy(request):
+    return render (request, 'privacy_policy.html')
