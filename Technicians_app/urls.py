@@ -20,7 +20,8 @@ urlpatterns = [
     path('about_us', views.about_us,name="about_us"),
     path('services', views.services,name='services' ),
     path('role/<int:id>/', views.role_detail, name='role_detail'),
-    path('terms',views.terms,name='terms'),   
+    path('terms',views.terms,name='terms'),
+    path('privacy_policy', views.privacy_policy, name='privacy_policy')   
 ]
 
 
