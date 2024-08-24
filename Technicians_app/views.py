@@ -139,12 +139,9 @@ def logout_user(request):
 def services(request):
 
     roles = Role.objects.all()
-    technicians = Technician.objects.all()
     context = {
         'roles': roles,
         'current_year': datetime.now().year,
-        'technicians': technicians,
-
     }
     return render(request, 'services.html',context)
 
