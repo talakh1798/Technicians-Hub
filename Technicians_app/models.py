@@ -192,3 +192,10 @@ def add_appointment(request):
     appointment = Appointment.objects.create(date=date, time=time,address=address,issue=issue, user=user, technician=technician)
     return appointment
 
+def update_appointment(request, appointment_id): 
+    appointment = Appointment.objects.get(id=appointment_id)
+    appointment.date = request.POST['date']
+    appointment.time = request.POST['time']
+    appointment.address = request.POST['address']
+    appointment.issue = request.POST['issue']
+    appointment.save()
