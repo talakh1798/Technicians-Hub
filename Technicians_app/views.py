@@ -305,3 +305,11 @@ def cancel_appointment(request, appointment_id):
         )
     messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} cancelled successfully.", extra_tags='success')
     return redirect('/recent_appointments')
+
+def confirm_delete_review(request, review_id):
+    review = models.get_review(review_id)
+    technician = review.technician  # Assuming the review model has a foreign key to technician
+    return render(request, 'delete_review.html', {
+        'review': review,
+        'technician': technician
+    })
