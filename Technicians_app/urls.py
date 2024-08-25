@@ -29,6 +29,7 @@ urlpatterns = [
     path('update_appointment/<int:appointment_id>/', views.update_appointment, name='update_appointment'),
     path('cancel_appointment/<int:appointment_id>/', views.cancel_appointment, name='cancel_appointment'),
     path('recent_appointments', views.recent_appointments, name='recent_appointmens'),
+    path('recent_reviews/confirm_delete/<int:review_id>/', views.confirm_delete_review, name='confirm_delete_review'),
 
 
 
