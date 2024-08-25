@@ -94,6 +94,15 @@ class Technician(models.Model):
 
     def __str__(self) -> str:
         return f" {self.first_name} {self.last_name}"
+class Appointment(models.Model):
+    technician = models.ForeignKey(Technician, related_name="technician_appointments", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="user_appointments", on_delete=models.CASCADE)
+    date = models.DateField()
+    time = models.TimeField()  
+    address = models.CharField(max_length=255)  
+    issue = models.TextField()  
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 #update class review
 class Review(models.Model):
@@ -171,3 +180,33 @@ def get_user(user_id):
 def get_reviews_by_user(user_id):
     return Review.objects.filter(id=user_id)
 
+def add_appointment(request):
+    user_id = request.session['id']
+    technician_id = request.session['technicianid']
+    date = request.POST['date']
+    time = request.POST['time']
+    address = request.POST['address']
+    issue = request.POST['issue']
+    user = User.objects.get(id=user_id)
+    technician = Technician.objects.get(id=technician_id)
+    appointment = Appointment.objects.create(date=date, time=time,address=address,issue=issue, user=user, technician=technician)
+    return appointment
+
+def update_appointment(request, appointment_id): 
+    appointment = Appointment.objects.get(id=appointment_id)
+    appointment.date = request.POST['date']
+    appointment.time = request.POST['time']
+    appointment.address = request.POST['address']
+    appointment.issue = request.POST['issue']
+    appointment.save()
+
+def cancel_appointment(appointment_id):
+    appointment = Appointment.objects.get(id=appointment_id)
+    appointment.delete()
+    return appointment
+
+def get_appointments_by_user(user_id):
+    return Appointment.objects.filter(id=user_id)
+
+def get_appointment(appointment_id):
+        return Appointment.objects.get(id=appointment_id)
