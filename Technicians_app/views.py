@@ -244,3 +244,12 @@ def appointment_form(request, technician_id):
     user = models.get_user(user_id)
     technician = models.get_technician(technician_id)
     return render(request, 'appointment_form.html', {'user': user, 'technician_id': technician_id, 'technician': technician})
+
+def recent_appointments(request):
+    if 'id' in request.session:
+        user_id = request.session['id']
+        user = models.get_user(user_id)
+        user_appointments = models.get_appointments_by_user(user_id)  
+        return render(request, 'recent_appointments.html', {'user': user, 'user_appointments': user_appointments})
+    else:      
+        return redirect('login')
