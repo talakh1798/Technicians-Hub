@@ -236,3 +236,11 @@ def book_appointment(request, technician_id):
         return render(request, 'appointment_form.html', {'technician': technician, 'technician_id': technician_id})
     
     return redirect('/')
+
+def appointment_form(request, technician_id):
+    if 'id' not in request.session:
+        return redirect('login')
+    user_id = request.session['id']
+    user = models.get_user(user_id)
+    technician = models.get_technician(technician_id)
+    return render(request, 'appointment_form.html', {'user': user, 'technician_id': technician_id, 'technician': technician})
