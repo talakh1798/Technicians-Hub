@@ -94,6 +94,15 @@ class Technician(models.Model):
 
     def __str__(self) -> str:
         return f" {self.first_name} {self.last_name}"
+class Appointment(models.Model):
+    technician = models.ForeignKey(Technician, related_name="technician_appointments", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="user_appointments", on_delete=models.CASCADE)
+    date = models.DateField()
+    time = models.TimeField()  
+    address = models.CharField(max_length=255)  
+    issue = models.TextField()  
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 #update class review
 class Review(models.Model):
