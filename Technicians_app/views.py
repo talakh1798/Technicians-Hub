@@ -313,3 +313,11 @@ def confirm_delete_review(request, review_id):
         'review': review,
         'technician': technician
     })
+
+def confirm_cancel_appointment(request, appointment_id):
+    appointment = models.get_appointment(appointment_id)
+    technician = appointment.technician
+    return render(request, 'cancel_appointment.html', {
+        'appointment': appointment,
+        'technician': technician
+    })
