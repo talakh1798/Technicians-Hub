@@ -180,3 +180,15 @@ def get_user(user_id):
 def get_reviews_by_user(user_id):
     return Review.objects.filter(id=user_id)
 
+def add_appointment(request):
+    user_id = request.session['id']
+    technician_id = request.session['technicianid']
+    date = request.POST['date']
+    time = request.POST['time']
+    address = request.POST['address']
+    issue = request.POST['issue']
+    user = User.objects.get(id=user_id)
+    technician = Technician.objects.get(id=technician_id)
+    appointment = Appointment.objects.create(date=date, time=time,address=address,issue=issue, user=user, technician=technician)
+    return appointment
+
