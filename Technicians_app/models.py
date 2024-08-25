@@ -199,3 +199,8 @@ def update_appointment(request, appointment_id):
     appointment.address = request.POST['address']
     appointment.issue = request.POST['issue']
     appointment.save()
+
+def cancel_appointment(appointment_id):
+    appointment = Appointment.objects.get(id=appointment_id)
+    appointment.delete()
+    return appointment
