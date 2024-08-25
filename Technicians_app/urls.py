@@ -26,6 +26,8 @@ urlpatterns = [
     path('confirm_booking/<int:technician_id>/', views.confirm_booking, name='confirm_booking'),  
     path('appointment_form/<int:technician_id>/', views.appointment_form, name='appointment_form'),
     path('book_appointment/<int:technician_id>/', views.book_appointment, name='book_appointment'),
+    path('update_appointment/<int:appointment_id>/', views.update_appointment, name='update_appointment'),
+
 
 
 ]
