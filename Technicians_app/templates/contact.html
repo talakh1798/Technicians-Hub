@@ -181,8 +181,6 @@
     </div>
     <!-- Call To Action Start -->
     
-
-
     <!-- Footer Start -->
     <div class="container-fluid bg-dark bg-footer text-light py-5">
       <div class="container py-5">
@@ -267,6 +265,53 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script>
+        document.getElementById('send-btn').addEventListener('click', function() {
+            const userMessage = document.getElementById('user-message').value;
+        
+            if (userMessage.trim() !== '') {
+                // Add user message to the chatbox
+                const chatBox = document.getElementById('chat-box');
+                chatBox.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+        
+                // Send the message to the backend
+                fetch('/chatbot/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')  // Add your CSRF token
+                    },
+                    body: JSON.stringify({ message: userMessage })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Display chatbot reply
+                    chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;  // Auto-scroll
+                });
+        
+                // Clear input field
+                document.getElementById('user-message').value = '';
+            }
+        });
+        
+        // Function to get the CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        
+    </script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
