@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.core.mail import EmailMessage
 from django.conf import settings
+from django.core.mail import send_mail
 
 def welcome(request):
     return render(request, 'welcome.html')
@@ -217,3 +218,21 @@ def confirm_booking(request, technician_id):
         return redirect('technicians')
 
 
+def book_appointment(request, technician_id):
+    technician = models.get_technician(technician_id)
+    if request.method == 'POST':
+        request.session['technicianid'] = technician_id
+        appointment = models.add_appointment(request)
+        send_mail(
+            'Appointment Booked Successfully',
+            f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been booked on {appointment.date} at {appointment.time}.',
+            'izzidinsamara@gmail.com',
+            [appointment.user.email],
+            fail_silently=False,
+        )
+        technician = get_technician(technician_id)
+        messages.success(request, f"Appointment booked successfully  with  technician {technician.first_name} {technician.last_name}", extra_tags='success')
+        # Render the review form again after submission
+        return render(request, 'appointment_form.html', {'technician': technician, 'technician_id': technician_id})
+    
+    return redirect('/')
