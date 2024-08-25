@@ -13,6 +13,7 @@
 .container {
     position: relative;
     z-index: 1; /* Ensures content is above the video */
+    width: 50%;
 }
 
 
