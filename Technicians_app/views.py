@@ -280,3 +280,28 @@ def update_appointment(request, appointment_id):
         return redirect('/recent_appointments')
     else:
         return render(request, 'update_appointment.html', {'appointment': appointment, 'technician': technician})
+    
+
+def cancel_appointment(request, appointment_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
+    appointment = models.get_appointment(appointment_id)
+
+
+    if appointment.user_id != user_id:
+        messages.error(request, "You are not authorized to delete this appointment.")
+        return redirect('/recent_appointments')
+
+    technician = appointment.technician
+    models.cancel_appointment(appointment_id)
+    send_mail(
+            'Appointment Booked Cancelled',
+            f'Your Appointment with techncian {technician.first_name} {technician.last_name} on {appointment.date} at {appointment.time} has been cancelled.',
+            'izzidinsamara@gmail.com',
+            [appointment.user.email],
+            fail_silently=False,
+        )
+    messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} cancelled successfully.", extra_tags='success')
+    return redirect('/recent_appointments')
