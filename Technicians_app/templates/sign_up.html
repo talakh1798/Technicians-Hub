@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
 </head>
 <body>
-    <!-- Background Video Container -->
-    <div class="fullwidth-video">
-        <!-- JavaScript will inject the video here -->
-    </div>
+   <!-- Background Video -->
+   <div class="video-background">
+    <!-- JavaScript will populate this -->
+</div>
 
     <div class="container">
         <div class="row">
@@ -28,37 +28,37 @@
                         <div class="form-group{% if errors.first_name %} has-error{% endif %}">
                             <label for="first_name" class="{% if errors.first_name %}error-label{% endif %}">First Name:</label>
                             <input type="text" class="form-control" id="first_name" name="first_name" value="{{ data.first_name }}">
-                            <p class="error-message" style="color: red;"></p>
+                            <p class="error-message"></p>
                         </div>
                     
                         <div class="form-group{% if errors.last_name %} has-error{% endif %}">
                             <label for="last_name" class="{% if errors.last_name %}error-label{% endif %}">Last Name:</label>
                             <input type="text" class="form-control" id="last_name" name="last_name" value="{{ data.last_name }}">
-                            <p class="error-message" style="color: red;"></p>
+                            <p class="error-message"></p>
                         </div>
                     
                         <div class="form-group{% if errors.email %} has-error{% endif %}">
                             <label for="email" class="{% if errors.email %}error-label{% endif %}">Email:</label>
                             <input type="email" class="form-control" id="email" name="email" value="{{ data.email }}">
-                            <p class="error-message" style="color: red;"></p>
+                            <p class="error-message"></p>
                         </div>
                     
                         <div class="form-group{% if errors.phone_number %} has-error{% endif %}">
                             <label for="phone_number" class="{% if errors.phone_number %}error-label{% endif %}">Phone Number:</label>
                             <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ data.phone_number }}">
-                            <p class="error-message" style="color: red;"></p>
+                            <p class="error-message"></p>
                         </div>
                     
                         <div class="form-group{% if errors.date_of_birth %} has-error{% endif %}">
                             <label for="date_of_birth" class="{% if errors.date_of_birth %}error-label{% endif %}">Date Of Birth:</label>
                             <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ data.date_of_birth }}">
-                            <p class="error-message" style="color: red;"></p>
+                            <p class="error-message"></p>
                         </div>
                     
                         <div class="form-group{% if errors.password %} has-error{% endif %}">
                             <label for="password" class="{% if errors.password %}error-label{% endif %}">Password:</label>
                             <input type="password" class="form-control" id="password" name="password">
-                            <p class="error-message" style="color: red;"></p>
+                            <p class="error-message"></p>
                         </div>
                     
                         <div class="form-group{% if errors.password_match %} has-error{% endif %}">
