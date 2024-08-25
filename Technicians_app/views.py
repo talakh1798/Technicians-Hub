@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.core.mail import EmailMessage
 from django.conf import settings
+from django.core.mail import send_mail
 
 def welcome(request):
     return render(request, 'welcome.html')
@@ -217,3 +218,106 @@ def confirm_booking(request, technician_id):
         return redirect('technicians')
 
 
+def book_appointment(request, technician_id):
+    technician = models.get_technician(technician_id)
+    if request.method == 'POST':
+        request.session['technicianid'] = technician_id
+        appointment = models.add_appointment(request)
+        send_mail(
+            'Appointment Booked Successfully',
+            f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been booked on {appointment.date} at {appointment.time}.',
+            'izzidinsamara@gmail.com',
+            [appointment.user.email],
+            fail_silently=False,
+        )
+        technician = get_technician(technician_id)
+        messages.success(request, f"Appointment booked successfully  with  technician {technician.first_name} {technician.last_name}", extra_tags='success')
+        # Render the review form again after submission
+        return render(request, 'appointment_form.html', {'technician': technician, 'technician_id': technician_id})
+    
+    return redirect('/')
+
+def appointment_form(request, technician_id):
+    if 'id' not in request.session:
+        return redirect('login')
+    user_id = request.session['id']
+    user = models.get_user(user_id)
+    technician = models.get_technician(technician_id)
+    return render(request, 'appointment_form.html', {'user': user, 'technician_id': technician_id, 'technician': technician})
+
+def recent_appointments(request):
+    if 'id' in request.session:
+        user_id = request.session['id']
+        user = models.get_user(user_id)
+        user_appointments = models.get_appointments_by_user(user_id)  
+        return render(request, 'recent_appointments.html', {'user': user, 'user_appointments': user_appointments})
+    else:      
+        return redirect('login')
+    
+def update_appointment(request, appointment_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
+    appointment = models.get_appointment(appointment_id)
+
+    if appointment.user_id != user_id:
+        messages.error(request, "You are not authorized to update this appointment.")
+        return redirect('/recent_appointments')
+
+    technician = appointment.technician
+
+    if request.method == 'POST':
+        models.update_appointment(request, appointment_id)
+        send_mail(
+            'Appointment Updated Successfully',
+            f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been Updated to be on {appointment.date} at {appointment.time}.',
+            'izzidinsamara@gmail.com',
+            [appointment.user.email],
+            fail_silently=False,
+        )
+        messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
+        return redirect('/recent_appointments')
+    else:
+        return render(request, 'update_appointment.html', {'appointment': appointment, 'technician': technician})
+    
+
+def cancel_appointment(request, appointment_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
+    appointment = models.get_appointment(appointment_id)
+
+
+    if appointment.user_id != user_id:
+        messages.error(request, "You are not authorized to delete this appointment.")
+        return redirect('/recent_appointments')
+
+    technician = appointment.technician
+    models.cancel_appointment(appointment_id)
+    send_mail(
+            'Appointment Booked Cancelled',
+            f'Your Appointment with techncian {technician.first_name} {technician.last_name} on {appointment.date} at {appointment.time} has been cancelled.',
+            'izzidinsamara@gmail.com',
+            [appointment.user.email],
+            fail_silently=False,
+        )
+    messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} cancelled successfully.", extra_tags='success')
+    return redirect('/recent_appointments')
+
+def confirm_delete_review(request, review_id):
+    review = models.get_review(review_id)
+    technician = review.technician  # Assuming the review model has a foreign key to technician
+    return render(request, 'delete_review.html', {
+        'review': review,
+        'technician': technician
+    })
+
+def confirm_cancel_appointment(request, appointment_id):
+    appointment = models.get_appointment(appointment_id)
+    technician = appointment.technician
+    return render(request, 'cancel_appointment.html', {
+        'appointment': appointment,
+        'technician': technician
+    })
