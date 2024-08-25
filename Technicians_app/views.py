@@ -60,7 +60,6 @@ def login(request):
             return redirect('services')
         if user is not None:
             auth_login(request, user)
-            
             # Check if the user is a superuser (admin)
             if user.is_superuser:
                 return redirect('/admin/')  # Redirect to Django's admin dashboard
