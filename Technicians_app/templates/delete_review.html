@@ -63,7 +63,29 @@
             </div>
         </div>
     </nav>
-
+    <div class="confirmation-area container mt-5">
+        <div class="confirmation-dialog">
+            <div class="confirmation-content">
+                <div class="confirmation-header">
+                    <h5 class="confirmation-title">Confirm Action</h5>
+                </div>
+                <div class="confirmation-body">
+                    <p>Are you sure you want to delete your review for {{ technician.first_name }} {{
+                        technician.last_name }}?</p>
+                </div>
+                <div class="confirmation-footer">
+                    <form action="/recent_reviews" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary btn-lg">No</button>
+                    </form>
+                    <form action="{% url 'delete_review' review.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-lg">Yes! I want to Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
