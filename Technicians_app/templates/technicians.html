@@ -117,7 +117,7 @@
                         <p class="text-muted font-weight-bold">City: {{ technician.city }}</p>
                         <p class="text-muted font-weight-bold">Bio: {{ technician.bio }}</p>
                         <div class="d-flex gap-2">
-                            <a class="btn btn-secondary btn-sm" href="{% url 'book_technician' technician.id %}">
+                            <a class="btn btn-secondary btn-sm" href="{% url 'appointment_form' technician.id %}">
                                 Book<i class="bi bi-arrow-right ms-1"></i>
                             </a>
                             <a href="{% url 'review_form' technician.id %}" class="btn btn-secondary btn-sm">
