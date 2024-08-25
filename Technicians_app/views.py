@@ -253,3 +253,30 @@ def recent_appointments(request):
         return render(request, 'recent_appointments.html', {'user': user, 'user_appointments': user_appointments})
     else:      
         return redirect('login')
+    
+def update_appointment(request, appointment_id):
+    if 'id' not in request.session:
+        return redirect('login')
+
+    user_id = request.session['id']
+    appointment = models.get_appointment(appointment_id)
+
+    if appointment.user_id != user_id:
+        messages.error(request, "You are not authorized to update this appointment.")
+        return redirect('/recent_appointments')
+
+    technician = appointment.technician
+
+    if request.method == 'POST':
+        models.update_appointment(request, appointment_id)
+        send_mail(
+            'Appointment Updated Successfully',
+            f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been Updated to be on {appointment.date} at {appointment.time}.',
+            'izzidinsamara@gmail.com',
+            [appointment.user.email],
+            fail_silently=False,
+        )
+        messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
+        return redirect('/recent_appointments')
+    else:
+        return render(request, 'update_appointment.html', {'appointment': appointment, 'technician': technician})
