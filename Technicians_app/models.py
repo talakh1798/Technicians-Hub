@@ -207,3 +207,6 @@ def cancel_appointment(appointment_id):
 
 def get_appointments_by_user(user_id):
     return Appointment.objects.filter(id=user_id)
+
+def get_appointment(appointment_id):
+        return Appointment.objects.get(id=appointment_id)
