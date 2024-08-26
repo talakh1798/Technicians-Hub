@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login as auth_login
 from django.core.mail import send_mail
 
+
 def welcome(request):
     return render(request, 'welcome.html')
 
@@ -200,32 +201,6 @@ def terms(request):
 def privacy_policy(request):
     return render (request, 'privacy_policy.html')
    
-def book_technician(request, technician_id):
-    try:
-        technician = Technician.objects.get(id=technician_id)
-    except Technician.DoesNotExist:
-        return render(request, 'technician_not_found.html')
-
-    if request.method == 'POST':
-        user = request.user 
-        return redirect('confirm_booking', technician_id=technician.id)
-    return render(request, 'book.html', {'technician': technician})
-
-
-def confirm_booking(request, technician_id):
-    try:
-        technician = Technician.objects.get(id=technician_id)
-    except Technician.DoesNotExist:
-        return redirect('technicians')  # Redirect if technician is not found
-    if request.method == 'POST':
-        context = {
-            'technician': technician
-        }
-        return render(request, 'confirm_booking.html', context)
-    else:
-        return redirect('technicians')
-
-
 def book_appointment(request, technician_id):
     technician = models.get_technician(technician_id)
     if request.method == 'POST':
