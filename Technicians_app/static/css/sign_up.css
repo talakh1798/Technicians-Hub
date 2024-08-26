@@ -13,6 +13,7 @@
 .container {
     position: relative;
     z-index: 1; /* Ensures content is above the video */
+    width: 50%;
 }
 
 
@@ -40,4 +41,8 @@ h1 {
 
 .btn {
     width: 100%;
+}
+
+.error_message {
+    color: red;
 }

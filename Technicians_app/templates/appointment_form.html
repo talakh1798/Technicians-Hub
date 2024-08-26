@@ -14,9 +14,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -78,8 +76,7 @@
 
     <div class="form-container-wrapper">
         <div class="container form-container">
-            <h2 class="mb-4 text-center">Book Appointment with Technician {{ technician.first_name }} {{
-                technician.last_name }}</h2>
+            <h2 class="mb-4 text-center">Book Appointment with Technician {{ technician.first_name }} {{ technician.last_name }}</h2>
             <form method="post" action="{% url 'book_appointment' technician_id %}">
                 {% csrf_token %}
                 <div class="row mb-3">
@@ -139,7 +136,7 @@
                     <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
                     <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re here to help and provide the support you need.</p>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street,Palestine</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>Tech_hub@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>TechniciansHub1@gmail.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
