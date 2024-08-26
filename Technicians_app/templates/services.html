@@ -14,7 +14,9 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -71,7 +73,8 @@
                     <h1 class="display-1 text-dark">Our Services</h1>
                     <div class="pt-2">
                         <a href="/" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Home</a>
-                        <a href="{% url 'services' %}" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Our Services</a>
+                        <a href="{% url 'services' %}" class="btn btn-secondary rounded-pill py-2 px-4 mx-2">Our
+                            Services</a>
                     </div>
                 </div>
             </div>
@@ -90,26 +93,28 @@
             <div class="row gy-4 gx-3">
                 {% for role in roles %}
                 <div class="col-lg-4 col-md-6 pt-5">
-                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center p-5 pt-0">
+                    <div
+                        class="service-item d-flex flex-column align-items-center justify-content-center text-center p-5 pt-0">
                         <div class="service-icon p-3">
                             <div>
                                 {% if role.name == "Electrician" %}
-                                    <i class="fa fa-2x fa-plug"></i>
+                                <i class="fa fa-2x fa-plug"></i>
                                 {% elif role.name == "Carpenter" %}
-                                    <i class="fa fa-2x fa-hammer"></i>
+                                <i class="fa fa-2x fa-hammer"></i>
                                 {% elif role.name == "Plumber" %}
-                                    <i class="fas fa-faucet" style="font-size:xx-large;"></i>
+                                <i class="fas fa-faucet" style="font-size:xx-large;"></i>
                                 {% elif role.name == "Smith" %}
-                                    <i class="fas fa-tools" style="font-size:xx-large;"></i>
+                                <i class="fas fa-tools" style="font-size:xx-large;"></i>
                                 {% elif role.name == "Bricklayer" %}
-                                    <i class="fa fa-2x fa-hard-hat"></i>
+                                <i class="fa fa-2x fa-hard-hat"></i>
                                 {% elif role.name == "Maid" %}
-                                    <i class="fas fa-broom" style="font-size: xx-large;"></i>
+                                <i class="fas fa-broom" style="font-size: xx-large;"></i>
                                 {% endif %}
                             </div>
                         </div>
                         <h3 class="mt-5">{{ role.name }}</h3>
-                        <a class="btn shadow-none text-secondary" href="{% url 'role_detail' role.id %}">View Detail<i class="bi bi-arrow-right ms-1"></i></a>
+                        <a class="btn shadow-none text-secondary" href="{% url 'role_detail' role.id %}">View Detail<i
+                                class="bi bi-arrow-right ms-1"></i></a>
                     </div>
                 </div>
                 {% empty %}
@@ -129,9 +134,15 @@
                     <h1 class="display-5 mb-4">Testimonials</h1>
                     <div class="owl-carousel testimonial-carousel">
                         <div class="testimonial-item">
-                            <p class="fs-4 fw-normal"><i class="fa fa-quote-left text-secondary me-3"></i>Working with Technicians Hub has been an exceptional experience. Their skilled technicians provide top-notch service with precision and efficiency. We've relied on them for various projects, and their professionalism and expertise always shine through. From timely repairs to complex installations, they consistently deliver outstanding results. Highly recommend their services for anyone needing reliable technical support!</p>
+                            <p class="fs-4 fw-normal"><i class="fa fa-quote-left text-secondary me-3"></i>Working with
+                                Technicians Hub has been an exceptional experience. Their skilled technicians provide
+                                top-notch service with precision and efficiency. We've relied on them for various
+                                projects, and their professionalism and expertise always shine through. From timely
+                                repairs to complex installations, they consistently deliver outstanding results. Highly
+                                recommend their services for anyone needing reliable technical support!</p>
                             <div class="d-flex align-items-center">
-                                <img class="img-fluid p-1 bg-secondary" src="{% static 'image/testimonial-1.jpg'%}" alt="">
+                                <img class="img-fluid p-1 bg-secondary" src="{% static 'image/testimonial-1.jpg'%}"
+                                    alt="">
                                 <div class="ps-3">
                                     <h3>Client Name</h3>
                                     <span class="text-uppercase">Profession</span>
@@ -152,13 +163,19 @@
             <div class="row gx-0">
                 <div class="col-lg-6" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="{% static 'image/choose_us.jpg'%}" style="object-fit: cover;">
+                        <img class="position-absolute w-100 h-100" src="{% static 'image/choose_us.jpg'%}"
+                            style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 my-lg-5 py-lg-5">
                     <div class="about-end bg-primary p-5">
                         <h1 class="display-5 mb-4">Why Choose Us?</h1>
-                        <p>Our expertise is unparalleled. We provide top-notch services in various technical fields with a commitment to excellence. Our team is dedicated to delivering high-quality solutions, ensuring customer satisfaction with every project. Whether it's technical support, repairs, or installations, we bring professionalism and precision to every task. Experience the difference with our skilled technicians, who are always ready to meet your needs with efficiency and expertise.</p>
+                        <p>Our expertise is unparalleled. We provide top-notch services in various technical fields with
+                            a commitment to excellence. Our team is dedicated to delivering high-quality solutions,
+                            ensuring customer satisfaction with every project. Whether it's technical support, repairs,
+                            or installations, we bring professionalism and precision to every task. Experience the
+                            difference with our skilled technicians, who are always ready to meet your needs with
+                            efficiency and expertise.</p>
                         <a href="" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mt-4">Get A Quote</a>
                     </div>
                 </div>
@@ -174,14 +191,18 @@
             <div class="row g-0 justify-content-start">
                 <div class="col-lg-6">
                     <h1 class="display-5 mb-4">Do You Have Any Project?</h1>
-                    <p class="fs-4 fw-normal">Have a project or need technical assistance? At Technicians Hub, we’re here to help. Whether you need repairs, installations, or expert advice, our team of skilled technicians is ready to tackle any challenge. Contact us to discuss your project and discover how our expertise can make a difference. We look forward to working with you and providing the solutions you need.</p>
+                    <p class="fs-4 fw-normal">Have a project or need technical assistance? At Technicians Hub, we’re
+                        here to help. Whether you need repairs, installations, or expert advice, our team of skilled
+                        technicians is ready to tackle any challenge. Contact us to discuss your project and discover
+                        how our expertise can make a difference. We look forward to working with you and providing the
+                        solutions you need.</p>
                     <a href="" class="btn btn-secondary rounded-pill py-md-3 px-md-5 mt-4">Contact Us</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Call To Action Start -->
-    
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark bg-footer text-light py-5">
@@ -190,7 +211,8 @@
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-primary">Get In Touch</h4>
                     <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
-                    <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re here to help and provide the support you need.</p>
+                    <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re
+                        here to help and provide the support you need.</p>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street,Palestine</p>
                     <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>technicianshub1@gmail.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
@@ -199,24 +221,26 @@
                     <h4 class="text-primary">Our Services</h4>
                     <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Electrician</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Carpenter</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Plumer</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Smith</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Bricklayer</a>
-                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Maid</a>
+                        {% for role in roles %}
+                        <a class="text-light mb-2" href="{% url 'role_detail' id=role.id %}">
+                            <i class="fa fa-angle-right me-2"></i>{{ role.name }}
+                        </a>
+                        {% endfor %}
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-primary">Quick Links</h4>
                     <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                        <!-- <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a> -->
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Review</a>
-                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                        <a class="text-light mb-2" href="/"><i class="fa fa-angle-right me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="/about_us"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="/services"><i class="fa fa-angle-right me-2"></i>Our
+                            Services</a>
+                        <a class="text-light mb-2" href="/contact"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                        <a class="text-light mb-2" href="/terms"><i class="fa fa-angle-right me-2"></i>Terms of Use</a>
+                        <a class="text-light mb-2" href="/privacy_policy"><i class="fa fa-angle-right me-2"></i>Privacy
+                            Policy</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -230,10 +254,14 @@
                     </form>
                     <h6 class="text-primary mt-4 mb-3">Follow Us</h6>
                     <div class="d-flex">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -243,7 +271,8 @@
         <div class="container">
             <div class="row g-0">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">Copyright &copy; <a class="text-dark fw-bold" href="#">Technicians Hub</a>. All Rights Reserved.</p>
+                    <p class="mb-md-0">Copyright &copy; <a class="text-dark fw-bold" href="#">Technicians Hub</a>. All
+                        Rights Reserved.</p>
                 </div>
                 <!-- <div class="col-md-6 text-center text-md-end">
                     <p class="mb-0">Designed by <a class="text-dark fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
@@ -255,7 +284,8 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-secondary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-secondary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
