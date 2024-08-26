@@ -66,8 +66,7 @@
 
     div class="form-container-wrapper">
     <div class="container form-container">
-        <h2 class="mb-4 text-center">Update Your Appointment With Technician {{ technician.first_name }} {{
-            technician.last_name }}</h2>
+        <h2 class="mb-4 text-center">Update Your Appointment With Technician {{ technician.first_name }} {{ technician.last_name }}</h2>
         <form method="post" action="{% url 'update_appointment' appointment.id %}">
             {% csrf_token %}
             <div class="row mb-3">
