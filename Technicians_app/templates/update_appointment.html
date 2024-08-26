@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
+    <meta charset="utf-8">
+    <title>Update Appointment</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    {% load static%}
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+
     <!-- Template Stylesheet -->
-    <link href="{% static 'css/terms.css'%}" rel="stylesheet">
     <link href="{% static 'css/services.css'%}" rel="stylesheet">
-    <title>Privacy Policy</title>
+    <link href="{% static 'css/app.css'%}" rel="stylesheet">
+
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm px-5 py-3 py-lg-0">
         <a href="/" class="Header-branding" data-nc-element="branding" data-content-field="site-title">
@@ -35,13 +47,10 @@
                 <a href="/" class="nav-item nav-link">Home</a>
                 <a href="/about_us" class="nav-item nav-link">About</a>
                 <a href="/services" class="nav-item nav-link active">Services</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="/recent_reviews" class="dropdown-item">My Recent Reviews</a>
-                    </div>
-                </div>
+                <a href="{% url 'recent_reviews' %}" class="nav-item nav-link active">My Reviews</a>
+                <a href="/recent_appointments" class="nav-item nav-link active">My Appointments</a>
                 <a href="/contact" class="nav-item nav-link">Contact</a>
+                <a href="{% url 'logout_user' %}" class="nav-item nav-link">Logout</a>
             </div>
             <div class="d-none d-lg-flex align-items-center ps-4">
                 <i class="fa fa-2x fa-mobile-alt text-secondary me-3"></i>
@@ -53,71 +62,58 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="card">
-            <div class="card-header highlight">
-                Privacy Policy
-            </div>
-            <div class="card-body">
-                <p>Welcome to Technicians Hub! Your privacy is critically important to us. This Privacy Policy outlines the types of information we collect, how it's used, and the measures we take to protect your personal information.</p>
-            </div>
-        </div>
-    
-        <div class="card">
-            <div class="card-header highlight">
-                Information Collection
-            </div>
-            <div class="card-body">
-                <p>We collect various types of information, including information you provide directly, information collected automatically through your use of our services, and information we obtain from third-party sources. This includes, but is not limited to, your name, contact details, and device information.</p>
-            </div>
-        </div>
-    
-        <div class="card">
-            <div class="card-header highlight">
-                Use of Information
-            </div>
-            <div class="card-body">
-                <p>The information we collect is used to provide, maintain, and improve our services, to communicate with you, and to enhance the security of our platform. We also use it for research and development, to enforce our terms and conditions, and to comply with legal obligations.</p>
-            </div>
-        </div>
-    
-        <div class="card">
-            <div class="card-header highlight">
-                Sharing and Disclosure
-            </div>
-            <div class="card-body">
-                <p>We do not sell your personal data. We disclose personal information to third parties only when it is necessary for the provision of our services, when legally required, or with your consent. This may include sharing with vendors, consultants, and other service providers who need access to such information to carry out work on our behalf.</p>
-            </div>
-        </div>
-    
-        <div class="card">
-            <div class="card-header highlight">
-                Your Rights and Choices
-            </div>
-            <div class="card-body">
-                <p>You have certain rights regarding the personal information we hold about you. These may include the right to access, correct, delete, or restrict the use of your information, or withdraw consent to its use. You can exercise these rights by contacting us directly.</p>
-            </div>
-        </div>
-    
-        <div class="card">
-            <div class="card-header highlight">
-                Data Security
-            </div>
-            <div class="card-body">
-                <p>We implement a variety of security measures to maintain the safety of your personal information when you enter, submit, or access your personal information. Despite our efforts, no security measures are completely impenetrable.</p>
-            </div>
-        </div>
-    
-        <div class="card">
-            <div class="card-header highlight">
-                Changes to This Policy
-            </div>
-            <div class="card-body">
-                <p>We may update this Privacy Policy from time to time to reflect changes to our practices or for other operational, legal, or regulatory reasons. Any changes will be posted on this page with an updated revision date.</p>
-            </div>
+    <div class="form-container-wrapper">
+        <div class="container form-container">
+            <h2 class="mb-4 text-center">Update Your Appointment With Technician {{ technician.first_name }} {{ technician.last_name }}</h2>
+            <form method="post" action="{% url 'update_appointment' appointment.id %}">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="date">Date:</label>
+                            <input type="date" name="date" id="date" class="form-control form-control-sm stylish-input" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="time">Time:</label>
+                            <select name="time" id="time" class="form-control form-control-sm stylish-input" required>
+                                <option value="7:00 AM">7:00 AM</option>
+                                <option value="7:30 AM">7:30 AM</option>
+                                <option value="9:00 AM">9:00 AM</option>
+                                <option value="10:00 AM">10:00 AM</option>
+                                <option value="10:30 AM">10:30 AM</option>
+                                <option value="11:00 AM">11:00 AM</option>
+                                <option value="12:30 PM">12:30 PM</option>
+                                <option value="1:00 PM">1:00 PM</option>
+                                <option value="1:30 PM">1:30 PM</option>
+                                <option value="2:30 PM">2:30 PM</option>
+                                <option value="3:00 PM">3:00 PM</option>
+                                <option value="3:30 PM">3:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="text" name="address" id="address" class="form-control form-control-sm stylish-input" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="issue">Issue:</label>
+                    <textarea name="issue" id="issue" rows="3" class="form-control form-control-sm stylish-input" required></textarea>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn stylish-button">
+                        Update <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-
+    
+    <!-- Footer Start -->
     <div class="container-fluid bg-dark bg-footer text-light py-5">
         <div class="container py-5">
             <div class="row g-5">
@@ -152,6 +148,8 @@
                             Services</a>
                         <a class="text-light mb-2" href="/contact"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
                         <a class="text-light mb-2" href="/terms"><i class="fa fa-angle-right me-2"></i>Terms of Use</a>
+                        <a class="text-light mb-2" href="/privacy_policy"><i class="fa fa-angle-right me-2"></i>Privacy
+                            Policy</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -185,10 +183,20 @@
                     <p class="mb-md-0">Copyright &copy; <a class="text-dark fw-bold" href="#">Technicians Hub</a>. All
                         Rights Reserved.</p>
                 </div>
+                <!-- <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed by <a class="text-dark fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
+                </div> -->
             </div>
         </div>
     </div>
-    
-    
+    <!-- Footer End -->
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 </body>
+
 </html>

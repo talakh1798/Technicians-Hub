@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Gaza'
 
 USE_I18N = True
 
@@ -127,15 +127,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 APPEND_SLASH = False
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'in-v3.mailjet.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'iyadaraj@gmail.com'
-EMAIL_HOST_PASSWORD = 'jheg upry gkhg powr'
-DEFAULT_FROM_EMAIL = 'iyadaraj@gmail.com'
+EMAIL_HOST_USER = '42df602c6851cb3f9eb8e0f7ec5c91a5'
+EMAIL_HOST_PASSWORD = '8090a6ab8a988f8140050b3f12f3eacd'
+DEFAULT_FROM_EMAIL = 'technicianshub1@gmail.com'
 
 import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
 

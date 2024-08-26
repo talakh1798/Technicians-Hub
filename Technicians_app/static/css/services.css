@@ -181,7 +181,7 @@
 .service-item a.btn {
     position: relative;
     bottom: -30px;
-    opacity: 0;
+    opacity: 1;
 }
 
 .service-item:hover a.btn {
@@ -231,7 +231,7 @@
     position: absolute;
     transition: .1s;
     transition-delay: .0s;
-    opacity: 0;
+    opacity: 1;
 }
 
 .team-item:hover .team-social {
@@ -316,4 +316,7 @@
 
 .service-item .btn {
     margin: 5px;
+}
+#d-margin {
+    margin-bottom: 20px;
 }

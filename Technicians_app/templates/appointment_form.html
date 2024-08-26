@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Leave Review</title>
+    <title>Book Appointment</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -28,10 +28,11 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/services.css'%}" rel="stylesheet">
+    <link href="{% static 'css/app.css'%}" rel="stylesheet">
 
 </head>
 
-<body class="bg-light">
+<body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm px-5 py-3 py-lg-0">
         <a href="/" class="Header-branding" data-nc-element="branding" data-content-field="site-title">
             <img src="{% static 'image/logo2.PNG' %}" alt="One &amp; Done Remodeling" sizes="200px"
@@ -60,7 +61,6 @@
             </div>
         </div>
     </nav>
-    
     {% if messages %}
     <div class="container mt-3">
         {% for message in messages %}
@@ -74,40 +74,69 @@
     </div>
     {% endif %}
 
-    <div class="container">
-        <h2 class="mb-4">Leave a Review for technician {{ technician.first_name }} {{ technician.last_name }}</h2>
-        <form method="post" action="{% url 'create_review' technician_id %}">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="content">Review:</label>
-                <textarea name="content" rows="4" class="form-control" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">
-                Submit Review <i class="fas fa-paper-plane"></i>
-            </button>
-        </form>
+    <div class="form-container-wrapper">
+        <div class="container form-container">
+            <h2 class="mb-4 text-center">Book Appointment with Technician {{ technician.first_name }} {{ technician.last_name }}</h2>
+            <form method="post" action="{% url 'book_appointment' technician_id %}">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="date">Date:</label>
+                            <input type="date" name="date" id="date" class="form-control form-control-sm" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="time">Time:</label>
+                            <select name="time" id="time" class="form-control form-control-sm" required>
+                                <option value="7:00 AM">7:00 AM</option>
+                                <option value="7:30 AM">7:30 AM</option>
+                                <option value="9:00 AM">9:00 AM</option>
+                                <option value="10:00 AM">10:00 AM</option>
+                                <option value="10:30 AM">10:30 AM</option>
+                                <option value="11:00 AM">11:00 AM</option>
+                                <option value="12:30 PM">12:30 PM</option>
+                                <option value="1:00 PM">1:00 PM</option>
+                                <option value="1:30 PM">1:30 PM</option>
+                                <option value="2:30 PM">2:30 PM</option>
+                                <option value="3:00 PM">3:00 PM</option>
+                                <option value="3:30 PM">3:30 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="text" name="address" id="address" class="form-control form-control-sm"
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="issue">Issue:</label>
+                    <textarea name="issue" id="issue" rows="3" class="form-control form-control-sm" required></textarea>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        Book <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
     </div>
 
-    <section class="container mt-5">
-        <h2 class="mb-4">Recent Reviews for Technician {{ technician.first_name }} {{ technician.last_name }}</h2>
-        <ul class="list-group">
-            {% for review in technician.technician_reviews.all %}
-            <li class="list-group-item">
-                <p class="mb-1"><strong>{{ review.user.first_name }} {{ review.user.last_name }}</strong>: {{ review.content }} <small class="text-muted">({{ review.updated_at }})</small></p>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <div class="container-fluid bg-dark bg-footer text-light py-5">
+      <!-- Footer Start -->
+      <div class="container-fluid bg-dark bg-footer text-light py-5">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-primary">Get In Touch</h4>
                     <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
-                    <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re
-                        here to help and provide the support you need.</p>
+                    <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re here to help and provide the support you need.</p>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street,Palestine</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>technicianshub1@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>TechniciansHub1@gmail.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -127,13 +156,10 @@
                     <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-light mb-2" href="/"><i class="fa fa-angle-right me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="/about_us"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="/services"><i class="fa fa-angle-right me-2"></i>Our
-                            Services</a>
-                        <a class="text-light mb-2" href="/contact"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
-                        <a class="text-light mb-2" href="/terms"><i class="fa fa-angle-right me-2"></i>Terms of Use</a>
-                        <a class="text-light mb-2" href="/privacy_policy"><i class="fa fa-angle-right me-2"></i>Privacy
-                            Policy</a>
+                        <a class="text-light mb-2" href="{% url 'about_us' %}"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="{% url 'services' %}"><i class="fa fa-angle-right me-2"></i>Our Services</a>
+                        <a class="text-light mb-2" href="{% url 'recent_reviews' %}"><i class="fa fa-angle-right me-2"></i>Review</a>
+                        <a class="text-light" href="{% url 'contact' %}"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -147,14 +173,10 @@
                     </form>
                     <h6 class="text-primary mt-4 mb-3">Follow Us</h6>
                     <div class="d-flex">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
-                                class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                class="fab fa-instagram"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -164,14 +186,15 @@
         <div class="container">
             <div class="row g-0">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">Copyright &copy; <a class="text-dark fw-bold" href="#">Technicians Hub</a>. All
-                        Rights Reserved.</p>
+                    <p class="mb-md-0">Copyright &copy; <a class="text-dark fw-bold" href="#">Technicians Hub</a>. All Rights Reserved.</p>
                 </div>
+                <!-- <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed by <a class="text-dark fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
+                </div> -->
             </div>
         </div>
     </div>
-
-
+    <!-- Footer End -->
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
