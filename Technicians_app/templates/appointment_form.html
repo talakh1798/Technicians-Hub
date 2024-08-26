@@ -14,9 +14,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -78,8 +76,7 @@
 
     <div class="form-container-wrapper">
         <div class="container form-container">
-            <h2 class="mb-4 text-center">Book Appointment with Technician {{ technician.first_name }} {{
-                technician.last_name }}</h2>
+            <h2 class="mb-4 text-center">Book Appointment with Technician {{ technician.first_name }} {{ technician.last_name }}</h2>
             <form method="post" action="{% url 'book_appointment' technician_id %}">
                 {% csrf_token %}
                 <div class="row mb-3">
