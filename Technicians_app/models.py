@@ -94,6 +94,7 @@ class Technician(models.Model):
 
     def __str__(self) -> str:
         return f" {self.first_name} {self.last_name}"
+    
 class Appointment(models.Model):
     technician = models.ForeignKey(Technician, related_name="technician_appointments", on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name="user_appointments", on_delete=models.CASCADE)
@@ -103,6 +104,8 @@ class Appointment(models.Model):
     issue = models.TextField()  
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return f"{self.technician.first_name} {self.technician.last_name}"
 
 #update class review
 class Review(models.Model):
@@ -111,6 +114,8 @@ class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return f"{self.user.first_name} {self.user.last_name}"
 
 
 
