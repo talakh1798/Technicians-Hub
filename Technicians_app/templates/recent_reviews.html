@@ -87,7 +87,7 @@
                             <p class="card-text">{{ review.content }} ({{ review.updated_at }})</p>
                             <div class="d-flex justify-content-between">
                                 <a href="{% url 'update_review' review.id %}" class="btn btn-success btn-sm">Update</a>
-                                <a href="{% url 'delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="{% url 'confirm_delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
                             </div>
                         </div>
                     </div>
