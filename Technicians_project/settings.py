@@ -52,7 +52,6 @@ MIDDLEWARE = [
 ]
 
 
-
 ROOT_URLCONF = 'Technicians_project.urls'
 
 TEMPLATES = [
