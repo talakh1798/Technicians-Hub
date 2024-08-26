@@ -30,7 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/services.css'%}" rel="stylesheet">
-    <link href="{% static 'css/app.css'%}" rel="stylesheet">
+    <link href="{% static 'css/styles.css'%}" rel="stylesheet">
 
 </head>
 
@@ -70,8 +70,7 @@
                     <h5 class="confirmation-title">Confirm Action</h5>
                 </div>
                 <div class="confirmation-body">
-                    <p>Are you sure you want to delete your review for {{ technician.first_name }} {{
-                        technician.last_name }}?</p>
+                    <p>Are you sure you want to delete your review for {{ technician.first_name }} {{ technician.last_name }}?</p>
                 </div>
                 <div class="confirmation-footer">
                     <form action="/recent_reviews" method="post" style="display:inline;">
@@ -80,7 +79,7 @@
                     </form>
                     <form action="{% url 'delete_review' review.id %}" method="post" style="display:inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger btn-lg">Yes! I want to Cancel</button>
+                        <button type="submit" class="btn btn-danger btn-lg">Yes! I want to Delete</button>
                     </form>
                 </div>
             </div>
