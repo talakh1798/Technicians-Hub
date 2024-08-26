@@ -30,7 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/services.css'%}" rel="stylesheet">
-    <link href="{% static 'css/app.css'%}" rel="stylesheet">
+    <link href="{% static 'css/styles.css'%}" rel="stylesheet">
 
 </head>
 
@@ -71,8 +71,7 @@
                     <h5 class="confirmation-title">Confirm Action</h5>
                 </div>
                 <div class="confirmation-body">
-                    <p>Are you sure you want to Cancel your Appointment with {{ technician.first_name }} {{
-                        technician.last_name}}?</p>
+                    <p>Are you sure you want to Cancel your Appointment with {{ technician.first_name }} {{ technician.last_name }}?</p>
                 </div>
                 <div class="confirmation-footer">
                     <form action="/recent_appointments" method="post" style="display:inline;">
