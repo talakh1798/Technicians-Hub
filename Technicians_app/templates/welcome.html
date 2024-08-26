@@ -101,6 +101,26 @@ much more." />
   <!-- End of Squarespace Headers -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      /* Apply Roboto font to the Admin button */
+      .admin-btn {
+          font-family: 'Roboto', sans-serif;
+          background-color: #e74c3c;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-size: 1rem;
+          text-transform: uppercase;
+          font-weight: bold;
+          text-decoration: none;
+      }
+      
+      .admin-btn:hover {
+          background-color: #c0392b;
+      }
+    </style>
+
 </head>
 
 <body id="collection-5e1490493f8ed65e20823a5a"
@@ -456,6 +476,7 @@ much more." />
                               <div class="button-container">
                                 <a href="{% url 'login' %}" class="btn login-btn">Login</a>
                                 <a href="{% url 'sign_up' %}" class="btn signup-btn">Sign Up</a>
+                                <a href="{% url 'admin:login' %}" class="btn signup-btn">Admin</a>
                               </div>
                             </div>
 
