@@ -95,7 +95,7 @@ def create_review(request, technician_id):
         # If no existing review, add the new review
         add_review(request)
         technician = get_technician(technician_id)
-        messages.success(request, f"Review submitted successfully for technician {technician.first_name} {technician.last_name}", extra_tags='success')
+        messages.success(request, f"Review for technician {technician.first_name} {technician.last_name} submitted successfully", extra_tags='success')
 
         # Render the review form again after submission
         return render(request, 'review_form.html', {'technician': technician, 'technician_id': technician_id})
@@ -297,7 +297,7 @@ def cancel_appointment(request, appointment_id):
     technician = appointment.technician
     models.cancel_appointment(appointment_id)
     send_mail(
-            'Appointment Booked Cancelled',
+            'Appointment Cancelled Successfully',
             f'Your Appointment with techncian {technician.first_name} {technician.last_name} on {appointment.date} at {appointment.time} has been cancelled.',
             'TechniciansHub1@gmail.com',
             [appointment.user.email],
