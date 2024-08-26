@@ -29,9 +29,6 @@ urlpatterns = [
     path('recent_appointments', views.recent_appointments, name='recent_appointmens'),
     path('recent_reviews/confirm_delete/<int:review_id>/', views.confirm_delete_review, name='confirm_delete_review'),
     path('recent_appointments/confirm_cancel/<int:appointment_id>/', views.confirm_cancel_appointment, name='confirm_cancel_appointment')
-
-
-
 ]
 
 
