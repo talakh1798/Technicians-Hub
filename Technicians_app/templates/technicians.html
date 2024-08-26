@@ -116,7 +116,7 @@
                         <p class="text-muted font-weight-bold">Phone number: {{ technician.phone_number }}</p>
                         <p class="text-muted font-weight-bold">City: {{ technician.city }}</p>
                         <p class="text-muted font-weight-bold">Bio: {{ technician.bio }}</p>
-                        <div class="d-flex gap-2">
+                        <div class="d-flex gap-2" id="d-margin">
                             <a class="btn btn-secondary btn-sm" href="{% url 'appointment_form' technician.id %}">
                                 Book<i class="bi bi-arrow-right ms-1"></i>
                             </a>
