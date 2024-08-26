@@ -88,16 +88,17 @@
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Appointment with {{ appointment.technician.first_name }} {{
-                            appointment.technician.last_name }} <small class="text-muted">({{
-                                appointment.technician.role.name }})</small></h5>
+                        <h5 class="card-title">Appointment with {{ appointment.technician.first_name }}
+                            {{appointment.technician.last_name }}
+                            <small class="text-muted">({{appointment.technician.role.name }})</small>
+                        </h5>
                         <hr>
                         <p><strong>Time:</strong> {{ appointment.time }}</p>
                         <p><strong>Date:</strong> {{ appointment.date }}</p>
                         <p><strong>Address:</strong> {{ appointment.address }}</p>
                         <p><strong>Issue:</strong> {{ appointment.issue }}</p>
-                        <p class="text-muted"><small>Last updated: {{ appointment.updated_at|date:"M d, Y H:i"
-                                }}</small></p>
+                        <p class="text-muted"><small>Last updated: {{ appointment.updated_at|date:"M d, Y H:i"}}</small>
+                        </p>
                         <div class="d-flex justify-content-between">
                             <a href="{% url 'update_appointment' appointment.id %}"
                                 class="btn btn-success btn-sm">Update</a>
