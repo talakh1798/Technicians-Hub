@@ -10,6 +10,8 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login as auth_login
 from django.core.mail import send_mail
 
+def profile_redirect(request):
+    return redirect('admin/login')
 
 def welcome(request):
     return render(request, 'welcome.html')

@@ -62,7 +62,7 @@ class User(models.Model):
 class Admin(User):
     is_admin = models.BooleanField(default=True)
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name}"   
 
 class Contact(models.Model):
     name = models.CharField(max_length=255)
