@@ -68,6 +68,15 @@ python manage.py migrate
 # Running the Application
 python manage.py runserver
 
+## Website Images
+![Home page Screenshot](media/image/home_page.jpeg)
+[Login page Screenshot](media/image/login_dashboard.jpeg)
+![Sign Up page Screenshot](media/image/signup_dashboard.jpeg)
+![Services page Screenshot](media/image/services_dashboard.jpeg)
+![Services Categories Screenshot](media/image/services_categories.jpeg)
+![Technicians page Screenshot](media/image/Technicians.jpeg)
+
+
 
    
 
