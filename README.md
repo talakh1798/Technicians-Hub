@@ -41,30 +41,33 @@ Before you begin, ensure you have met the following requirements:
   ```bash
   pip install virtualenv
 
-### Steps to Set Up the Project
-**Clone the Repository**
+# Setup Instructions for Technicians Hub
+
+echo "Cloning the Repository"
 git clone https://github.com/talakh1798/Technicians-Hub.git
 
-**Navigate to the Project Directory**
+echo "Navigating to the Project Directory"
 cd Technicians-Hub
 
-**Set Up the Virtual Environment**
-**On macOS/Linux**
+echo "Setting Up the Virtual Environment"
+echo "For macOS/Linux:"
 python3 -m venv env
 source env/bin/activate
 
-**On Windows**
- python -m venv env
- env\Scripts\activate
+echo "For Windows:"
+echo "Use the following commands in a Windows command prompt:"
+echo "python -m venv env"
+echo "env\\Scripts\\activate"
 
-**Install Dependencies**
+echo "Installing Dependencies"
 pip install -r requirements.txt
 
-**Run Database Migrations**
+echo "Running Database Migrations"
 python manage.py migrate
 
-**Running the Application**
+echo "Running the Application"
 python manage.py runserver
+
 
 
 
