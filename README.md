@@ -69,17 +69,13 @@ python manage.py migrate
 python manage.py runserver
 
 ## Website Images
-![Home page Screenshot](media/image/home_page.jpeg)
-![Login page Screenshot](media/image/login_dashboard.jpeg)
-![Sign Up page Screenshot](media/image/signup_dashboard.jpeg)
-![Services page Screenshot](media/image/services_dashboard.jpeg)
-![Services Categories Screenshot](media/image/services_categories.jpeg)
-![Technicians page Screenshot](media/image/Technicians.jpeg)
 
-
-
-
-   
+![home_page](https://github.com/user-attachments/assets/b4e24ced-7be8-4771-b58b-5c682c6d868a)
+![login_dashboard](https://github.com/user-attachments/assets/8f3cb58d-7fb6-42f7-9e64-3b902faf52a9)
+![signup_dashboard](https://github.com/user-attachments/assets/a165016e-a069-43e1-bc12-c20205443129)
+![services_dashboard](https://github.com/user-attachments/assets/470debfd-9be4-4beb-b304-c15e92782a1c)
+![services_categories](https://github.com/user-attachments/assets/77b1c165-d87f-41c4-acee-ea7679f1ba6b)
+![Technicians](https://github.com/user-attachments/assets/c8c1b3f7-f255-4821-8850-3b82eac0a14b)
 
 
 
