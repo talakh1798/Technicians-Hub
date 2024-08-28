@@ -42,8 +42,6 @@ Before you begin, ensure you have met the following requirements:
   pip install virtualenv
 
 ### Steps to Set Up the Project
-
-```bash
 # Clone the Repository
 git clone https://github.com/talakh1798/Technicians-Hub.git
 
@@ -68,14 +66,17 @@ python manage.py migrate
 # Running the Application
 python manage.py runserver
 
+
+
 ## Website Images
 
-![home_page](https://github.com/user-attachments/assets/b4e24ced-7be8-4771-b58b-5c682c6d868a)
-![login_dashboard](https://github.com/user-attachments/assets/8f3cb58d-7fb6-42f7-9e64-3b902faf52a9)
-![signup_dashboard](https://github.com/user-attachments/assets/a165016e-a069-43e1-bc12-c20205443129)
-![services_dashboard](https://github.com/user-attachments/assets/470debfd-9be4-4beb-b304-c15e92782a1c)
-![services_categories](https://github.com/user-attachments/assets/77b1c165-d87f-41c4-acee-ea7679f1ba6b)
-![Technicians](https://github.com/user-attachments/assets/c8c1b3f7-f255-4821-8850-3b82eac0a14b)
+![Home page Screenshot](https://github.com/user-attachments/assets/b4e24ced-7be8-4771-b58b-5c682c6d868a?raw=true)
+![Login Dashboard Screenshot](https://github.com/user-attachments/assets/8f3cb58d-7fb6-42f7-9e64-3b902faf52a9?raw=true)
+![Sign Up Dashboard Screenshot](https://github.com/user-attachments/assets/a165016e-a069-43e1-bc12-c20205443129?raw=true)
+![Services Dashboard Screenshot](https://github.com/user-attachments/assets/470debfd-9be4-4beb-b304-c15e92782a1c?raw=true)
+![Services Categories Screenshot](https://github.com/user-attachments/assets/77b1c165-d87f-41c4-acee-ea7679f1ba6b?raw=true)
+![Technicians Screenshot](https://github.com/user-attachments/assets/c8c1b3f7-f255-4821-8850-3b82eac0a14b?raw=true)
+
 
 
 
