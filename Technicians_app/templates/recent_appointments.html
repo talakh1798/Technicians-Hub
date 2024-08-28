@@ -14,9 +14,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -88,16 +86,17 @@
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Appointment with {{ appointment.technician.first_name }} {{
-                            appointment.technician.last_name }} <small class="text-muted">({{
-                                appointment.technician.role.name }})</small></h5>
+                        <h5 class="card-title">Appointment with {{ appointment.technician.first_name }}
+                            {{appointment.technician.last_name }}
+                            <small class="text-muted">({{appointment.technician.role.name }})</small>
+                        </h5>
                         <hr>
                         <p><strong>Time:</strong> {{ appointment.time }}</p>
                         <p><strong>Date:</strong> {{ appointment.date }}</p>
                         <p><strong>Address:</strong> {{ appointment.address }}</p>
                         <p><strong>Issue:</strong> {{ appointment.issue }}</p>
-                        <p class="text-muted"><small>Last updated: {{ appointment.updated_at|date:"M d, Y H:i"
-                                }}</small></p>
+                        <p class="text-muted"><small>Last updated: {{ appointment.updated_at|date:"M d, Y H:i"}}</small>
+                        </p>
                         <div class="d-flex justify-content-between">
                             <a href="{% url 'update_appointment' appointment.id %}"
                                 class="btn btn-success btn-sm">Update</a>
@@ -120,7 +119,7 @@
                     <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re
                         here to help and provide the support you need.</p>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street,Palestine</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>Tech_hub@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>technicianshub1@gmail.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -139,12 +138,14 @@
                     <h4 class="text-primary">Quick Links</h4>
                     <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                        <!-- <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a> -->
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Review</a>
-                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                        <a class="text-light mb-2" href="/"><i class="fa fa-angle-right me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="/about_us"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="/services"><i class="fa fa-angle-right me-2"></i>Our
+                            Services</a>
+                        <a class="text-light mb-2" href="/contact"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                        <a class="text-light mb-2" href="/terms"><i class="fa fa-angle-right me-2"></i>Terms of Use</a>
+                        <a class="text-light mb-2" href="/privacy_policy"><i class="fa fa-angle-right me-2"></i>Privacy
+                            Policy</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -178,9 +179,6 @@
                     <p class="mb-md-0">Copyright &copy; <a class="text-dark fw-bold" href="#">Technicians Hub</a>. All
                         Rights Reserved.</p>
                 </div>
-                <!-- <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by <a class="text-dark fw-bold" href="https://htmlcodex.com">HTML Codex</a></p>
-                </div> -->
             </div>
         </div>
     </div>

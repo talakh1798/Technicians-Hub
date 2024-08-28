@@ -14,9 +14,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -47,6 +45,8 @@
                 <a href="/" class="nav-item nav-link">Home</a>
                 <a href="/about_us" class="nav-item nav-link">About</a>
                 <a href="/services" class="nav-item nav-link active">Services</a>
+                <a href="{% url 'recent_reviews' %}" class="nav-item nav-link active">My Reviews</a>
+                <a href="/recent_appointments" class="nav-item nav-link active">My Appointments</a>
                 <a href="/contact" class="nav-item nav-link">Contact</a>
                 <a href="{% url 'logout_user' %}" class="nav-item nav-link">Logout</a>
             </div>
@@ -87,7 +87,7 @@
                             <p class="card-text">{{ review.content }} ({{ review.updated_at }})</p>
                             <div class="d-flex justify-content-between">
                                 <a href="{% url 'update_review' review.id %}" class="btn btn-success btn-sm">Update</a>
-                                <a href="{% url 'delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="{% url 'confirm_delete_review' review.id %}" class="btn btn-danger btn-sm">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                     <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re
                         here to help and provide the support you need.</p>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street,Palestine</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>Tech_hub@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>technicianshub1@gmail.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -126,7 +126,6 @@
                         <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
                         <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
                         <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                        <!-- <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a> -->
                         <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Review</a>
                         <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
                     </div>

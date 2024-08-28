@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DELETE Review</title>
+    <title>Delete Review</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -14,9 +14,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -30,7 +28,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/services.css'%}" rel="stylesheet">
-    <link href="{% static 'css/app.css'%}" rel="stylesheet">
+    <link href="{% static 'css/styles.css'%}" rel="stylesheet">
 
 </head>
 
@@ -70,8 +68,7 @@
                     <h5 class="confirmation-title">Confirm Action</h5>
                 </div>
                 <div class="confirmation-body">
-                    <p>Are you sure you want to delete your review for {{ technician.first_name }} {{
-                        technician.last_name }}?</p>
+                    <p>Are you sure you want to delete your review for {{ technician.first_name }} {{ technician.last_name }}?</p>
                 </div>
                 <div class="confirmation-footer">
                     <form action="/recent_reviews" method="post" style="display:inline;">
@@ -80,7 +77,7 @@
                     </form>
                     <form action="{% url 'delete_review' review.id %}" method="post" style="display:inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger btn-lg">Yes! I want to Cancel</button>
+                        <button type="submit" class="btn btn-danger btn-lg">Yes! I want to Delete</button>
                     </form>
                 </div>
             </div>
@@ -96,7 +93,7 @@
                     <p class="mb-4">If you have any questions or need assistance, feel free to reach out to us. We’re
                         here to help and provide the support you need.</p>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street,Palestine</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>Tech_hub@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>technicianshub1@gmail.com</p>
                     <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -115,12 +112,14 @@
                     <h4 class="text-primary">Quick Links</h4>
                     <hr class="w-25 text-secondary mb-4" style="opacity: 1;">
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                        <!-- <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a> -->
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Review</a>
-                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                        <a class="text-light mb-2" href="/"><i class="fa fa-angle-right me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="/about_us"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                        <a class="text-light mb-2" href="/services"><i class="fa fa-angle-right me-2"></i>Our
+                            Services</a>
+                        <a class="text-light mb-2" href="/contact"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                        <a class="text-light mb-2" href="/terms"><i class="fa fa-angle-right me-2"></i>Terms of Use</a>
+                        <a class="text-light mb-2" href="/privacy_policy"><i class="fa fa-angle-right me-2"></i>Privacy
+                            Policy</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">

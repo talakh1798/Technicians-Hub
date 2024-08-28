@@ -21,18 +21,15 @@ urlpatterns = [
     path('services', views.services,name='services' ),
     path('role/<int:id>/', views.role_detail, name='role_detail'),
     path('terms',views.terms,name='terms'),
-    path('privacy_policy', views.privacy_policy, name='privacy_policy'),   
-    path('book/<int:technician_id>/', views.book_technician, name='book_technician'),
-    path('confirm_booking/<int:technician_id>/', views.confirm_booking, name='confirm_booking'),  
+    path('privacy_policy', views.privacy_policy, name='privacy_policy'), 
     path('appointment_form/<int:technician_id>/', views.appointment_form, name='appointment_form'),
     path('book_appointment/<int:technician_id>/', views.book_appointment, name='book_appointment'),
     path('update_appointment/<int:appointment_id>/', views.update_appointment, name='update_appointment'),
     path('cancel_appointment/<int:appointment_id>/', views.cancel_appointment, name='cancel_appointment'),
     path('recent_appointments', views.recent_appointments, name='recent_appointmens'),
     path('recent_reviews/confirm_delete/<int:review_id>/', views.confirm_delete_review, name='confirm_delete_review'),
-    path('recent_appointments/confirm_cancel/<int:appointment_id>/', views.confirm_cancel_appointment, name='confirm_cancel_appointment')
-
-
+    path('recent_appointments/confirm_cancel/<int:appointment_id>/', views.confirm_cancel_appointment, name='confirm_cancel_appointment'),
+    path('accounts/profile/', views.profile_redirect, name='profile_redirect'),
 
 ]
 

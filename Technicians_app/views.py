@@ -9,6 +9,9 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.mail import send_mail
 
+def profile_redirect(request):
+    return redirect('admin/login')
+
 def welcome(request):
     return render(request, 'welcome.html')
 
@@ -95,7 +98,7 @@ def create_review(request, technician_id):
         # If no existing review, add the new review
         add_review(request)
         technician = get_technician(technician_id)
-        messages.success(request, f"Review submitted successfully for technician {technician.first_name} {technician.last_name}", extra_tags='success')
+        messages.success(request, f"Review for technician {technician.first_name} {technician.last_name} submitted successfully", extra_tags='success')
 
         # Render the review form again after submission
         return render(request, 'review_form.html', {'technician': technician, 'technician_id': technician_id})
@@ -192,32 +195,6 @@ def terms(request):
 def privacy_policy(request):
     return render (request, 'privacy_policy.html')
    
-def book_technician(request, technician_id):
-    try:
-        technician = Technician.objects.get(id=technician_id)
-    except Technician.DoesNotExist:
-        return render(request, 'technician_not_found.html')
-
-    if request.method == 'POST':
-        user = request.user 
-        return redirect('confirm_booking', technician_id=technician.id)
-    return render(request, 'book.html', {'technician': technician})
-
-
-def confirm_booking(request, technician_id):
-    try:
-        technician = Technician.objects.get(id=technician_id)
-    except Technician.DoesNotExist:
-        return redirect('technicians')  # Redirect if technician is not found
-    if request.method == 'POST':
-        context = {
-            'technician': technician
-        }
-        return render(request, 'confirm_booking.html', context)
-    else:
-        return redirect('technicians')
-
-
 def book_appointment(request, technician_id):
     technician = models.get_technician(technician_id)
     if request.method == 'POST':
@@ -226,7 +203,7 @@ def book_appointment(request, technician_id):
         send_mail(
             'Appointment Booked Successfully',
             f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been booked on {appointment.date} at {appointment.time}.',
-            'izzidinsamara@gmail.com',
+            'TechniciansHub1@gmail.com',
             [appointment.user.email],
             fail_silently=False,
         )
@@ -272,7 +249,7 @@ def update_appointment(request, appointment_id):
         send_mail(
             'Appointment Updated Successfully',
             f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been Updated to be on {appointment.date} at {appointment.time}.',
-            'izzidinsamara@gmail.com',
+            'TechniciansHub1@gmail.com',
             [appointment.user.email],
             fail_silently=False,
         )
@@ -297,9 +274,9 @@ def cancel_appointment(request, appointment_id):
     technician = appointment.technician
     models.cancel_appointment(appointment_id)
     send_mail(
-            'Appointment Booked Cancelled',
+            'Appointment Cancelled Successfully',
             f'Your Appointment with techncian {technician.first_name} {technician.last_name} on {appointment.date} at {appointment.time} has been cancelled.',
-            'izzidinsamara@gmail.com',
+            'TechniciansHub1@gmail.com',
             [appointment.user.email],
             fail_silently=False,
         )

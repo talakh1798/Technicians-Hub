@@ -47,3 +47,51 @@ a:hover {
   text-decoration: underline; /* Underline the link when hovered */
   transform: translateY(-2px); /* Slightly raise the link on hover */
 }
+.confirmation-area {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Align to the top */
+  height: 100vh;
+  /* Full viewport height */
+  padding-top: 60px;
+  /* Adds space from the top of the viewport */
+  box-sizing: border-box;
+}
+
+.confirmation-dialog {
+  width: 80%;
+  /* Maintain a large width */
+  max-width: 1200px;
+  /* A reasonable max width for large screens */
+  background: white;
+  padding: 40px;
+  /* Generous padding inside the dialog */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Aesthetic shadow */
+  border-radius: 10px;
+  /* Rounded corners */
+  z-index: 1050;
+  /* Ensure it overlays other content */
+  margin-top: 20px;
+  /* Additional top margin if needed */
+}
+
+.confirmation-header {
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.confirmation-title {
+  font-size: 2rem;
+  /* Larger title */
+}
+
+.confirmation-body {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+}
+
+.confirmation-footer {
+  text-align: center;
+}

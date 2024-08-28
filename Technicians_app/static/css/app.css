@@ -1,0 +1,83 @@
+/* Container Styles */
+body {
+    background-color: white;
+}
+.form-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f0f0f0;
+    margin-bottom: 50px;
+}
+
+.form-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    filter: blur(100px);
+    animation: glowing 6s infinite alternate;
+}
+
+@keyframes glowing {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(-20px, -20px) scale(1.1);
+    }
+}
+
+/* Input Field Styles */
+.stylish-input {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    background-color: #f8f9fa;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stylish-input:focus {
+    background-color: #ffffff;
+    border-color: #ffd84d;
+    box-shadow: 0 0 5px rgba(255, 216, 77, 0.5);
+}
+
+/* Button Styles */
+.stylish-button {
+    background-color: #ffd84d;
+    color: #333333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 216, 77, 0.4);
+}
+
+.stylish-button:hover {
+    background-color: #e6bf3d;
+    box-shadow: 0 6px 20px rgba(255, 216, 77, 0.6);
+    transform: translateY(-3px);
+}
+
+.stylish-button i {
+    margin-left: 5px;
+}
