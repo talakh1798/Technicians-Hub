@@ -43,30 +43,31 @@ Before you begin, ensure you have met the following requirements:
 
 # Setup Instructions for Technicians Hub
 
-echo "Cloning the Repository"
+# Clone the Repository
 git clone https://github.com/talakh1798/Technicians-Hub.git
 
-echo "Navigating to the Project Directory"
+# Navigate to the Project Directory
 cd Technicians-Hub
 
-echo "Setting Up the Virtual Environment"
-echo "For macOS/Linux:"
+# Set Up the Virtual Environment
+
+**For macOS/Linux**
 python3 -m venv env
 source env/bin/activate
 
-echo "For Windows:"
-echo "Use the following commands in a Windows command prompt:"
-echo "python -m venv env"
-echo "env\\Scripts\\activate"
+**For Windows**
+python3 -m venv env
+source env/bin/activate
 
-echo "Installing Dependencies"
+# Install Dependencies
 pip install -r requirements.txt
 
-echo "Running Database Migrations"
+# Run Database Migrations
 python manage.py migrate
 
-echo "Running the Application"
+# Running the Application
 python manage.py runserver
+
 
 
 
