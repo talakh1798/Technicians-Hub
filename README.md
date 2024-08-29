@@ -21,7 +21,7 @@ Technicians Hub is an innovative web application that serves as a bridge between
 - **Django**: Used as the primary web framework for building the backend of the application. Django is chosen for its robustness, scalability, and ease of integrating with various databases and third-party libraries.
 - **Python**: The core programming language used in conjunction with Django to handle logic, data processing, and server-side scripting.
 - **MySQL**: The chosen database for production due to its performance, reliability, and support for complex queries. Ideal for handling the extensive data needs of Technicians Hub.
-- **JavaScript**: Utilized to enhance interactivity on the client side, including form validations and dynamic content updates.
+- **JavaScript**: Utilized to enhance interactivity on the client side, including form validations(AJAX) and dynamic content updates.
 - **HTML and CSS**: Employed for structuring and styling the frontend of the application, ensuring it is responsive and user-friendly across different devices and browsers.
 - **Bootstrap**: A front-end framework used for developing responsive and mobile-first web pages.
  - **SMTP Library/Email Integration (Mailjet)**: Utilizes Mailjet to send real-time notifications and updates to users about their appointments. Mailjet provides robust email delivery and management capabilities, ensuring reliable communication through SMTP protocols and easy integration into our system.
