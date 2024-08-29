@@ -39,6 +39,10 @@ Technicians Hub is an innovative web application that serves as a bridge between
 ![recent_appointments](https://github.com/user-attachments/assets/c9cca1a4-40bb-4df8-941e-090e388c717b)
 ![update_appointment](https://github.com/user-attachments/assets/d5bb1c18-148f-496c-a18b-3a2254bb0d63)
 ![confirm_action](https://github.com/user-attachments/assets/967ce83d-4ebb-427a-a2e0-a3ff47af903f)
+![leave_review](https://github.com/user-attachments/assets/a9b367f7-eaad-4853-929e-41f7938f667d)
+![recent_reviews](https://github.com/user-attachments/assets/5664a2bf-31cf-433d-8597-0c70969eecb8)
+![update_review](https://github.com/user-attachments/assets/f87f95c3-6d96-46e0-a79b-2f8928a6475c)
+![confirm action](https://github.com/user-attachments/assets/3ad82b89-2b87-4140-b14c-606ffa63f9f4)
 
 
 
