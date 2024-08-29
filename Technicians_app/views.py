@@ -10,7 +10,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 def profile_redirect(request):
-    return redirect('admin/login')
+    return redirect('admin:login')
 
 def welcome(request):
     return render(request, 'welcome.html')

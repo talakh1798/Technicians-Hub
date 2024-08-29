@@ -45,12 +45,17 @@ class UserManager(models.Manager):
 
 #update class user
 class User(models.Model):
+    # ROLE_CHOICES =[
+    #     ('admin': 'Admin'),
+    #     ('user_tech': 'User_tech')
+    # ]
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     email = models.CharField(max_length=45)
     password = models.CharField(max_length=100)
     phone_number = models.CharField(max_length=25)
     date_of_birth = models.DateField()
+    # role = models.ChartField(max_length=12, choices = ROLE_CHOICES)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     objects = UserManager()
