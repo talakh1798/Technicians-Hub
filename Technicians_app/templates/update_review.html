@@ -61,7 +61,7 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h2 class="mb-4">Update Your Review for Technician {{ technician.first_name }} {{ technician.last_name }}</h2>
+        <h2 class="mb-4">Update Your Review for Technician {{ technician.first_name }} {{ technician.last_name }} ({{technician.role}})</h2>
         <form method="post" action="{% url 'update_review' review.id %}">
             {% csrf_token %}
             

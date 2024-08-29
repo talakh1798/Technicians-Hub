@@ -75,7 +75,7 @@
     {% endif %}
 
     <div class="container">
-        <h2 class="mb-4">Leave a Review for technician {{ technician.first_name }} {{ technician.last_name }}</h2>
+        <h2 class="mb-4">Leave a Review for technician {{ technician.first_name }} {{ technician.last_name }} ({{technician.role}})</h2>
         <form method="post" action="{% url 'create_review' technician_id %}">
             {% csrf_token %}
             <div class="form-group">
@@ -89,7 +89,7 @@
     </div>
 
     <section class="container mt-5">
-        <h2 class="mb-4">Recent Reviews for Technician {{ technician.first_name }} {{ technician.last_name }}</h2>
+        <h2 class="mb-4">Recent Reviews for Technician {{ technician.first_name }} {{ technician.last_name }} </h2>
         <ul class="list-group">
             {% for review in technician.technician_reviews.all %}
             <li class="list-group-item">

@@ -102,24 +102,24 @@ much more." />
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      /* Apply Roboto font to the Admin button */
-      .admin-btn {
-          font-family: 'Roboto', sans-serif;
-          background-color: #e74c3c;
-          color: white;
-          padding: 10px 20px;
-          border-radius: 5px;
-          font-size: 1rem;
-          text-transform: uppercase;
-          font-weight: bold;
-          text-decoration: none;
-      }
-      
-      .admin-btn:hover {
-          background-color: #c0392b;
-      }
-    </style>
+  <style>
+    /* Apply Roboto font to the Admin button */
+    .admin-btn {
+      font-family: 'Roboto', sans-serif;
+      background-color: #e74c3c;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .admin-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
 
 </head>
 
@@ -476,7 +476,7 @@ much more." />
                               <div class="button-container">
                                 <a href="{% url 'login' %}" class="btn login-btn">Login</a>
                                 <a href="{% url 'sign_up' %}" class="btn signup-btn">Sign Up</a>
-                      
+
                                 <a href="{% url 'admin:login' %}" class="btn signup-btn">Admin</a>
                               </div>
                             </div>
@@ -545,7 +545,7 @@ much more." />
                       id="block-c30ec99a62ae91c9956f">
                       <div class="sqs-block-content">
                         <div class="sqs-html-content">
-                          <h2 style="text-align:center; color: #2C3E50; white-space:pre-wrap;">Your Vision, Our Professional Services.</h2>
+                          <h2 style="text-align:center; color: white; white-space:pre-wrap;">Your Vision, Our Professional Services.</h2>
                         </div>
                       </div>
                     </div>
@@ -584,7 +584,7 @@ much more." />
                         id="block-199ea2817f202039acbd">
                         <div class="sqs-block-content">
                           <div class="sqs-html-content">
-                            <h2 style="text-align:center; color: #2C3E50; white-space:pre-wrap;"><strong>Get an Estimate…</strong></h2>
+                            <h2 style="text-align:center; color: white; white-space:pre-wrap;"><strong>Get an Estimate…</strong></h2>
                           </div>
                         </div>
                       </div>
@@ -616,6 +616,9 @@ much more." />
                       class="Footer-nav-item">Facebook</a>
                   </div>
                 </nav>
+                <div class="Footer-image-container" style="text-align: center; margin: 20px 0;">
+                  <img src="{% static 'image/Capture_TECH_hub.webp' %}" alt="" width="100px" height="100px">
+                </div>
               </div>
 
               <div
