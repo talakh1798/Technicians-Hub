@@ -106,7 +106,7 @@
     {% endif %}
 
     <div class="container">
-        <h1 class="mb-4">Your Recent Appointments</h1>
+        <h2 class="mb-4">Your Recent Appointments</h2>
         <div class="row">
             {% for appointment in user.user_appointments.all %}
             {% if forloop.counter0|divisibleby:3 and not forloop.first %}
@@ -118,8 +118,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Appointment with {{ appointment.technician.first_name }}
                             {{appointment.technician.last_name }}
-                            <small class="text-muted">({{appointment.technician.role.name }})</small>
                         </h5>
+                        <small class="text-muted">({{appointment.technician.role.name }})</small>
                         <hr>
                         <p><strong>Time:</strong> {{ appointment.time }}</p>
                         <p><strong>Date:</strong> {{ appointment.date }}</p>

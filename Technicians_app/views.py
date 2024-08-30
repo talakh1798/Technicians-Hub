@@ -8,6 +8,7 @@ from django.contrib.auth import logout
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.mail import send_mail
+from datetime import date
 
 def profile_redirect(request):
     return redirect('admin:login')
@@ -195,7 +196,7 @@ def terms(request):
 def privacy_policy(request):
     return render (request, 'privacy_policy.html')
    
-def book_appointment(request, technician_id):
+def book_appointment(request, technician_id): 
     technician = models.get_technician(technician_id)
     if request.method == 'POST':
         request.session['technicianid'] = technician_id
@@ -215,12 +216,13 @@ def book_appointment(request, technician_id):
     return redirect('/')
 
 def appointment_form(request, technician_id):
+    min_date = date.today().isoformat() 
     if 'id' not in request.session:
         return redirect('login')
     user_id = request.session['id']
     user = models.get_user(user_id)
     technician = models.get_technician(technician_id)
-    return render(request, 'appointment_form.html', {'user': user, 'technician_id': technician_id, 'technician': technician})
+    return render(request, 'appointment_form.html', {'user': user, 'technician_id': technician_id, 'technician': technician, 'min_date': min_date})
 
 def recent_appointments(request):
     if 'id' in request.session:
@@ -232,10 +234,12 @@ def recent_appointments(request):
         return redirect('login')
     
 def update_appointment(request, appointment_id):
+    min_date = date.today().isoformat()
     if 'id' not in request.session:
         return redirect('login')
 
     user_id = request.session['id']
+    
     appointment = models.get_appointment(appointment_id)
 
     if appointment.user_id != user_id:
@@ -256,7 +260,7 @@ def update_appointment(request, appointment_id):
         messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
         return redirect('/recent_appointments')
     else:
-        return render(request, 'update_appointment.html', {'appointment': appointment, 'technician': technician})
+        return render(request, 'update_appointment.html', {'appointment': appointment, 'technician': technician, 'min_date': min_date})
     
 
 def cancel_appointment(request, appointment_id):

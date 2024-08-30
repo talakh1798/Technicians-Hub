@@ -146,32 +146,33 @@
 
     <!-- Quote Start -->
     <div class="container-fluid bg-primary bg-quote py-5" style="margin: 90px 0;">
-        <div class="container py-5">
-            <div class="row g-0 justify-content-start">
-                <div class="col-lg-6">
-                    <div class="bg-white text-center p-5">
-                        <h1 class="mb-4">Get A Quote</h1>
-                        <form id="contact-form" action="{% url 'add_contact' %}" method="post">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
+    <div class="container py-5">
+        <div class="row g-0 justify-content-center align-items-center" style="min-height: 100vh;"> <!-- Updated classes and styles here -->
+            <div class="col-lg-6">
+                <div class="bg-white text-center p-5">
+                    <h1 class="mb-4">Get A Quote</h1>
+                    <form id="contact-form" action="{% url 'add_contact' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
     <!-- Quote End -->
 
     <!-- Team Start -->
@@ -187,7 +188,7 @@
                         <img class="img-fluid w-100" src="{% static 'image/handyman2.webp' %}" alt="">
                         <div class="team-text text-center">
                             <div class="mt-auto mb-3">
-                                <h4 class="mb-1">Mohaamd Odeh</h4>
+                                <h4 class="mb-1">Mohammed Odeh</h4>
                             </div>
                         </div>
                     </div>
