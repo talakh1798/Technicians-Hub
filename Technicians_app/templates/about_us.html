@@ -146,59 +146,49 @@
 
     <!-- Quote Start -->
     <div class="container-fluid bg-primary bg-quote py-5" style="margin: 90px 0;">
-        <div class="container py-5">
-            <div class="row g-0 justify-content-start">
-                <div class="col-lg-6">
-                    <div class="bg-white text-center p-5">
-                        <h1 class="mb-4">Get A Quote</h1>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name"
-                                        style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email"
-                                        style="height: 55px;">
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control bg-light border-0 py-3" rows="2"
-                                        placeholder="Message"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Get A Quote</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+    <div class="container py-5">
+        <div class="row g-0 justify-content-center align-items-center" style="min-height: 100vh;"> <!-- Updated classes and styles here -->
+            <div class="col-lg-6">
+                <div class="bg-white text-center p-5">
+                    <h1 class="mb-4">Get A Quote</h1>
+                    <form id="contact-form" action="{% url 'add_contact' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
     <!-- Quote End -->
 
     <!-- Team Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5" id="team-container">
         <div class="container py-5">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h1 class="display-5" id="our_team">Dedicated Team Members</h1>
-                <hr class="w-25 mx-auto text-primary" style="opacity: 1;">
+                <hr class="w-25 mx-auto text-primary">
             </div>
             <div class="row g-3">
                 <div class="col-lg-4 col-md-6">
                     <div class="team-item">
                         <img class="img-fluid w-100" src="{% static 'image/handyman2.webp' %}" alt="">
-                        <div class="team-text">
-                            <div class="team-social">
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                            </div>
+                        <div class="team-text text-center">
                             <div class="mt-auto mb-3">
-                                <h4 class="mb-1">Mohaamd Odeh</h4>
+                                <h4 class="mb-1">Mohammed Odeh</h4>
                             </div>
                         </div>
                     </div>
@@ -206,15 +196,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-item">
                         <img class="img-fluid w-100" src="{% static 'image/handyman5.webp' %}" alt="">
-                        <div class="team-text">
-                            <div class="team-social">
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                            </div>
+                        <div class="team-text text-center">
                             <div class="mt-auto mb-3">
                                 <h4 class="mb-1">Ahmad Salim</h4>
                             </div>
@@ -224,17 +206,10 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="team-item">
                         <img class="img-fluid w-100" src="{% static 'image/handyman6.webp' %}" alt="">
-                        <div class="team-text">
-                            <div class="team-social">
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-lg btn-secondary btn-lg-square rounded-circle me-2" href="#"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                            </div>
+                        <div class="team-text text-center">
                             <div class="mt-auto mb-3">
                                 <h4 class="mb-1">Jamal Issa</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -242,6 +217,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Team End -->
 
     <!-- Call To Action Start -->

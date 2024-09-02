@@ -14,7 +14,9 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -29,6 +31,34 @@
     <!-- Template Stylesheet -->
     <link href="{% static 'css/services.css'%}" rel="stylesheet">
     <link href="{% static 'css/app.css'%}" rel="stylesheet">
+    <style>
+        .card {
+            margin-bottom: 20px;
+            /* Consistent margin for all cards */
+        }
+
+        .card-body {
+            padding: 15px;
+            /* Consistent padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Pushes the footer to the bottom */
+            min-height: 450px;
+        }
+
+        .card-title,
+        .card-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .btn {
+            margin: 5px;
+            /* Consistent margin for all buttons */
+        }
+    </style>
 
 </head>
 
@@ -76,7 +106,7 @@
     {% endif %}
 
     <div class="container">
-        <h1 class="mb-4">Your Recent Appointments</h1>
+        <h2 class="mb-4">Your Recent Appointments</h2>
         <div class="row">
             {% for appointment in user.user_appointments.all %}
             {% if forloop.counter0|divisibleby:3 and not forloop.first %}
@@ -88,8 +118,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Appointment with {{ appointment.technician.first_name }}
                             {{appointment.technician.last_name }}
-                            <small class="text-muted">({{appointment.technician.role.name }})</small>
                         </h5>
+                        <small class="text-muted">({{appointment.technician.role.name }})</small>
                         <hr>
                         <p><strong>Time:</strong> {{ appointment.time }}</p>
                         <p><strong>Date:</strong> {{ appointment.date }}</p>
