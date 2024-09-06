@@ -250,6 +250,9 @@ def update_appointment(request, appointment_id):
 
     if request.method == 'POST':
         models.update_appointment(request, appointment_id)
+
+        appointment.refresh_from_db()
+        
         send_mail(
             'Appointment Updated Successfully',
             f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been Updated to be on {appointment.date} at {appointment.time}.',
