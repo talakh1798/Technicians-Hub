@@ -33,7 +33,7 @@ Technicians Hub is an innovative web application that serves as a bridge between
  - **SMTP Library/Email Integration (Mailjet)**: Utilizes Mailjet to send real-time notifications and updates to users about their appointments. Mailjet provides robust email delivery and management capabilities, ensuring reliable communication through SMTP protocols and easy integration into our system.
 - **Git**: Used for version control to manage the codebase and track changes, facilitating collaboration among developers.
 
-## :wrench: Installation
+## Installation
 
 For detailed installation instructions, please visit the [Installation Guide](https://github.com/talakh1798/Technicians-Hub/wiki/Installation-Guide-for-Technicians-Hub).
 
