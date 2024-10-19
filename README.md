@@ -29,6 +29,7 @@ Technicians Hub is an innovative web application that serves as a bridge between
 - **JavaScript**: Utilized to enhance interactivity on the client side, including form validations(AJAX) and dynamic content updates.
 - **HTML and CSS**: Employed for structuring and styling the frontend of the application, ensuring it is responsive and user-friendly across different devices and browsers.
 - **Bootstrap**: A front-end framework used for developing responsive and mobile-first web pages.
+- **Leaflet.js**: Integrated for displaying interactive maps, allowing users to view their current location and nearby areas.
  - **SMTP Library/Email Integration (Mailjet)**: Utilizes Mailjet to send real-time notifications and updates to users about their appointments. Mailjet provides robust email delivery and management capabilities, ensuring reliable communication through SMTP protocols and easy integration into our system.
 - **Git**: Used for version control to manage the codebase and track changes, facilitating collaboration among developers.
 
