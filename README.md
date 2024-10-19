@@ -14,7 +14,12 @@ Technicians Hub is an innovative web application that serves as a bridge between
 
 - **Review System**: Users have the freedom to leave reviews for technicians at any time, allowing them to share insights and experiences directly related to the technicians’ profiles and skills. Moreover, users can update or delete their reviews to reflect their current opinions, ensuring that the feedback remains relevant and accurate over time.
 
+- **Map**: Displays the user’s current location when accessed.
+
+- **Contact Form**: A simple and user-friendly form that allows users to reach out for inquiries or support.
+
 - **Responsive Design**: The application is fully responsive and provides a seamless experience across various devices and screen sizes, ensuring accessibility and ease of use anytime, anywhere.
+
 
 ## Technologies Used
 
