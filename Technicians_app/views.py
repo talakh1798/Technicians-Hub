@@ -273,10 +273,9 @@ def update_appointment(request, appointment_id):
         models.update_appointment(request, appointment_id)
         
         if is_email_configured():
-    
-        appointment.refresh_from_db()
-        
-        send_mail(
+            appointment.refresh_from_db()
+                    
+            send_mail(
                 'Appointment Updated Successfully',
                 f'Your Appointment with technician {technician.first_name} {technician.last_name} has been updated to be on {appointment.date} at {appointment.time}.',
                 os.environ.get('DEFAULT_FROM_EMAIL'),
