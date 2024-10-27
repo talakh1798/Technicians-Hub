@@ -9,7 +9,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.mail import send_mail
 from datetime import date
-
+import os
 def profile_redirect(request):
     return redirect('admin:login')
 
@@ -29,7 +29,7 @@ def add_contact(request):
 
 def send_confirmation_email(contact):
     subject = 'We Have Received Your Contact Request'
-    from_email = settings.DEFAULT_FROM_EMAIL
+    from_email = os.environ.get('DEFAULT_FROM_EMAIL')
     recipient_list = [contact.email]
 
     email_body = (
@@ -204,7 +204,7 @@ def book_appointment(request, technician_id):
         send_mail(
             'Appointment Booked Successfully',
             f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been booked on {appointment.date} at {appointment.time}.',
-            'TechniciansHub1@gmail.com',
+            os.environ.get('DEFAULT_FROM_EMAIL'),
             [appointment.user.email],
             fail_silently=False,
         )
@@ -256,7 +256,7 @@ def update_appointment(request, appointment_id):
         send_mail(
             'Appointment Updated Successfully',
             f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been Updated to be on {appointment.date} at {appointment.time}.',
-            'TechniciansHub1@gmail.com',
+            os.environ.get('DEFAULT_FROM_EMAIL'),
             [appointment.user.email],
             fail_silently=False,
         )
@@ -283,7 +283,7 @@ def cancel_appointment(request, appointment_id):
     send_mail(
             'Appointment Cancelled Successfully',
             f'Your Appointment with techncian {technician.first_name} {technician.last_name} on {appointment.date} at {appointment.time} has been cancelled.',
-            'TechniciansHub1@gmail.com',
+            os.environ.get('DEFAULT_FROM_EMAIL'),
             [appointment.user.email],
             fail_silently=False,
         )
