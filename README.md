@@ -37,6 +37,11 @@ Technicians Hub is an innovative web application that serves as a bridge between
 
 For detailed installation instructions, please visit the [Installation Guide](https://github.com/talakh1798/Technicians-Hub/wiki/Installation-Guide-for-Technicians-Hub).
 
+## Email Setup
+
+For detailed instructions on setting up email notifications in FitnessTrack, please refer to the [Email Setup Guide](https://github.com/talakh1798/Technicians-Hub/wiki/Email-Setup-for-Technicians-Hub).
+
+
 
 
 ## Website Images
