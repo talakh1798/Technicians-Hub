@@ -39,7 +39,7 @@ For detailed installation instructions, please visit the [Installation Guide](ht
 
 ## Email Setup
 
-For detailed instructions on setting up email notifications in FitnessTrack, please refer to the [Email Setup Guide](https://github.com/talakh1798/Technicians-Hub/wiki/Email-Setup-for-Technicians-Hub).
+For detailed instructions on setting up email notifications in Technicians Hub, please refer to the [Email Setup Guide](https://github.com/talakh1798/Technicians-Hub/wiki/Email-Setup-for-Technicians-Hub).
 
 
 
