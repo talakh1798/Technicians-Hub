@@ -291,8 +291,6 @@ def update_appointment(request, appointment_id):
         return render(request, 'update_appointment.html', {'appointment': appointment, 'technician': technician, 'min_date': min_date})
 
 
-    
-
 def cancel_appointment(request, appointment_id):
     if 'id' not in request.session:
         return redirect('login')
