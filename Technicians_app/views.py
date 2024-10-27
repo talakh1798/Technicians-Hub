@@ -9,7 +9,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.mail import send_mail
 from datetime import date
-
+import os
 def profile_redirect(request):
     return redirect('admin:login')
 
@@ -22,31 +22,49 @@ def contact(request):
 def add_contact(request):
     if request.method == 'POST':
         contact = create_contact(request.POST)
-        send_confirmation_email(contact)
+        send_confirmation_email(request, contact)
         return redirect('/contact')
     return render(request, 'contact.html')
 
 
-def send_confirmation_email(contact):
-    subject = 'We Have Received Your Contact Request'
-    from_email = settings.DEFAULT_FROM_EMAIL
-    recipient_list = [contact.email]
 
-    email_body = (
-        f"Dear {contact.name},\n\n"
-        "Thank you for reaching out to us. We have received your message and our team will "
-        "get in touch with you shortly. We appreciate your patience and look forward to assisting you.\n\n"
-        "Best regards,\n"
-        "The TechHub Team\n"
-    )
+def is_email_configured():
+    """
+    Checks if the required email settings are configured in environment variables.
+    Returns True if all required settings are available, else False.
+    """
+    required_settings = [
+        os.environ.get('DEFAULT_FROM_EMAIL'),
+        os.environ.get('EMAIL_HOST_USER'),
+        os.environ.get('EMAIL_HOST_PASSWORD'),
+    ]
+    return all(required_settings)
 
-    email = EmailMessage(
-        subject=subject,
-        body=email_body,
-        from_email=from_email,
-        to=recipient_list
-    )
-    email.send()
+def send_confirmation_email(request, contact):
+    if is_email_configured():
+        subject = 'We Have Received Your Contact Request'
+        from_email = os.environ.get('DEFAULT_FROM_EMAIL')
+        recipient_list = [contact.email]
+
+        email_body = (
+            f"Dear {contact.name},\n\n"
+            "Thank you for reaching out to us. We have received your message and our team will "
+            "get in touch with you shortly. We appreciate your patience and look forward to assisting you.\n\n"
+            "Best regards,\n"
+            "The TechHub Team\n"
+        )
+
+        email = EmailMessage(
+            subject=subject,
+            body=email_body,
+            from_email=from_email,
+            to=recipient_list
+        )
+        email.send()
+        messages.success(request, "Your contact request has been received. A confirmation email has been sent to your provided address.")
+    else:
+        messages.warning(request, "Your contact request has been received. However, we couldn’t send a confirmation email due to missing email settings.")
+
 
 
 
@@ -201,19 +219,23 @@ def book_appointment(request, technician_id):
     if request.method == 'POST':
         request.session['technicianid'] = technician_id
         appointment = models.add_appointment(request)
-        send_mail(
-            'Appointment Booked Successfully',
-            f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been booked on {appointment.date} at {appointment.time}.',
-            'TechniciansHub1@gmail.com',
-            [appointment.user.email],
-            fail_silently=False,
-        )
-        technician = get_technician(technician_id)
-        messages.success(request, f"Appointment booked successfully  with  technician {technician.first_name} {technician.last_name}", extra_tags='success')
-        # Render the review form again after submission
+        
+        if is_email_configured():
+            send_mail(
+                'Appointment Booked Successfully',
+                f'Your Appointment with technician {technician.first_name} {technician.last_name} has been booked on {appointment.date} at {appointment.time}.',
+                os.environ.get('DEFAULT_FROM_EMAIL'),
+                [appointment.user.email],
+                fail_silently=False,
+            )
+            messages.success(request, f"Appointment booked successfully with technician {technician.first_name} {technician.last_name}.")
+        else:
+            messages.warning(request, f"Appointment booked successfully with technician {technician.first_name} {technician.last_name}. However, we couldn’t send a confirmation email due to missing email settings.")
+        
         return render(request, 'appointment_form.html', {'technician': technician, 'technician_id': technician_id})
     
     return redirect('/')
+
 
 def appointment_form(request, technician_id):
     min_date = date.today().isoformat() 
@@ -239,7 +261,6 @@ def update_appointment(request, appointment_id):
         return redirect('login')
 
     user_id = request.session['id']
-    
     appointment = models.get_appointment(appointment_id)
 
     if appointment.user_id != user_id:
@@ -250,21 +271,25 @@ def update_appointment(request, appointment_id):
 
     if request.method == 'POST':
         models.update_appointment(request, appointment_id)
-
-        appointment.refresh_from_db()
         
-        send_mail(
-            'Appointment Updated Successfully',
-            f'Your Appointment with techncian {technician.first_name} {technician.last_name} has been Updated to be on {appointment.date} at {appointment.time}.',
-            'TechniciansHub1@gmail.com',
-            [appointment.user.email],
-            fail_silently=False,
-        )
-        messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} updated successfully.", extra_tags='info')
+        if is_email_configured():
+            appointment.refresh_from_db()
+                    
+            send_mail(
+                'Appointment Updated Successfully',
+                f'Your Appointment with technician {technician.first_name} {technician.last_name} has been updated to be on {appointment.date} at {appointment.time}.',
+                os.environ.get('DEFAULT_FROM_EMAIL'),
+                [appointment.user.email],
+                fail_silently=False,
+            )
+            messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} updated successfully.")
+        else:
+            messages.warning(request, f"Appointment with technician {technician.first_name} {technician.last_name} updated successfully. However, we couldn’t send an update confirmation email due to missing email settings.")
+        
         return redirect('/recent_appointments')
     else:
         return render(request, 'update_appointment.html', {'appointment': appointment, 'technician': technician, 'min_date': min_date})
-    
+
 
 def cancel_appointment(request, appointment_id):
     if 'id' not in request.session:
@@ -273,22 +298,27 @@ def cancel_appointment(request, appointment_id):
     user_id = request.session['id']
     appointment = models.get_appointment(appointment_id)
 
-
     if appointment.user_id != user_id:
         messages.error(request, "You are not authorized to delete this appointment.")
         return redirect('/recent_appointments')
 
     technician = appointment.technician
     models.cancel_appointment(appointment_id)
-    send_mail(
+    
+    if is_email_configured():
+        send_mail(
             'Appointment Cancelled Successfully',
-            f'Your Appointment with techncian {technician.first_name} {technician.last_name} on {appointment.date} at {appointment.time} has been cancelled.',
-            'TechniciansHub1@gmail.com',
+            f'Your Appointment with technician {technician.first_name} {technician.last_name} on {appointment.date} at {appointment.time} has been cancelled.',
+            os.environ.get('DEFAULT_FROM_EMAIL'),
             [appointment.user.email],
             fail_silently=False,
         )
-    messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} cancelled successfully.", extra_tags='success')
+        messages.success(request, f"Appointment with technician {technician.first_name} {technician.last_name} cancelled successfully.")
+    else:
+        messages.warning(request, f"Appointment with technician {technician.first_name} {technician.last_name} cancelled successfully. However, we couldn’t send a cancellation confirmation email due to missing email settings.")
+    
     return redirect('/recent_appointments')
+
 
 def confirm_delete_review(request, review_id):
     review = models.get_review(review_id)
